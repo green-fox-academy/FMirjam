@@ -1,0 +1,65 @@
+.Header {font-size: 12;
+  width:auto;
+  height: 10px;
+  padding: 30px}
+
+.Header-Links {text-align:right;
+  margin-right: 150px;}
+
+#Links a {color: #ff0099;}
+
+.Job {color: #ff0099;
+width:auto;
+height: 10px;
+border: 1px;
+padding: 30px;}
+
+.Information {width:auto;
+height: 10px;
+border: 1px;
+padding: 30px;}
+
+
+.Separator {
+  width:auto;
+  height: 10px;
+  border: 1px;
+  padding: 30px;
+text-align: center;}
+
+.Header2 {text-align: center;}
+
+
+body {background-image: url("topography.png");}
+
+.GreyHeader{width: auto;
+height: 10px;
+border: 1px;
+padding: 30px;
+background-color: #333333
+}
+
+
+
+.Logo {
+position: absolute;
+top: 20px;
+margin-left: 150px;
+}
+
+
+a {text-align: right; font-weight: bold;}
+
+a href="myFirstWebpage.html" {margin-right: 50px;}
+a href="https://wikipedia.org" {margin-right: 35px;}
+a href="https://github.com" target="_blank" {margin-right: 20px;}
+a href="https://linkedin.com" target="_blank" {margin-right: 10px;}
+
+.Definitions {width:auto;
+height: 10px;
+border: 1px;
+padding: 30px;}
+
+.Definitions p {font-weight: bold;}
+
+h2 {font-weight: bold;}
