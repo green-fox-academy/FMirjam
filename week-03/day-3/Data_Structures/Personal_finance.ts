@@ -7,3 +7,4 @@
 // Which was our greatest expense?
 // Which was our cheapest spending?
 // What was the average amount of our spendings?
+

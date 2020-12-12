@@ -41,8 +41,10 @@ console.log(names);
 console.log(names.length);
 console.log(names[2]);
 
-names.map(a => console.log(a)); //Iterate through the list and print out the elements
-names.map(a => console.log (names.indexOf(a)+ 1)); //How to insert the names as well?
+// names.map(a => console.log(a)); //Iterate through the list and print out the elements
+// names.map(a => console.log (`${names.indexOf(a)+ 1}. ${a}`)); //How to insert the names as well?
+
+names.map((name: string, index: number) => console.log(`${index}. ${name}`));
 
 names.splice(1, 1); // remove one element - index of where we want to start the removing and how many elements do we want to remove
 console.log(names);

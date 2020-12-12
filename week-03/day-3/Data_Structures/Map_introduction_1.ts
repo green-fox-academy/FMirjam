@@ -33,14 +33,16 @@
 
 // console.log(Object.keys(objektum));
 
-// if (objektum !== 0) {
-//     console.log('The map is not empty');
-// }
 
-// else {
-//     console.log('It is empty');
-// }
-let tárgy: any = {};
+let tárgy = {};
+
+if (Object.keys(tárgy).length !== 0) {
+    console.log('The map is not empty');
+}
+
+else {
+    console.log('It is empty');
+}
 
 tárgy [97] = 'a';
 tárgy [98] = 'b';
@@ -53,7 +55,24 @@ tárgy [67] = 'C';
 console.log(Object.keys(tárgy));
 console.log(Object.values(tárgy)); 
 
-console.log(Object.entries(tárgy).length);
+console.log(Object.entries(tárgy).length); // meglévő párok száma
+console.log(tárgy[99]);
 
+delete tárgy[97];
+console.log(tárgy);
+
+tárgy[98] = null; //értéket törlünk
+
+console.log(tárgy);
+
+console.log(tárgy.hasOwnProperty(100)); // van e értéke a 100 key-nek? Válasz: false
+
+for(let i in tárgy) {  //Összes key-pair törlése az object-ből
+    delete tárgy[i];
+};
+
+console.log(tárgy);
+
+//vagy tárgy = {};
 
 

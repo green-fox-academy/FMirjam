@@ -23,3 +23,29 @@
 // Print whether there is an associated value with key 478-0-61159-424-8 or not
 
 // Print the value associated with key 978-1-60309-453-5
+
+let telefonszámok = {};
+
+telefonszámok ['978-1-60309-452-8'] = 'A Letter to Jo';
+telefonszámok ['978-1-60309-459-7'] = 'Lupus';
+telefonszámok ['978-1-60309-444-3'] = 'Red Panda and Moon Bear';
+telefonszámok ['978-1-60309-461-0'] = 'The Lab';
+
+Object.keys(telefonszámok).map(a => console.log(`${telefonszámok[a]} (ISBN: ${a})`));
+
+delete telefonszámok['978-1-60309-461-0']; //delete
+console.log(telefonszámok);
+
+telefonszámok ['978-1-60309-450-4'] = 'They Called Us Enemy';
+telefonszámok ['978-1-60309-453-5'] = 'Why Did We Trust Him?';
+
+console.log(telefonszámok);
+
+console.log(telefonszámok.hasOwnProperty('478-0-61159-424-8')); //van e ilyen értéke? False
+console.log(Object.values(telefonszámok['978-1-60309-453-5'])); //printeli az értékét az adott key-nek
+//rossz formátumban consolozza ki
+
+
+
+
+
