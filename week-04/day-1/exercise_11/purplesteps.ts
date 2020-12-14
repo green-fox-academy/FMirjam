@@ -11,12 +11,12 @@ export {};
 
 
 
-let size: number = 15;
+let size: number = 10;
 
 for (let i: number = 1; i <= 19; i++) {
 
     ctx.fillStyle = 'purple';
-    ctx.fillRect(i * size + 10, i * size + 10, size, size );
+    ctx.fillRect(i * size, i * size, size, size );
     ctx.beginPath();
-    ctx.moveTo(i * size + 10, i * size + 10);
+    ctx.moveTo(i * size, i * size);
 }
