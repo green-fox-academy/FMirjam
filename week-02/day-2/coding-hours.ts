@@ -9,3 +9,20 @@
 // Print the percentage of the coding hours in the semester if the average
 // work hours weekly is 52
 
+let averageHours: number = 6;
+let semesterWeeks: number = 17;
+
+// Print how many hours is spent with coding in a semester by an attendee,
+// if the attendee only codes on workdays.
+
+let weeklyCodingHours: number = averageHours * 5;
+
+console.log(weeklyCodingHours * semesterWeeks);
+
+// Print the percentage of the coding hours in the semester 
+// if the average
+// work hours weekly is 52
+
+let averageWorkHours: number = 52;
+
+console.log(((weeklyCodingHours / averageWorkHours) * 100) + ' %');

@@ -11,3 +11,18 @@
 // Print the result of 22 divided by 13 (as a decimal fraction)
 
 // Print the remainder of 22 divided by 13
+
+let numberOne: number = 13;
+let numberTwo: number = 22;
+
+console.log(numberOne + numberTwo);
+
+console.log(numberTwo - numberOne);
+
+console.log(numberOne * numberTwo);
+
+// Print the result of 22 divided by 13 (as a decimal fraction)
+console.log(numberTwo / numberOne);
+
+// Print the remainder of 22 divided by 13
+console.log(numberTwo % numberOne); //maradék értékét adja vissza. 22 osztva 13-mal (meg van a 13 1-szer a 22-ben és maradt 9)

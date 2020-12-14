@@ -10,3 +10,11 @@
 //  John Doe
 //  31
 //  1.87
+
+let myFirstName: string = 'Mirjam';
+let myAge1: number = 25;
+let height: number = 1.76;
+
+console.log(myFirstName);
+console.log(myAge1);
+console.log(height);
