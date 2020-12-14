@@ -11,3 +11,17 @@ export {};
 // and draws a square of that size to the center of the canvas.
 // Draw 3 squares with that function.
 // Avoid code duplication.
+
+let colors = ["red", "purple", "pink"];
+
+function centeredBox (a: number) {
+    for (let i: number = 0; i < colors.length; i++) {
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(canvas.width/2-a/2+i*a, canvas.height/2-a/2+i*a, a, a);
+    }
+
+}
+
+//záró pontból akarom indítani a követkexő négyzetet
+
+centeredBox(30);
