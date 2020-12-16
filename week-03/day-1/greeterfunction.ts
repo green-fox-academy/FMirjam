@@ -2,3 +2,11 @@
 // -  Create a function called `greet()` that greets it's input parameter
 //     -  Greeting is printing e.g. `Greetings, dear Green Fox`
 // -  Greet `nameToGreet`
+
+let nameToGreet: string = 'Green Fox';
+
+function greet (text: string) {
+    return 'Greetings, dear ' + text; 
+}
+
+console.log(greet(nameToGreet));
