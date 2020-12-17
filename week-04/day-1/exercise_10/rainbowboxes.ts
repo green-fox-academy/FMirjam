@@ -12,3 +12,22 @@ export {};
 // and draws a square of that size and color to the center of the canvas.
 // Create a loop that fills the canvas with a rainbow of colored squares.
 
+let colours: string[] = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+function drawRainbowSquare (size: number, colour: string) {
+    ctx.fillStyle = colour;
+    ctx.fillRect(canvas.width/2-size/2, canvas.height/2-size/2, size, size);
+
+}
+
+// drawRainbowSquare(100, 'purple')
+
+// Create a loop that fills the canvas with a rainbow of colored squares.
+
+// for (let i: number = 0; i < colours.length; i++) {
+//     drawRainbowSquare(300 - (i * 20), colours[i]);
+// }
+
+for (let i: number = 6; i >= 0; i--) {
+    drawRainbowSquare((((i + 1) * 40)), colours[i]);
+}
