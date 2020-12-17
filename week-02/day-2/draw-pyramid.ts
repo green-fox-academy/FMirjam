@@ -12,20 +12,24 @@ let lineCount_1: number = 4;
 //
 // The pyramid should have as many lines as lineCount is
 
-for (let i: number = 1; i <= lineCount_1; i++) {
-    if ( i === 1) {
-        console.log(' '.repeat(lineCount_1 - 1) + '*');
-    }
+// for (let i: number = 1; i <= lineCount_1; i++) {
+//     if ( i === 1) {
+//         console.log(' '.repeat(lineCount_1 - 1) + '*');
+//     }
 
-    else if ( i === 2) {
-        console.log(' '.repeat(lineCount_1 - 2) + '*'.repeat(lineCount_1-1));
-    }
+//     else if ( i === 2) {
+//         console.log(' '.repeat(lineCount_1 - 2) + '*'.repeat(lineCount_1-1));
+//     }
 
-    else if ( i === 3) {
-        console.log(' '.repeat(lineCount_1 - 3) + '*'.repeat(lineCount_1 + 1));
-    }
+//     else if ( i === 3) {
+//         console.log(' '.repeat(lineCount_1 - 3) + '*'.repeat(lineCount_1 + 1));
+//     }
 
-    else {
-        console.log('*'.repeat(lineCount_1 + 3));
-    }
+//     else {
+//         console.log('*'.repeat(lineCount_1 + 3));
+//     }
+// }
+
+for (let i = 1; i <= lineCount_1; i++) {
+    console.log(' '.repeat(lineCount_1-i) + '*'.repeat(i) + '*'.repeat(i-1));
 }
