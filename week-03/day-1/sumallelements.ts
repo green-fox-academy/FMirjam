@@ -5,8 +5,12 @@
 let numbers_5: number[] = [3, 4, 5, 6, 7];
 let sum: number = 0;
 
-for (let i: number = 0; i < numbers_5.length; i++) {
-    sum = sum + numbers_5[i];
-}
+// for (let i: number = 0; i < numbers_5.length; i++) {
+//     sum = sum + numbers_5[i];
+// }
+
+// console.log(sum);
+
+numbers_5.map(a => (sum += a));
 
 console.log(sum);

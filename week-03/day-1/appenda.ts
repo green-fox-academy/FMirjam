@@ -11,3 +11,7 @@ let animals_1: string[] = ['koal', 'pand', 'zebr', 'anacond', 'bo'];
 for (let i: number = 0; i < animals_1.length; i++) {
     console.log(animals_1[i] + 'a');
 }
+
+
+
+animals_1.map(a => console.log(a + 'a'));

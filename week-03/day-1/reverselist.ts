@@ -9,9 +9,9 @@ let numbers_6: number[] = [3, 4, 5, 6, 7];
 
 // do it with the built in method
 
-// numbers_6 = numbers_6.reverse();
+numbers_6 = numbers_6.reverse();
 
-// console.log(numbers_6);
+console.log(numbers_6);
 
 // do it with creating a new temp array and a loop
 

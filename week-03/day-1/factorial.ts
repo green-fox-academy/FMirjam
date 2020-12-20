@@ -9,8 +9,10 @@ function calculateFactorial (factorialANumber: number) {
     if (factorialANumber === 0 || factorialANumber === 1) {
             return 1;
     }
+    
+    return factorialANumber * calculateFactorial(factorialANumber - 1);
 
-    return factorialANumber * calculateFactorial(factorialANumber -1);
+    
 
 
 }
