@@ -6,6 +6,6 @@
 
 let drinks_1: string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 
-//USE BUILT IN ARRAY METHOD!! 'map'??
+
 
 drinks_1.map(c => console.log(c += c));
