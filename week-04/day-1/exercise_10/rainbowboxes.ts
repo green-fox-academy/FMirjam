@@ -22,9 +22,9 @@ function drawRainbowSquare (size: number, colour: string) {
 
 
 
-for (let i: number = 6; i >= 0; i--) {
-    drawRainbowSquare((((i + 1) * 40)), colours[i]);
-}
+// for (let i: number = 6; i >= 0; i--) {
+//     drawRainbowSquare((((i + 1) * 40)), colours[i]);
+// }
 
 
 
@@ -32,6 +32,6 @@ for (let i: number = 6; i >= 0; i--) {
 // drawRainbowSquare(100, 'purple')
 
 
-// for (let i: number = 0; i < colours.length; i++) {
-//     drawRainbowSquare(300 - (i * 20), colours[i]);
-// }
+for (let i: number = 0; i < colours.length; i++) {
+    drawRainbowSquare(300 - (i * 20), colours[i]);
+}
