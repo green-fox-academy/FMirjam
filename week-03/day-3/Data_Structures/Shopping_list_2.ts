@@ -69,14 +69,36 @@ let aliceList = {
     'Tomato' : 10,
 }
 
-function shop (price, objektumA, objektumB) {
-    let bob_price = 0;
-    let alice_price = 0;
-    let bob_item = 0;
-    let alice_item = 0;
+function shoppingList_1 (prices, ListA_1, ListB_2) {
+    let bobKeys: string[] = Object.keys(ListA_1);
+    let aliceKeys: string[] = Object.keys(ListB_2);
+    let bobPrice = 0;
+    let bobItem = 0;
+    let alicePrice = 0;
+    let aliceItem = 0;
 
-        for (let i: number = 0; i < Object.keys(objektumA).length; i++) {
-            bob_price += objektumA(Object.keys(objektumA[i])) * price(Object.keys(objektumA[i]));
-            
-        }
+    for (let k : number = 0; k < ListA_1.length; k++) {
+        bobPrice += ListA_1[bobKeys[k]] * prices[bobKeys[k]];
+        bobItem += ListA_1[bobKeys[k]];
+    }
+
+    for (let k : number = 0; k < ListB_2.length; k++) {
+        alicePrice = alicePrice + (ListB_2[aliceKeys[k]] * prices[aliceKeys[k]]);
+        aliceItem = aliceItem + ListB_2[aliceKeys[k]];
+
+    }
+
+    let buysMoreRice = (ListA_1.Rice > ListB_2.Rice ?  'Bob' : 'Alice');
+    let buysMorePotato = (ListA_1.Potato > ListB_2.Potato ? 'Bob' : 'Alice');
+    let buysMoreDiffProduct = (bobKeys.length > aliceKeys.length ? 'Bob' : 'Alice');
+    let buysMoreProducts = (bobItem > aliceItem ? 'Bob' : 'Alice');
+
+
+    return `How much does Bob pay?: ${bobPrice} \n How much does Alice pay?: ${alicePrice} \n Who buys more Rice?: ${buysMoreRice} \n Who buys more Potato?: ${buysMorePotato} \n Who buys more different products?: ${buysMoreDiffProduct} \n Who buys more products?: ${buysMoreProducts} .`
+
 }
+
+console.log(shoppingList_1(priceList, bobList, aliceList));
+
+
+

@@ -62,8 +62,10 @@ console.log(ListB.indexOf('Durian'));
 // Add Passion Fruit and Pomelo to List B in a single statement
 
 console.log(ListB.length);
-ListB.splice(ListB.length,0, 'Passion fruit');
-ListB.splice(ListB.length,0, 'Pomelo');
+ListB.splice(ListB.length, 0, 'Passion fruit', 'Pomelo'); //A lista végére beszúrunk pluszba 2 elemet. Ha viszont kezdő értéknek egz konkrét indexet adunk meg, 
+// és második indexnek nem 0-át adunk meg hanem mondjuk 2-őt, akkor felülíródnak
+
+
 
 console.log(ListB);
 

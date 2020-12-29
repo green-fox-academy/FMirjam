@@ -14,22 +14,27 @@
 // Whose phone number is 307-687-2982?
 // Do we know Chris E. Myers' phone number?
 
-let contacts = {
+let contacts = {};
 
-'William A. Lathan' : '405-709-1865&',
-'John K. Miller' : '402-247-8568',
-'Hortensia E. Foster' : '606-481-6467',
-'Amanda D. Newland' : '319-243-5613',
-'Brooke P. Askew' : '307-687-2982',
-
-};
+contacts ['William A. Lathan'] = '405-709-1865';
+contacts ['John K. Miller'] = '402-247-8568';
+contacts ['Hortensia E. Foster'] = '606-481-6467';
+contacts ['Amanda D. Newland'] = '319-243-5613';
+contacts ['Brooke P. Askew'] = '307-687-2982';
 
 // What is John K. Miller's phone number?
 
-// console.log(contacts['John K. Miller']);
+console.log(contacts['John K. Miller']);
 
 // Whose phone number is 307-687-2982?
 
-console.log(Object.keys(contacts('307-687-2982')));
+let phoneNumberCheck = Object.keys(contacts).filter(d => contacts[d] === '307-687-2982' );
 
+console.log(phoneNumberCheck);
+
+      
 // Do we know Chris E. Myers' phone number?
+
+console.log(contacts.hasOwnProperty('Chris E. Myers'));
+
+console.log(Object.keys(contacts['307-687-2982']).join(''));

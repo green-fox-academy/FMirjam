@@ -25,7 +25,7 @@ let maximum: number = Math.max(...expenses) ; //use of spread operator for refer
 
 console.log('The greatest amoun we have spent' + ' ' + maximum);
 
-// Which was our greatest expense?
+// Which was our cheapest expense?
 
 let minimum: number = Math.min(...expenses) ;
 

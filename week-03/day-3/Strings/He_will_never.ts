@@ -14,7 +14,7 @@ let hashmap = {
   12: 'give you up, ',
   1: 'Never gonna ',
   11: '\n',
-  3: 'say goodbye '
+  3: 'say goodbye ',
 };
 
 

@@ -9,7 +9,7 @@
 
 let shoppingList: string[] = ['eggs', 'milk', 'fish', 'apples', 'bread', 'chcicken'];
 
-function checkList (product: any, list: string[]) { 
+function checkList (product: string, list: string[]) { 
     return list.indexOf(product) !== -1 ? `${product} is on the list`: `${product} is not on the list` //!== -1 nem nincsen a listán = listán van
 
 }

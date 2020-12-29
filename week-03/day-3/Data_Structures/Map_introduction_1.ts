@@ -71,8 +71,6 @@ for(let i in tárgy) {  //Összes key-pair törlése az object-ből
     delete tárgy[i];
 };
 
-console.log(tárgy);
-
-//vagy tárgy = {};
+console.log(tárgy); //vagy tárgy = {} -> felülírjuk
 
 

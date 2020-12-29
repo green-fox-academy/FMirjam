@@ -11,12 +11,10 @@
 //      - Diablo
 
 let toDoList = {
-    title: 'My todo:',
-      firstask: ' - Buy milk',
-      secondtask: ' - Download games',
-      game: ' - Diablo',
+    title: 'My todo:\n',                        // \n = Enter -> mondat végén; \t = Tab -> mondat elején
+      firstask: ' - Buy milk\n',
+      secondtask: ' - Download games\n',
+      game: ' \t- Diablo',
   };
-  console.log(toDoList.title)
-  console.log(toDoList.firstask);
-  console.log(toDoList.secondtask);
-  console.log('    ' + toDoList.game);
+  console.log(toDoList.title, toDoList.firstask, toDoList.secondtask, toDoList.game)
+  

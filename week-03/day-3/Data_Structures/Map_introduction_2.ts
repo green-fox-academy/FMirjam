@@ -32,6 +32,7 @@ telefonszámok ['978-1-60309-444-3'] = 'Red Panda and Moon Bear';
 telefonszámok ['978-1-60309-461-0'] = 'The Lab';
 
 Object.keys(telefonszámok).map(a => console.log(`${telefonszámok[a]} (ISBN: ${a})`));
+                                                // Először a telefonszámok 'a' indexéhez tartozó értéket írja ki és utána magát az 'a' indexet (telefonszámot) 
 
 delete telefonszámok['978-1-60309-461-0']; //delete
 console.log(telefonszámok);
@@ -42,8 +43,14 @@ telefonszámok ['978-1-60309-453-5'] = 'Why Did We Trust Him?';
 console.log(telefonszámok);
 
 console.log(telefonszámok.hasOwnProperty('478-0-61159-424-8')); //van e ilyen értéke? False
-console.log(Object.values(telefonszámok['978-1-60309-453-5'])); //printeli az értékét az adott key-nek
-//rossz formátumban consolozza ki
+
+
+//printeli az értékét az adott key-nek
+console.log(Object.values(telefonszámok['978-1-60309-453-5']).join(''));
+//.join nélkül egymás alá írta ki a karaktereket
+//join-nal összefűztük
+
+
 
 
 

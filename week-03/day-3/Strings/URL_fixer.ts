@@ -14,6 +14,7 @@ let missing: string = ':';
 
 let position = 5;
 
-let completeurl: string = [newurl.slice(0, position), missing, newurl.slice(position)].join('');
+let completeurl: string = [newurl.slice(0, position), missing, newurl.slice(position)].join(''); 
+    //slice: Kezdő és végpont értéket ad meg, a végső értéket nem veszi fel 
 
 console.log(completeurl);
