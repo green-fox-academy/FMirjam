@@ -7,7 +7,7 @@ function dividebyTen (number: number)  {
 
     if (number === 0) {
 
-        throw new Error ('Cannot divide by zero'); //thoriw allows you to create custom error
+        throw new Error ('Cannot divide by zero'); //throw allows you to create custom error
 
     }
 
@@ -24,3 +24,4 @@ try {
 catch (e) {
     console.log(e.message);
 }
+

@@ -3,21 +3,21 @@
 // It should return zero if it can't open the file, and
 // should not raise any error.
 
-import { count } from "console";
+// import { count } from "console";
 
-let fs = require('fs');
+// let fs = require('fs');
 
-function countLines (fileName_1: string) {
-    try {
+// function countLines (fileName_1: string) {
+//     try {
 
-       let lines = fs.readFileSync(fileName_1, 'utf8');
-        return console.log(lines.split(`\n`).length);
-    }
+//        let lines = fs.readFileSync(fileName_1, 'utf8');
+//         return console.log(lines.split(`\n`).length);
+//     }
 
-    catch {
-        let error_1 = new Error ('0');
-        console.log(error_1.message);
-    }
-}
+//     catch {
+//         let error_1 = new Error ('0');
+//         console.log(error_1.message);
+//     }
+// }
 
-console.log(countLines('my-file.txt'));
+// console.log(countLines('my-file.txt'));
