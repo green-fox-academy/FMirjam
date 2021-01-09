@@ -1,4 +1,3 @@
-
 import { Thing } from './thing';
 import { Fleet } from './fleet';
 
@@ -15,11 +14,10 @@ let fleet = new Fleet();
 // 3. [x] Stand up
 // 4. [x] Eat lunch
 
-
-let getMilk = new Thing ('Get milk');
-let removeTheObstacles = new Thing ('Remove the obstacles');
-let standUp = new Thing ('Stand up');
-let eatLunch = new Thing ('Eat lunch');
+let getMilk = new Thing('Get milk');
+let removeTheObstacles = new Thing('Remove the obstacles');
+let standUp = new Thing('Stand up');
+let eatLunch = new Thing('Eat lunch');
 
 fleet.add(getMilk);
 fleet.add(removeTheObstacles);

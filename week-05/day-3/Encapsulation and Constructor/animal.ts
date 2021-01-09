@@ -6,9 +6,10 @@
 // Every animal can drink() which decreases their thirst by one
 // Every animal can play() which increases both by one
 
-class Animal {
+export class Animal {
     hungerValue: number = 50;
     thirstValue: number = 50;
+  
 
     eat () {
        return this.hungerValue--;
@@ -20,6 +21,10 @@ class Animal {
 
     play () {
        return (this.hungerValue++ && this.thirstValue++);
+    }
+
+    getHungry () {
+        return this.hungerValue;
     }
     
 }

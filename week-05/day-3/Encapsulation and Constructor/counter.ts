@@ -12,31 +12,29 @@
 // Run the test file with ts-node
 
 class Counter {
-    integer: number;
-    initial: number;
+  integer: number;
+  initial: number;
 
-    constructor (integer: number = 0) {
-        this.initial = integer;
-        this.integer = integer;
-        
-    }
+  constructor(integer: number = 0) {
+    this.initial = integer;
+    this.integer = integer;
+  }
 
-    add (addNumber: number = 1) {
-       return this.integer += addNumber;
+  add(addNumber: number = 1) {
+    return (this.integer += addNumber);
+  }
 
-    }
+  get() {
+    return this.integer;
+  }
 
-    get () {
-        return this.integer;
-    }
-
-    reset () {
-        return this.integer = this.initial;
-    }
+  reset() {
+    return (this.integer = this.initial);
+  }
 }
 
-let counter = new Counter ();
-let counter_2 = new Counter (60);
+let counter = new Counter();
+let counter_2 = new Counter(60);
 
 counter.add(16);
 console.log(counter);
@@ -46,4 +44,3 @@ console.log(counter);
 
 counter.reset();
 console.log(counter);
-
