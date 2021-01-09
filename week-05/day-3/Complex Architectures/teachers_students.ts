@@ -9,27 +9,25 @@
 // Call the student's question() method and the teacher's teach() method
 
 class Student {
+  learn(): void {
+    console.log('Student learns something new');
+  }
 
-    learn () {
-        console.log('Student learns something new');
-    }
-
-    question (teacherInput: Teacher) {
-       return teacherInput.answer();
-    }
-
+  question(teacherInput: Teacher): void {
+    teacherInput.answer();
+  }
 }
 
 class Teacher {
-    teach (studentInput: Student) {
-       return studentInput.learn();
-    }
+  teach(studentInput: Student): void {
+    studentInput.learn();
+  }
 
-    answer () {
-        console.log('Teacher answers the question');
-    }
+  answer(): void {
+    console.log('Teacher answers the question');
+  }
 }
 
-let studentInput = new Student;
-let teacherInput = new Teacher;
+let studentInput = new Student();
+let teacherInput = new Teacher();
 studentInput.question(teacherInput);

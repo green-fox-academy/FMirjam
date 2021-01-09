@@ -10,38 +10,35 @@
 // initialize capacity -> 100
 
 class Station {
-    gasAmount: number;
+  gasAmount: number;
 
-    constructor (gasAmount?: number) {
-        this.gasAmount = gasAmount;
-    }
+  constructor(gasAmount?: number) {
+    this.gasAmount = gasAmount;
+  }
 
-    refill (car: Car) {
-        return this.gasAmount -= car.getCapacity();
-    }
+  refill(car: Car): void {
+    this.gasAmount -= car.getCapacity();
+  }
 }
 
 let station = new Station(600);
 
-
 class Car {
+  gasAmountCar: number;
+  capacity: number;
 
-    gasAmountCar: number;
-    capacity: number;
+  constructor(gasAmountCar: number = 0, capacity: number = 100) {
+    this.gasAmountCar = gasAmountCar;
+    this.capacity = capacity;
+  }
 
-    constructor (gasAmountCar: number = 0, capacity: number = 100) {
-        this.gasAmountCar = gasAmountCar;
-        this.capacity = capacity;
-    }
+  getCapacity() {
+    return this.capacity;
+  }
 
-    getCapacity () {
-        return this.capacity;
-    }
-
-    gasAmountForCar () {
-        return this.gasAmountCar += this.capacity;
-    }
-
+  gasAmountForCar(): void {
+    this.gasAmountCar += this.capacity;
+  }
 }
 
 let car_01 = new Car();
@@ -52,7 +49,3 @@ station.refill(car_01);
 
 console.log(car_01);
 console.log(station);
-
-
-
-

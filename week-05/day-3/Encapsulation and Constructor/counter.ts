@@ -11,7 +11,7 @@
 // Run npm install tape @types/tape --save-dev in the root of your repository folder (where you have a package-lock.json file already)
 // Run the test file with ts-node
 
-class Counter {
+export class Counter {
   integer: number;
   initial: number;
 

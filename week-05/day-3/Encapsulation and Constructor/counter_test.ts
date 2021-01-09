@@ -1,4 +1,5 @@
-import test from 'tape';
+// import { test } from './tape';
+let test = require('tape');
 
 import { Counter } from './counter';
 

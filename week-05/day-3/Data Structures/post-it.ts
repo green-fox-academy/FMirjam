@@ -8,21 +8,23 @@
 // a yellow with green text: "Superb!"
 
 class PostIt {
-    backgroundColor: string;
-    text: string;
-    textColor: string;
+  backgroundColor: string;
+  text: string;
+  textColor: string;
 
-    constructor (backgroundColor: string, text: string, textColor: string) {
-        this.backgroundColor = backgroundColor;
-        this.text = text;
-        this.textColor = textColor;
-    }
+  constructor(backgroundColor: string, text: string, textColor: string) {
+    this.backgroundColor = backgroundColor;
+    this.text = text;
+    this.textColor = textColor;
+  }
+
+  write(): void {
+    console.log(
+      this.textColor + this.backgroundColor + this.text + '\u001b[0m'
+    );
+  }
 }
 
-let post_1 = new PostIt ('orange', 'Idea1', 'blue');
-let post_2 = new PostIt ('pink', 'Awesome', 'black');
-let post_3 = new PostIt ('yellow', 'Superb', 'green');
+let post_1 = new PostIt('\u001b[43m', 'Idea1', '\u001b[34m');
 
-console.log(post_1);
-console.log(post_2);
-console.log(post_3);
+post_1.write();

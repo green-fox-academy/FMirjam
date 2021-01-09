@@ -11,26 +11,36 @@
 // "One Engineer Is Trying to Get IBM to Reckon With Trump" titled by William Turton at "2017.03.28."
 // Daniel Hanley, a cybersecurity engineer at IBM, doesn’t want to be the center of attention. When I asked to take his picture outside one of IBM’s New York City offices, he told me that he wasn’t really into the whole organizer profile thing.
 
-
 export class BlogPost {
-    authorName: string;
-    title: string;
-    text: string;
-    publicationDate: string;
+  authorName: string;
+  title: string;
+  text: string;
+  publicationDate: string;
 
-    constructor (authorName: string, title: string, text: string, publicationDate: string) {
-        this.authorName = authorName;
-        this.title = title;
-        this.text = text;
-        this.publicationDate = publicationDate;
-    }
+  constructor(
+    authorName: string,
+    title: string,
+    text: string,
+    publicationDate: string
+  ) {
+    this.authorName = authorName;
+    this.title = title;
+    this.text = text;
+    this.publicationDate = publicationDate;
+  }
 
-    showinformation () {
-      console.log(`${this.title} titled by ${this.authorName} posted at "${this.publicationDate}". ${this.text}`)
-    }
+  showinformation(): void {
+    console.log(
+      `${this.title} titled by ${this.authorName} posted at "${this.publicationDate}". ${this.text}`
+    );
+  }
 }
 
-let blogPost_1 = new BlogPost ('John Doe', 'Lorem Ipsum', 'Lorem ipsum dolor sit amet', '2000.05.04');
+let blogPost_1 = new BlogPost(
+  'John Doe',
+  'Lorem Ipsum',
+  'Lorem ipsum dolor sit amet',
+  '2000.05.04'
+);
 
 blogPost_1.showinformation();
-
