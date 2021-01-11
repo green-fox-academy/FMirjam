@@ -13,7 +13,7 @@ import { Pirate } from './pirates';
 class Armada {
   listOfShips: Ship[];
 
-  armadaWar() {
-      
+  armadaWar(otherArmada:) {
+
   }
 }

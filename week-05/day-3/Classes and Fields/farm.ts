@@ -16,7 +16,7 @@ class Farm {
     this.slots = slots;
   }
 
-  breed() {
+  breed(): void {
     if (this.slots > 0) {
       let littleBabyAnimal = new Animal();
       this.animals.push(littleBabyAnimal);
@@ -24,7 +24,7 @@ class Farm {
     }
   }
 
-  slaughter() {
+  slaughter(): void {
     let index: number = 0;
     let theLeastHungry: Animal = this.animals[index];
     for (let i: number = 0; i < this.animals.length; i++) {

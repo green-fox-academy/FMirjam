@@ -63,8 +63,6 @@ export class Pirate {
   }
 }
 
-
-
 // BattleApp
 
 // Create a BattleApp class, where you can fight with ships
