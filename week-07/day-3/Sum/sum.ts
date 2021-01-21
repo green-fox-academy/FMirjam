@@ -22,8 +22,9 @@ export class Sum {
 export class SumMultipleItems {
   public sumMultiple(numbers: number[]): number {
     let sum: number = 0;
-    for (let i: number = 0; i < numbers.length[i]; i++) {
-      return (sum += numbers[i]);
+    for (let i: number = 0; i < numbers.length; i++) {
+      sum += numbers[i];
     }
+    return sum;
   }
 }
