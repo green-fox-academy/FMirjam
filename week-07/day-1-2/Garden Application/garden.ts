@@ -1,46 +1,55 @@
-import { Flower } from './flower';
 import { Plant } from './plant';
+import { Flower } from './flower';
 import { Tree } from './tree';
 
-export class Garden {
-  tree: Tree[];
-  flower: Flower[];
+class Garden {
+  plants: Plant[];
+  flowers: Flower[];
+  trees: Tree[];
 
   constructor() {
-    this.tree = [];
-    this.flower = [];
+    this.plants = [];
+    this.flowers = [];
+    this.trees = [];
   }
 
-  exampleGarden() {
-    this.tree.push(new Tree('purple'));
-    this.flower.push(new Flower('yellow'));
+  pushFlowers(flower: Flower): void {
+    this.flowers.push(flower);
   }
 
-  treeSituation() {
-    for (let i: number = 0; i < this.tree.length; i++) {
-      if (this.tree[i].needsWater) {
-        console.log(
-          `The ${this.tree[i].color} ${this.tree[i].type} needs water.`
-        );
-      } else {
-        console.log(
-          `This ${this.tree[i].color} ${this.tree[i].type} does not need water. `
-        );
-      }
+  wateringFlowers(waterwithAmountOf: number): void {
+    let filteredFlowers: Flower[] = this.flowers.filter(
+      (flower) => flower.needsWater
+    );
+
+    for (let flower of filteredFlowers) {
+      flower.watering(waterwithAmountOf / filteredFlowers.length);
     }
   }
 
-  flowerSituation() {
-    for (let j: number = 0; j < this.flower.length; j++) {
-      if (this.flower[j].needsWater) {
-        console.log(
-          `The ${this.flower[j].color} ${this.flower[j].type} needs water.`
-        );
-      } else {
-        console.log(
-          `This ${this.flower[j].color} ${this.flower[j].type} does not need water. `
-        );
-      }
+  pushTrees(tree: Tree): void {
+    this.trees.push(tree);
+  }
+
+  wateringTrees(waterwithAmountOf: number): void {
+    let filteredTrees: Tree[] = this.trees.filter((tree) => tree.needsWater);
+
+    for (let tree of filteredTrees) {
+      tree.watering(waterwithAmountOf / filteredTrees.length);
+    }
+  }
+
+  pushPlants(plant: Plant): void {
+    this.plants.push(plant);
+  }
+
+  wateringPlants(waterwithAmountOf: number): void {
+    let filteredPlants: Plant[] = this.plants.filter(
+      (plant) => plant.needsWater
+    );
+
+    for (let plant of filteredPlants) {
+      plant.watering(waterwithAmountOf / filteredPlants.length);
     }
   }
 }

@@ -12,9 +12,8 @@ export class Aircraft {
   }
 
   fight(): number {
-    let demage: number = this.ammo * this.baseDamage;
-    this.ammo = 0;
-    return demage;
+    let damage: number = this.ammo * this.baseDamage;
+    return damage;
   }
 
   refill(amount: number): number {

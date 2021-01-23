@@ -1,14 +1,21 @@
 import { Plant } from './plant';
 
 export class Tree extends Plant {
-  constructor(color: string) {
-    super(color);
-    this.maximumWaterNeeded = 10;
-    this.type = 'Tree';
+  amountOfWater: number;
+  needsWater: boolean;
+
+  constructor(color: string, type: string) {
+    super(color, type);
+    this.amountOfWater = 0;
+    this.needsWater = true;
   }
 
-  Watering(amount: number): void {
-    amount *= 0.40;
-    super.Watering(amount);
+  watering(totalAmount: number) {
+    let waterUsage: number = totalAmount * 0.40;
+    if (this.amountOfWater < 10) {
+      super.watering(waterUsage);
+    } else {
+      this.needsWater = false;
+    }
   }
 }
