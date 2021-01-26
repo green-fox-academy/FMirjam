@@ -25,7 +25,7 @@ export class Bird extends Animal {
   }
 }
 
-let mammal_1 = new Bird('Parrot');
-mammal_1.getName();
-mammal_1.askInfo();
-mammal_1.getInfo();
+let bird_1 = new Bird('Parrot');
+bird_1.getName();
+bird_1.askInfo();
+bird_1.getInfo();
