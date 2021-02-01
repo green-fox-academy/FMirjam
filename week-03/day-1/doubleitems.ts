@@ -6,6 +6,10 @@
 
 let drinks_1: string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 
+// drinks_1.map((c) => console.log((c += c)));
 
+for (let i: number = 0; i < drinks_1.length; i++) {
+  console.log((drinks_1[i] += drinks_1[i]));
+}
 
-drinks_1.map(c => console.log(c += c));
+console.log(drinks_1);
