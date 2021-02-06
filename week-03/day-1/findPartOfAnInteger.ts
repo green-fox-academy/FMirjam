@@ -2,16 +2,19 @@
 //  and returns the indices of the numbers of the array which contain the given number
 //  or returns an empty list (if the number is not part of any of the numbers in the array)
 
-let lisOfNumbers: number[] = [1, 11, 34, 52, 61];
+let listOfNumbers: string[] = ['1', '11', '34', '52', '1', '61'];
 
-function FindMatchingIndexes(numberA: number, arrayNumbers: number[]) {
+function FindMatchingIndexes(
+  numberA: string,
+  arrayNumbers: string[]
+): string[] {
+  let newArray: string[] = [];
   for (let i: number = 0; i < arrayNumbers.length; i++) {
-    if (arrayNumbers[i] === numberA || arrayNumbers.includes(numberA)) {
-       return arrayNumbers.indexOf(numberA);
-    } else {
-      return ` The number is not available in the given array.`;
+    if (arrayNumbers[i] === numberA || arrayNumbers[i].includes(numberA)) {
+      newArray.push(i.toString());
     }
   }
+  return newArray;
 }
 
-console.log(FindMatchingIndexes(1, lisOfNumbers));
+console.log(FindMatchingIndexes('1', listOfNumbers));
