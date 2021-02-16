@@ -13,7 +13,6 @@ import { Tang } from './tang';
 
 export class Aquarium {
   aquarium: Fish[];
-  aquariumBalance: number;
   bigFishWeight: number = 11;
 
   constructor() {
@@ -23,13 +22,10 @@ export class Aquarium {
   addFish(type: string, name: string, weight: number, color: string): void {
     if (type === 'Clownfish') {
       this.aquarium.push(new Clownfish(name, weight, color));
-      this.aquariumBalance++;
     } else if (type === 'Tang') {
       this.aquarium.push(new Tang(name, weight, color));
-      this.aquariumBalance++;
     } else {
       this.aquarium.push(new Kong(name, weight, color));
-      this.aquariumBalance++;
     }
   }
 
@@ -41,7 +37,7 @@ export class Aquarium {
 
   removeFish(): void {
     for (let i: number = 0; i < this.aquarium.length; i++) {
-      if (this.aquarium[i].weight >= 11) {
+      if (this.aquarium[i].weight >= this.bigFishWeight) {
         this.aquarium.splice(i, 1);
       }
     }
@@ -53,6 +49,3 @@ export class Aquarium {
     }
   }
 }
-
-
-
