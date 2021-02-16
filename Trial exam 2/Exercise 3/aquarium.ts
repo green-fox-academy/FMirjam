@@ -13,10 +13,11 @@ import { Tang } from './tang';
 
 export class Aquarium {
   aquarium: Fish[];
-  bigFishWeight: number = 11;
+  bigFishWeight: number;
 
   constructor() {
     this.aquarium = [];
+    this.bigFishWeight = 11;
   }
 
   addFish(type: string, name: string, weight: number, color: string): void {
@@ -38,7 +39,7 @@ export class Aquarium {
   removeFish(): void {
     for (let i: number = 0; i < this.aquarium.length; i++) {
       if (this.aquarium[i].weight >= this.bigFishWeight) {
-        this.aquarium.splice(i, 1);
+        // this.aquarium.filter([i] => [i].weight >= 11);
       }
     }
   }

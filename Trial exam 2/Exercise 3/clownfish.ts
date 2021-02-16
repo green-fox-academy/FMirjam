@@ -6,6 +6,8 @@ import { Fish } from './fish';
 import { Status } from './status';
 
 export class Clownfish extends Fish implements Status, Feed {
+  protected colorStripes: number;
+  
   constructor(name: string, weight: number, color: string) {
     super();
     this.name = name;

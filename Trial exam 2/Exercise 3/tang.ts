@@ -6,6 +6,8 @@ import { Fish } from './fish';
 import { Status } from './status';
 
 export class Tang extends Fish implements Status, Feed {
+  protected shortTermMemoryLoss: boolean;
+  
   constructor(name: string, weight: number, color: string) {
     super();
     this.name = name;

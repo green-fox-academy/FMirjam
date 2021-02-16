@@ -19,6 +19,6 @@ export class Kong extends Fish implements Status, Feed {
   }
 
   feed(): void {
-    this.weight++;
+    this.weight += 2;
   }
 }

@@ -7,14 +7,12 @@
 import { Feed } from './feed';
 import { Status } from './status';
 
-export abstract class Fish implements Status, Feed {
+export abstract class Fish {
   name: string;
   weight: number;
   color: string;
-  shortTermMemoryLoss: boolean;
-  colorStripes: number;
 
-  status(): void {}
+  abstract status();
 
-  feed(): void {}
+  abstract feed();
 }
