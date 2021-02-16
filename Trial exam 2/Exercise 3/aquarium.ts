@@ -37,11 +37,9 @@ export class Aquarium {
   }
 
   removeFish(): void {
-    for (let i: number = 0; i < this.aquarium.length; i++) {
-      if (this.aquarium[i].weight >= this.bigFishWeight) {
-        // this.aquarium.filter([i] => [i].weight >= 11);
-      }
-    }
+    this.aquarium = this.aquarium.filter(
+      (fish) => fish.weight <= this.bigFishWeight
+    );
   }
 
   getStatus(): void {
