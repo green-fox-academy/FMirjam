@@ -15,18 +15,18 @@
   
       const imgUrl = document.querySelector('img');
       console.log(imgUrl.innerHTML)
-      console.log(Url.getAttribute('src'));
-      Url.setAttribute('src', 'link')
+      console.log(imgUrl.getAttribute('src'));
+      imgUrl.setAttribute('src', 'https://i.pinimg.com/474x/be/54/bd/be54bd5e8e9c23e3ce570ff2acae592d.jpg')
 
      
       const websiteUrl = document.querySelector('a');
       websiteUrl.getAttribute('href');
-      websiteUrl.setAttribute('href', 'link');
+      websiteUrl.setAttribute('href', 'https://www.greenfoxacademy.com/');
 
       // Disable the second button.
      
-      const changeableButton = document.getElementbyClassName('this-one');
-      changeableButton[0].textContent = 'Don\'t click on me'
+      const changeableButton = document.getElementsByClassName('this-one')
+      changeableButton[0].innerText = 'Don\'t click on me!'
 
     </script>
   </body>
