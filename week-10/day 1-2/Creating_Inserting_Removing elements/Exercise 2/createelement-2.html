@@ -49,13 +49,15 @@
         },
       ];
 
-      const emptyList = document.querySelector('ul.asteroids')
-      const newListItem = document.createElement('li')
-      emptyList.appendChild(newListItem)
-
-      const itemClass = document.createElement('class')
-      
-    //   newListItem.setAttribute('class', )
+      for (let i = 0; i < planetData.length; i++) {
+        if (planetData[i].asteroid === true) {
+          let li = document.createElement('li')
+          li.setAttribute('class', planetData[i].category)
+          li.innerHTML = planetData[i].content
+          list.appendChild(li)
+        }
+      }
+     
 
 
     </script>
