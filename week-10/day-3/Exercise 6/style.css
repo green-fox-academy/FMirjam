@@ -42,7 +42,7 @@ ul {
 
 .content {
   display: flex;
-  height:100%
+  height: 100%;
 }
 
 .leftPart {
@@ -64,21 +64,21 @@ ul {
   margin: 60px;
 }
 
-.redbox{
-    background-color: red;
-    height: 100px;
-    width: 100px;
+.redbox {
+  background-color: red;
+  height: 100px;
+  width: 100px;
 }
 
-.bottomarticle{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+.bottomarticle {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.bottomarticle div:nth-of-type(1){ 
-    margin-right: 20px;
+.bottomarticle div:nth-of-type(1) {
+  margin-right: 20px;
 }
 
 .rightPart {
@@ -86,31 +86,31 @@ ul {
   flex-grow: 4;
 }
 
-.purplebars{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-between;
+.purplebars {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.purplebar{
-    background-color: purple;
-    height: 30px;
-    width: 250px;
-    list-style: none;
-    margin-top: 30px;
+.purplebar {
+  background-color: purple;
+  height: 30px;
+  width: 250px;
+  list-style: none;
+  margin-top: 30px;
 }
 
 .rightarticle {
-    margin-left: 20px;
-    margin-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .rightarticle div:nth-of-type(1) {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-p{
-    text-align: justify;
+p {
+  text-align: justify;
 }
