@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: white;
+    width: auto;
+    height: 100vh;
+    
+  }
+  
+  header {
+    background-color: darkorchid;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    position:fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  ul {
+    display: flex;
+    align-items: center;
+  }
+  
+  li {
+    height: 30px;
+    width: 120px;
+    margin: 10px;
+    background-color: aqua;
+    list-style: none;
+  }
+  
+  .content {
+    display: flex;
+    height: 100%;
+    margin-top: 90px;
+  }
+  
+  .leftPart {
+    background-color:limegreen;
+    flex-grow: 4;
+    margin-left: 50px;
+    margin-right: 10px;
+  }
+  
+  .rightPart {
+    background-color: gold;
+    flex-grow: 8;
+    margin-right: 50px;
+  }
+  
+  footer{
+      background-color: gainsboro;
+      height: 70px;
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-top: 10px;
+  }
