@@ -1,15 +1,15 @@
-.container{
-    display: flex;
-    background-color: #ffd62a;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: auto;
- }
- 
- .purple{
-     background-color:#b02aff;
-     width: 100px;
-     height: 100px;
-     position: absolute;
- }
+.container {
+  display: flex;
+  background-color: #ffd62a;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: auto;
+}
+
+.purple {
+  background-color: #b02aff;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}

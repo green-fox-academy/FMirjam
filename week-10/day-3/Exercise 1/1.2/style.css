@@ -1,22 +1,22 @@
-.container{
-    display:flex;
+.container {
+  display: flex;
 }
 
-.item{
-    height: 300px;
+.item {
+  height: 300px;
 }
 
-.green{
-    background-color: #51d400;
-    flex-grow: 0.5;
+.green {
+  background-color: #51d400;
+  flex-grow: 0.5;
 }
 
-.yellow{
-    background-color: #ffd62a;
-    flex-grow: 1;
+.yellow {
+  background-color: #ffd62a;
+  flex-grow: 1;
 }
 
-.purple{
-    background-color:#b02aff;
-    flex-grow: 0.5;
+.purple {
+  background-color: #b02aff;
+  flex-grow: 0.5;
 }
