@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Workshop: CreateElement</title>
-  </head>
-  <body>
-    <ul class="asteroids">
-      <li id="b325" class="asteroid">The King</li>
-      <li class="asteroid b326">The Conceited Man</li>
-    </ul>
-    <div class="container"></div>
 
-    <script>
-    //   Add an item that says 'The Green Fox' to the asteroid list.
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: CreateElement</title>
+</head>
+
+<body>
+  <ul class="asteroids">
+    <li id="b325" class="asteroid">The King</li>
+    <li class="asteroid b326">The Conceited Man</li>
+  </ul>
+  <div class="container"></div>
+
+  <script>
+
     const asteroidList = document.querySelector('ul.asteroids')
     const newAsteroid = document.createElement('li')
 
     newAsteroid.textContent = 'The Green Fox'
     asteroidList.appendChild(newAsteroid)
 
-    //   Add an item that says 'The Lamplighter' to the asteroid list.
+
 
     const newAsteroid2 = document.createElement('li')
 
     newAsteroid2.textContent = 'The Lamplighter'
     asteroidList.appendChild(newAsteroid2)
 
-    //   Add a heading saying 'I can add elements to the DOM!' to the .container.
+
 
     const container = document.querySelector('div.container')
     const heading = document.createElement('header')
@@ -34,14 +36,15 @@
     heading.textContent = ' I can add elements to the DOM!'
     container.appendChild(heading)
 
-    //   Add an image, any image, to the container.
+
 
     const myImage = new Image();
     myImage.src = 'http://deji.chez.com/dessins/pp1.gif'
     container.appendChild(myImage)
-    
 
-    </script>
-   
-  </body>
+
+  </script>
+
+</body>
+
 </html>
