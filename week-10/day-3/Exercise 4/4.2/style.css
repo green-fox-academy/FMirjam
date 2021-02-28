@@ -37,14 +37,14 @@ li {
   margin-top: 90px;
 }
 
-.leftPart {
+.leftpart {
   background-color: limegreen;
   flex-grow: 4;
   margin-left: 50px;
   margin-right: 10px;
 }
 
-.rightPart {
+.rightpart {
   background-color: gold;
   flex-grow: 8;
   margin-right: 50px;

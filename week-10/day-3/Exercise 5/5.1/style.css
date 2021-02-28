@@ -24,13 +24,13 @@ header {
   height: 100%;
 }
 
-.leftPart {
+.leftpart {
   background-color: darkorange;
   flex-grow: 0.5;
   margin-right: 50px;
 }
 
-.middlePart {
+.middlepart {
   background-color: red;
   flex-grow: 1.5;
   display: flex;
@@ -38,7 +38,7 @@ header {
   align-items: flex-end;
 }
 
-.blackBox {
+.blackbox {
   background-color: black;
   height: 80px;
   width: 80px;
@@ -46,7 +46,7 @@ header {
   margin-bottom: 20px;
 }
 
-.rightPart {
+.rightpart {
   background-color: purple;
   flex-grow: 0.5;
   margin-left: 50px;

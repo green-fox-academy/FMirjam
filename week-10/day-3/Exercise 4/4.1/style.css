@@ -34,12 +34,12 @@ li {
   height: 100%;
 }
 
-.leftPart {
+.leftpart {
   background-color: gold;
   flex-grow: 8;
 }
 
-.rightPart {
+.rightpart {
   background-color: limegreen;
   flex-grow: 4;
 }
