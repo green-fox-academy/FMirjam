@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Workshop: ClassList</title>
-    <style>
-      .red {
-        color: red;
-      }
-      .balloon {
-        background-color: lime;
-        border-radius: 100%;
-      }
-      .pear {
-        background: lime;
-        padding: 2rem;
-        text-decoration: uppercase;
-      }
-    </style>
-  </head>
-  <body>
-    <p class="apple">apple</p>
-    <p class="balloon">balloon</p>
-    <p class="cat red-dot">cat</p>
-    <p>dolphin</p>
 
-    <script>
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: ClassList</title>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .balloon {
+      background-color: lime;
+      border-radius: 100%;
+    }
+
+    .pear {
+      background: lime;
+      padding: 2rem;
+      text-decoration: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="apple">apple</p>
+  <p class="balloon">balloon</p>
+  <p class="cat red-dot">cat</p>
+  <p>dolphin</p>
+
+  <script>
 
     const paragraphs = document.querySelectorAll('p');
     console.log(paragraphs)
 
     if (paragraphs[3].innerText === 'dolphin') {
-        paragraphs[0].innerText = 'pear'
+      paragraphs[0].innerText = 'pear'
     }
 
     if (paragraphs[0].className === 'apple') {
-        paragraphs[2].innerText = 'dog'
+      paragraphs[2].innerText = 'dog'
     }
 
-    //Hogyan lehet a getAttribute-tal hozzáférni és modósítani a style-ban lévő dolgokat
-    //   Make apple red by adding a .red class
-    //   Make balloon less balloon-like (change its shape)
-    </script>
-  
-  </body>
+    document.querySelector('.apple').classList.add('red')
+    document.querySelector('.balloon').style.borderRadius = '5%'
+    
+  </script>
+
+</body>
+
 </html>
