@@ -23,24 +23,21 @@
   <div>
     <button>Party</button>
   </div>
-
-  
-    <script>
-    //   Turn the party on and off by clicking the button. (the whole page)
+  <script>
     const button = document.querySelector('button');
     let party = false;
 
-    button.onclick = function() {
-       if (party === false) {
-         document.querySelector('body').classList.add('party')
-         party = true;
-       } else {
-         document.querySelector('body').classList.remove('party')
-         party = false;
-       }
+    button.onclick = function () {
+      if (party === false) {
+        document.querySelector('body').classList.add('party')
+        party = true;
+      } else {
+        document.querySelector('body').classList.remove('party')
+        party = false;
+      }
     }
-    </script>
-   
+  </script>
+
 </body>
 
 </html>
