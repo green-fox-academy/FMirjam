@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <style>
-      ul {
-        background-color: lime;
-      }
-    </style>
-    <title>Workshop: innerHTML, textContent</title>
-  </head>
-  <body>
-    <ul>
-      <li>placeholder</li>
-      <li>placeholder</li>
-      <li>placeholder</li>
-      <li>placeholder</li>
-    </ul>
 
-    <script>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
 
-      const newList = ['apple', 'banana', 'cat', 'dog']
-      const listedElements = document.querySelectorAll('li');
+<body>
+  <ul>
+    <li>placeholder</li>
+    <li>placeholder</li>
+    <li>placeholder</li>
+    <li>placeholder</li>
+  </ul>
 
-      for (let i = 0; i < listedElements.length; i++) {
-        for(let j = 0; j < newList.length; j++) {
-          if (i === j) {
-            listedElements[i].innerText = newList[j]
-          }
+  <script>
+
+    const newList = ['apple', 'banana', 'cat', 'dog']
+    const listedElements = document.querySelectorAll('li');
+
+    for (let i = 0; i < listedElements.length; i++) {
+      for (let j = 0; j < newList.length; j++) {
+        if (i === j) {
+          listedElements[i].innerText = newList[j]
         }
       }
-      //Megkérdezni
-      // 2) change the <ul> element's background color to 'limegreen'
-      //   - use css class to change the color instead of the style property
-    </script>
- 
-  </body>
+    }
+
+  </script>
+
+</body>
+
 </html>

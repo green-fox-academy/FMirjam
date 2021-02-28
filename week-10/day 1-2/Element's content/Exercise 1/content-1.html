@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Workshop: innerHTML, textContent</title>
-  </head>
-  <body>
-    <p class="apple">apple</p>
-    <p class="balloon">banana</p>
-    <p class="cat">car</p>
-    <p class="animals">goat rabbit <strong>cat</strong> dog</p>
 
-   <script>
-   
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
+
+<body>
+  <p class="apple">apple</p>
+  <p class="balloon">banana</p>
+  <p class="cat">car</p>
+  <p class="animals">goat rabbit <strong>cat</strong> dog</p>
+
+  <script>
+
     const apple = document.getElementsByClassName('apple')
     const balloon = document.getElementsByClassName('balloon')
     const cat = document.getElementsByClassName('cat')
@@ -21,12 +23,13 @@
     apple[0].innerText = apple[0].innerText + space + animals[0].innerText
     balloon[0].innerText = balloon[0].innerText + space + animals[0].innerText
     cat[0].innerText = cat[0].innerText + space + animals[0].innerText
- 
+
     apple[0].innerHTML = apple[0].innerText + space + animals[0].innerHTML
     balloon[0].innerHTML = balloon[0].innerText + space + animals[0].innerHTML
     cat[0].innerHTML = cat[0].innerText + space + animals[0].innerHTML
 
 
-   </script>
-  </body>
+  </script>
+</body>
+
 </html>

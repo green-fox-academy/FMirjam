@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Workshop: Attributes</title>
-  </head>
-  <body>
 
-    <img src="https://static.wixstatic.com/media/f4461b_83457ca5dd844c71a760d36e6583d0ff.png/v1/fill/w_168,h_168,al_c,usm_0.66_1.00_0.01/f4461b_83457ca5dd844c71a760d36e6583d0ff.png">
-    <a href="http://www.themostamazingwebsiteontheinternet.com/">The Best Website Ever</a>
-    <button>Click me!</button>
-    <button class="this-one">Click me!</button>
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: Attributes</title>
+</head>
 
-    <script>
-  
-      const imgUrl = document.querySelector('img');
-      console.log(imgUrl.innerHTML)
-      console.log(imgUrl.getAttribute('src'));
-      imgUrl.setAttribute('src', 'https://i.pinimg.com/474x/be/54/bd/be54bd5e8e9c23e3ce570ff2acae592d.jpg')
+<body>
 
-     
-      const websiteUrl = document.querySelector('a');
-      websiteUrl.getAttribute('href');
-      websiteUrl.setAttribute('href', 'https://www.greenfoxacademy.com/');
+  <img
+    src="https://static.wixstatic.com/media/f4461b_83457ca5dd844c71a760d36e6583d0ff.png/v1/fill/w_168,h_168,al_c,usm_0.66_1.00_0.01/f4461b_83457ca5dd844c71a760d36e6583d0ff.png">
+  <a href="http://www.themostamazingwebsiteontheinternet.com/">The Best Website Ever</a>
+  <button>Click me!</button>
+  <button class="this-one">Click me!</button>
 
-      // Disable the second button.
-     
-      const changeableButton = document.getElementsByClassName('this-one')
-      changeableButton[0].innerText = 'Don\'t click on me!'
+  <script>
 
-    </script>
-  </body>
-  </html>
+    const imgUrl = document.querySelector('img');
+    console.log(imgUrl.innerHTML)
+    console.log(imgUrl.getAttribute('src'));
+    imgUrl.setAttribute('src', 'https://i.pinimg.com/474x/be/54/bd/be54bd5e8e9c23e3ce570ff2acae592d.jpg')
+
+    const websiteUrl = document.querySelector('a');
+    websiteUrl.getAttribute('href');
+    websiteUrl.setAttribute('href', 'https://www.greenfoxacademy.com/');
+
+    const changeableButton = document.getElementsByClassName('this-one')
+    changeableButton[0].innerText = 'Don\'t click on me!'
+
+  </script>
+</body>
+
+</html>
