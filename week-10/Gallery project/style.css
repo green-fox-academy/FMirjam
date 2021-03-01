@@ -4,6 +4,7 @@
 }
 
 .container {
+  background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(167,161,161,1) 100%);
   width: auto;
   height: 100vh;
   display: flex;
@@ -18,10 +19,9 @@
   justify-content: center;
 }
 
-img {
+.showedpicture img {
   width: 650px;
   height: 650px;
-  position: relative;
 }
 
 .showedpicture {
@@ -72,14 +72,15 @@ p {
   align-items: center;
 }
 
-._photo{
-    border: 3px solid white;
-    box-shadow: 2px 10px 8px #333;
-    overflow: hidden;
-    width: 60px;
-    height: 60px;
+._photo img {
+  border: 2px solid white;
+  box-shadow: 5px 5px 5px #333;
+  width: auto;
+  max-width: 60px;
+  height: auto;
+  max-height: 60px;
 }
 
-.selected{
-    box-shadow: 5px 5px 5px rgba(17, 17, 17, 0.555);
+.selected {
+  box-shadow: 2px 10px 8px rgba(17, 17, 17, 0.555);
 }
