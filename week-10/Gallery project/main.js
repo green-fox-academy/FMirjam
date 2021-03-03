@@ -24,9 +24,10 @@ function showImages(n, no) {
   }
 
   for (i = 0; i < smallImages.length; i++) {
-    smallImages[i].className = smallImages[i].className.replace('actve', '');
+    smallImages[i].classList.remove('active');
   }
 
   x[imageIndex[no] - 1].style.display = 'block';
-  smallImages[imageIndex - 1].className += 'active';
+  smallImages[imageIndex[no] - 1].classList.add('active');
+
 }
