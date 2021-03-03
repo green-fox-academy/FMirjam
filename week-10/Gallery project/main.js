@@ -29,5 +29,4 @@ function showImages(n, no) {
 
   x[imageIndex[no] - 1].style.display = 'block';
   smallImages[imageIndex[no] - 1].classList.add('active');
-
 }
