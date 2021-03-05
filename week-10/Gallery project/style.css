@@ -79,11 +79,24 @@ p {
   box-shadow: 10px 5px 5px rgb(19, 18, 18);
 }
 
-._photo img {
+._photo img{
   border: 2px solid white;
   box-shadow: 5px 5px 5px #333;
   width: auto;
   max-width: 60px;
   height: auto;
   max-height: 60px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
 }
