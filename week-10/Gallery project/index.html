@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="slideshow">
-            <button id="previous" onclick="plusImage(-1,0)"><img class="_button" src="/img/arrow.svg"></button>
+            <button id="previous" onclick="previousImage()"><img class="_button" src="/img/arrow.svg"></button>
             <div class="showedpicture">
                 <img class="photo" src="/img/1.JPG">
                 <div class="text">
@@ -18,66 +18,17 @@
                     <p>Times Square</p>
                 </div>
             </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/2.JPG">
-                <div class="text">
-                    <h2>New York</h2>
-                    <p>Grand Central Terminal</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/3.JPG">
-                <div class="text">
-                    <h2>New York</h2>
-                    <p>The Empire State Building</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/4.JPG">
-                <div class="text">
-                    <h2>Cuba</h2>
-                    <p>Oldtimer</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/5.JPG">
-                <div class="text">
-                    <h2>Cuba</h2>
-                    <p>Colorful streets</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/6.JPG">
-                <div class="text">
-                    <h2>Cuba</h2>
-                    <p>José Marti Memorial</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/7.JPG">
-                <div class="text">
-                    <h2>Cuba</h2>
-                    <p>Rio Canimar Parc</p>
-                </div>
-            </div>
-            <div class="showedpicture">
-                <img class="photo" src="/img/8.JPG">
-                <div class="text">
-                    <h2>Havana</h2>
-                    <p>Havana nights</p>
-                </div>
-            </div>
-            <button id="next" onclick="plusImage(1,0)"><img class="_button" src="/img/arrow.svg"></button>
+            <button id="next" onclick="nextImage()"><img class="_button" src="/img/arrow.svg"></button>
         </div>
         <div class="thumbnail">
-            <span class="_photo" onclick="currentImage(1)"><img src="/img/1.JPG"></span>
-            <span class="_photo" onclick="currentImage(2)"><img src="/img/2.JPG"></span>
-            <span class="_photo" onclick="currentImage(3)"><img src="/img/3.JPG"></span>
-            <span class="_photo" onclick="currentImage(4)"><img src="/img/4.JPG"></span>
-            <span class="_photo" onclick="currentImage(5)"><img src="/img/5.JPG"></span>
-            <span class="_photo" onclick="currentImage(6)"><img src="/img/6.JPG"></span>
-            <span class="_photo" onclick="currentImage(7)"><img src="/img/7.JPG"></span>
-            <span class="_photo" onclick="currentImage(8)"><img src="/img/8.JPG"></span>
+            <span class="_photo" onclick="showImage(1)"><img src="/img/1.JPG"></span>
+            <span class="_photo" onclick="showImage(2)"><img src="/img/2.JPG"></span>
+            <span class="_photo" onclick="showImage(3)"><img src="/img/3.JPG"></span>
+            <span class="_photo" onclick="showImage(4)"><img src="/img/4.JPG"></span>
+            <span class="_photo" onclick="showImage(5)"><img src="/img/5.JPG"></span>
+            <span class="_photo" onclick="showImage(6)"><img src="/img/6.JPG"></span>
+            <span class="_photo" onclick="showImage(7)"><img src="/img/7.JPG"></span>
+            <span class="_photo" onclick="showImage(8)"><img src="/img/8.JPG"></span>
         </div>
     </div>
     <script src="main.js"></script>

@@ -1,32 +1,44 @@
-const imageIndex = [1, 0];
-showImages(1, 0);
+const images = [1, 2, 3, 4, 5, 6, 7, 8];
+let currentImage = 1;
+let showedPicture = document.querySelector('.photo');
+let thumbnailImages = document.querySelectorAll('._photo');
 
-function plusImage(n, no) {
-  showImages((imageIndex[no] += n), no);
+function previousImage() {
+  if (currentImage === 1) {
+    currentImage = 8;
+  } else {
+    currentImage--;
+  }
+  showImage();
 }
 
-function currentImage(n) {
-  showImages((imageIndex = n));
+function nextImage() {
+  if (currentImage === 8) {
+    currentImage = 1;
+  } else {
+    currentImage++;
+  }
+  showImage();
 }
 
-function showImages(n, no) {
-  let i;
-  let x = document.getElementsByClassName('showedpicture');
-  let smallImages = document.getElementsByClassName('_photo');
-  if (n > x.length) {
-    imageIndex[no] = 1;
+function showImage(pictureNumber) {
+  if (pictureNumber) {
+    currentImage = pictureNumber;
   }
-  if (n < 1) {
-    imageIndex = x.length;
-  }
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = 'none';
-  }
-
-  for (i = 0; i < smallImages.length; i++) {
-    smallImages[i].classList.remove('active');
-  }
-
-  x[imageIndex[no] - 1].style.display = 'block';
-  smallImages[imageIndex[no] - 1].classList.add('active');
+  showedPicture.src = `/img/${currentImage}.JPG`;
+  handleActiveClassImage();
 }
+
+function handleActiveClassImage() {
+  let currentIndex = images.indexOf(currentImage);
+  let thumbnailImage = thumbnailImages[currentIndex];
+  for (let i = 0; i < thumbnailImages.length; i++) {
+    thumbnailImages[i].classList.remove('active');
+  }
+  thumbnailImage.classList.add('active');
+}
+
+let pictureDetails = {1: {
+  header: 'Text',
+  subtext: 'Subtext'
+}}
