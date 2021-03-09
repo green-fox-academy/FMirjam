@@ -52,3 +52,18 @@ app.get('/greeter', (req, res) => {
     }
     res.send(result);
 });
+
+app.get('/appenda/', (req, res) =>{
+    let text = req.params.text;
+    let result;
+    if (text !== undefined) {
+        result = {
+            'appended': text + 'a'
+        }
+    } else {
+        result = {
+            'error': 'Please provide an input!'
+        }
+    }
+    res.send(result)
+})
