@@ -17,7 +17,15 @@ app.get('/', (req, res) => {
 app.get('/doubling', (req, res) => {
  let input = req.query.input;
  let result;
- 
+ if (input !== undefined){
+     result = {
+         'recieved': input,
+         'result': input * 2,
+     }
+ } else { 
+     result = {
+     'error': 'Please provide an input!'}
+ }
   res.send(result);
 });
 
