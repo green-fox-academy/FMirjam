@@ -42,15 +42,15 @@ app.get('/greeter', (req, res) => {
     };
   } else if (name === undefined && title === undefined) {
     result = {
-      'error': `Please provide name and title!`,
+      'error': `Please provide a name and a title!`,
     };
-  } else if (name === undefined) {
+  } else if (title === undefined) {
     result = {
-      'error': `Please provide a name!`,
+      'error': `Please provide a title!`,
     };
   } else {
     result = {
-      'error': `Please provide a title!`,
+      'error': `Please provide a name!`,
     };
   }
   res.send(result);
