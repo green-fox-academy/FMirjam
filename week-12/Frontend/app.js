@@ -104,7 +104,7 @@ function sum(number) {
 function factorial(number) {
   let factorial = 1;
   for (let i = 2; i <= number; i++) {
-    factorial += i;
+    factorial *= i;
   }
   return factorial;
 }
