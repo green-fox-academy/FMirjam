@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
 app.get('/doubling', (req, res) => {
   let input = req.query.input;
   let result;
-  if (input !== undefined) {
+  if (input !== undefined){
     result = {
-      'recieved': input,
+      'received': input,
       'result': input * 2,
     };
   } else {
@@ -42,7 +42,7 @@ app.get('/greeter', (req, res) => {
     };
   } else if (name === undefined && title === undefined) {
     result = {
-      'error': `Please provide ${name} and ${title}!`,
+      'error': `Please provide name and title!`,
     };
   } else if (name !== undefined && title === undefined) {
     result = {
@@ -80,10 +80,10 @@ app.post('/dountil/:action', (req, res) => {
         'until': until,
         'result': sum(until),
     }
-  } else  if (action === 'factorial') {
+  } else  if (action === 'factor') {
     result = {
         'until': until,
-        'result': factorial(until),
+        'result': factor(until),
     }
   } else {
       result = {
@@ -101,7 +101,7 @@ function sum(number) {
   return sum;
 }
 
-function factorial(number) {
+function factor(number) {
   let factorial = 1;
   for (let i = 2; i <= number; i++) {
     factorial *= i;
