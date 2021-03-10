@@ -21,8 +21,8 @@ app.get('/doubling', (req, res) => {
   let result;
   if (input !== undefined){
     result = {
-      'received': input,
-      'result': input * 2,
+      'received': parseInt(input),
+      'result': parseInt(input * 2),
     };
   } else {
     result = {
@@ -44,13 +44,13 @@ app.get('/greeter', (req, res) => {
     result = {
       'error': `Please provide name and title!`,
     };
-  } else if (name !== undefined && title === undefined) {
+  } else if (name === undefined) {
     result = {
-      'error': `Please provide title!`,
+      'error': `Please provide a name!`,
     };
   } else {
     result = {
-      'error': `Please provide name!`,
+      'error': `Please provide a title!`,
     };
   }
   res.send(result);
