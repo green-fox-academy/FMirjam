@@ -8,9 +8,11 @@ app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
 
+app.use(bodyParser.json())
+
 app.post('/arrays', (req, res) => {
   let what = req.body.what;
-  let numbers = [1, 2, 5, 10];
+  let numbers = req.body.numbers;
   let result;
   if (what === 'sum') {
     result = {
