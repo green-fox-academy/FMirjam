@@ -1,8 +1,9 @@
-const express = require('express');
+// const express = require('express');
+import {express} from 'express';
 const app = express();
 const port = 3000;
-const bodyParser = require('body-parser');
-import {sith} from './sith.js';
+// const bodyParser = require('body-parser');
+import {sithText} from './sith.js';
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
@@ -19,7 +20,7 @@ app.post('/sith', (req, res) =>{
         }
     } else {
         sith_text = {
-            'sith_text': sith(text),
+            'sith_text': sithText(text),
         }
     }
     res.send(sith_text)

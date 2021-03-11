@@ -1,6 +1,6 @@
 import {addWords} from './addWords.js';
 import {capitalizeFirstLetter} from './capitalize.js';
-import {append} from '/.append.js';
+import {append} from './append.js';
 
 export function generateSithText(line) {
   let part1 = [];
