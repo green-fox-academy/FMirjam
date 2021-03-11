@@ -40,7 +40,7 @@ app.post('/arrays', (req, res) => {
   res.send(result);
 });
 
-function sum(array) {
+function sum([array]) {
 let sum = 0;
 for (let i = 0; i <= array.length; i++) {
     sum += array[i];
@@ -48,7 +48,7 @@ for (let i = 0; i <= array.length; i++) {
   return sum;
 }
 
-function multiply(array) {
+function multiply([array]) {
 let multiplication = 1;
 for (let i = 0; i <= array.length; i++) {
     multiplication *= array[i];
@@ -56,6 +56,6 @@ for (let i = 0; i <= array.length; i++) {
   return multiplication;
 }
 
-function double(array) {
+function double([array]) {
     return array.map(element => element * 2)
 }
