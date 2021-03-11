@@ -16,20 +16,14 @@ app.post('/arrays', (req, res) => {
   let result;
   if (what === 'sum') {
     result = {
-      'what': what,
-      'numbers': numbers,
-      'result': sum(numbers),
+      'result': sum([numbers]),
     };
   } else if (what === 'multiply') {
     result = {
-      'what': what,
-      'numbers': numbers,
-      'result': multiply(numbers),
+      'result': multiply([numbers]),
     };
   } else if (what === 'double') {
     result = {
-      'what': what,
-      'numbers': numbers,
       'result': double(numbers),
     };
   } else {
@@ -42,20 +36,20 @@ app.post('/arrays', (req, res) => {
 
 function sum([array]) {
 let sum = 0;
-for (let i = 0; i <= array.length; i++) {
-    sum += array[i];
+for (let i = 0; i < array.length; i++) {
+    sum += array[i];    
 }
   return sum;
 }
 
 function multiply([array]) {
 let multiplication = 1;
-for (let i = 0; i <= array.length; i++) {
+for (let i = 0; i < array.length; i++) {
     multiplication *= array[i];
 }
   return multiplication;
 }
 
-function double([array]) {
+function double(array) {
     return array.map(element => element * 2)
 }
