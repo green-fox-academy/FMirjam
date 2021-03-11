@@ -1,17 +1,20 @@
-// const express = require('express');
-import {express} from 'express';
+import express from 'express';
+import bodyParser from 'body-parser';
+import {sithText} from './sith.js';
 const app = express();
 const port = 3000;
-// const bodyParser = require('body-parser');
-import {sithText} from './sith.js';
+
+app.use(bodyParser.json());
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
 
-app.use(bodyParser.json())
 
 app.post('/sith', (req, res) =>{
+   
+    console.log(req.body)
+    console.log(req) 
     let text = req.body.text;
     let sith_text;
     if (text === undefined){
