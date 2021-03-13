@@ -12,9 +12,6 @@ app.listen(port, () => {
 
 
 app.post('/sith', (req, res) =>{
-   
-    console.log(req.body)
-    console.log(req) 
     let text = req.body.text;
     let sith_text;
     if (text === undefined){
