@@ -13,7 +13,13 @@ button.addEventListener('click', () => {
 });
 
 const interval = setInterval(updateTime, 1000);
+const display = document.querySelector('.display');
 
 function updateTime() {
-  const display = document.querySelector('.display');
+  let currentNumber = display.textContent;
+  currentNumber--;
+  display.textContent = currentNumber;
+  if (display.textContent === '0') {
+    clearInterval(interval);
+  }
 }
