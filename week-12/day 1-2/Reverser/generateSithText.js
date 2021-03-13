@@ -1,6 +1,6 @@
-import {addWords} from './addWords.js';
-import {capitalizeFirstLetter} from './capitalize.js';
-import {append} from './append.js';
+import { addWords } from './addWords.js';
+import { capitalizeFirstLetter } from './capitalize.js';
+import { append } from './append.js';
 
 export function generateSithText(line) {
   let part1 = [];
@@ -17,9 +17,9 @@ export function generateSithText(line) {
   let upperLetterWord = capitalizeFirstLetter(part2[0]);
   part2.shift(part2[0]);
   part2.unshift(upperLetterWord);
-  
+
   let result = append(part2, part1);
-  result[result.length-1] += '.';
-  result = addWords(result)
-  return result.join(' ')
+  result[result.length - 1] += '.';
+  result = addWords(result);
+  return result.join(' ');
 }
