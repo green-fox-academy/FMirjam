@@ -19,6 +19,7 @@ export function generateSithText(line) {
   part2.unshift(upperLetterWord);
   
   let result = append(part2, part1);
+  result[result.length-1] += '.';
   result = addWords(result)
   return result.join(' ')
 }
