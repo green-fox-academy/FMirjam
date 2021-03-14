@@ -5,10 +5,10 @@
 
 window.onload = () => {
   const api_key = 'GO5zUOVHT7u6qu0JWO3DyA8OmU8JAocQ';
-  const request_url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=fruits&rating=g&lang=en`;
+  const request_url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=food&rating=g&lang=en`;
 
   let http = new XMLHttpRequest();
-  
+
   http.open('GET', request_url, true);
 
   http.onload = () => {
