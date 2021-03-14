@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-family: monospace;
+  color: black;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  max-width: fit-content;
+  flex-wrap: wrap;
+}
+
+.thumbnail img{
+    margin: 10px;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+  max-height: fit-content;
+}
