@@ -12,7 +12,7 @@ window.onload = () => {
       const body = document.querySelector('body');
       for (let i = 0; i < data.length; i++) {
         let headLine = document.createElement('h1');
-        headLine.innerHTML = data[i].headLine.main;
+        headLine.innerHTML = data[i].headline.main;
         body.appendChild(headLine);
         let snippet = document.createElement('h3');
         snippet.innerHTML = data[i].snippet;
