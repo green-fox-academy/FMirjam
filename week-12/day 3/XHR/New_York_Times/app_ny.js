@@ -21,9 +21,11 @@ window.onload = () => {
         publicationDate.innerHTML = data[i].pub_date;
         body.appendChild(publicationDate);
         let a = document.createElement('a');
-        a.setAttribute = ('href', data[i].web_url);
         a.innerHTML = 'Link';
         body.appendChild(a);
+        a.addEventListener('click', () => {
+          a.setAttribute('href', data[i].web_url);
+        });
       }
     }
   };
