@@ -15,7 +15,9 @@ button.addEventListener('click', () => {
         let li = document.createElement('li');
         li.innerHTML = _characters[i].name;
         characters.appendChild(li);
-        li.addEventListener('click', () => {}); // listFilms function
+        li.addEventListener('click', () => {
+          listFilms(_characters[i].films);
+        });
       }
     }
   };
