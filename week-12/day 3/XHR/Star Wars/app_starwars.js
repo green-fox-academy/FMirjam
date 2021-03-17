@@ -15,7 +15,7 @@ button.addEventListener('click', () => {
         let li = document.createElement('li');
         li.innerHTML = _characters[i].name;
         characters.appendChild(li);
-        li.addEventListener('click', () => {}); // callback listFilms
+        li.addEventListener('click', () => {}); // listFilms function
       }
     }
   };
@@ -31,9 +31,9 @@ function listFilms() {
       let movies = JSON.parse(http.responseText).results;
       const _movies = document.querySelector('.movies');
 
-      for (let i = 0; i < movies.length; i++) {
+      for (let j = 0; j < movies.length; j++) {
         let li = document.createElement('li');
-        li.innerText = `${movies.title}: (${movies.release_date})`;
+        li.innerText = `${movies[j].title}: (${movies[j].release_date})`;
         _movies.appendChild(li);
       }
     }
