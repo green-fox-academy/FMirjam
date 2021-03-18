@@ -17,13 +17,13 @@ databaseConnection.connect((err) => {
   }
   console.log('Database Connection is OK');
 });
-
 app.use(express.static('public'));
 app.use(express.json());
 
+
 app.get('/booktitles', (req, res) => {
   databaseConnection.query(
-    'SELECT book_name FROM bookstore.book_mast;',
+    'SELECT book_name FROM book_mast',
     (err, rows) => {
       if (err) {
         res.status(500).json({
@@ -38,7 +38,7 @@ app.get('/booktitles', (req, res) => {
 
 app.get('/fulldata', (req, res) => {
   databaseConnection.query(
-    'SELECT book_name, aut_id, cate_id, pub_id, book_price FROM bookstore.book_mast;',
+    'SELECT book_name, aut_id, cate_id, pub_id, book_price FROM book_mast',
     (err, rows) => {
       if (err) {
         res.status(500).json({
@@ -50,6 +50,11 @@ app.get('/fulldata', (req, res) => {
     }
   );
 });
+
+process.on('uncaughtException', (err) => {
+    console.log('Fatal error occured', err.message);
+    process.exit(1);
+  });
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
