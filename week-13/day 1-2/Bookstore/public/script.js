@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/fulldata';
+const url = 'http://localhost:3000/fulldata';
 const tableBody = document.querySelector('tbody');
 const button = document.querySelector('button');
 
@@ -9,7 +9,7 @@ button.addEventListener('click', () => {
 
 function getFullData() {
   let http = new XMLHttpRequest();
-  http.open('GET', apiUrl, true);
+  http.open('GET', url, true);
   http.onload = () => {
     let data = JSON.parse(http.responseText);
     for (let i = 0; i < data.length; i++) {
