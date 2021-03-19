@@ -33,6 +33,11 @@ app.get('/booktitles', (req, res) => {
 });
 
 app.get('/fulldata', (req, res) => {
+  const category = req.query.category;
+  const publisher = req.query.publisher;
+  const plt = req.query.plt;
+  const pgt = req.query.pgt;
+
   databaseConnection.query(
     'SELECT * FROM book_mast JOIN author ON author.aut_id = book_mast.aut_id JOIN category ON category.cate_id = book_mast.cate_id JOIN publisher ON publisher.pub_id = book_mast.pub_id;',
     (err, rows) => {
