@@ -1,5 +1,11 @@
 const apiUrl = 'http://localhost:3000/fulldata';
 const tableBody = document.querySelector('tbody');
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+
+    getFullData();
+})
 
 function getFullData() {
   let http = new XMLHttpRequest();
