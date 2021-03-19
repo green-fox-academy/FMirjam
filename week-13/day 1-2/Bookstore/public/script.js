@@ -12,13 +12,13 @@ function getFullData() {
       tdBookTitle.innerHTML = data[i].book_name;
       tr.appendChild(tdBookTitle);
       let tdAuthor = document.createElement('td');
-      tdAuthor.innerHTML = data[i].aut_id;
+      tdAuthor.innerHTML = data[i].aut_name;
       tr.appendChild(tdAuthor);
       let tdCategory = document.createElement('td');
-      tdCategory.innerHTML = data[i].cate_id;
+      tdCategory.innerHTML = data[i].cate_descrip;
       tr.appendChild(tdCategory);
       let tdPublisher = document.createElement('td');
-      tdPublisher.innerHTML = data[i].pub_id;
+      tdPublisher.innerHTML = data[i].pub_name;
       tr.appendChild(tdPublisher);
       let tdPrice = document.createElement('td');
       tdPrice.innerHTML = data[i].book_price;

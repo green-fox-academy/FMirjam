@@ -20,25 +20,21 @@ databaseConnection.connect((err) => {
 app.use(express.static('public'));
 app.use(express.json());
 
-
 app.get('/booktitles', (req, res) => {
-  databaseConnection.query(
-    'SELECT book_name FROM book_mast',
-    (err, rows) => {
-      if (err) {
-        res.status(500).json({
-          error: err.message,
-        });
-        return;
-      }
-      res.json(rows);
+  databaseConnection.query('SELECT book_name FROM book_mast', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
     }
-  );
+    res.json(rows);
+  });
 });
 
 app.get('/fulldata', (req, res) => {
   databaseConnection.query(
-    'SELECT book_name, aut_id, cate_id, pub_id, book_price FROM book_mast',
+    'SELECT * FROM book_mast JOIN author ON author.aut_id = book_mast.aut_id JOIN category ON category.cate_id = book_mast.cate_id JOIN publisher ON publisher.pub_id = book_mast.pub_id;',
     (err, rows) => {
       if (err) {
         res.status(500).json({
@@ -52,9 +48,9 @@ app.get('/fulldata', (req, res) => {
 });
 
 process.on('uncaughtException', (err) => {
-    console.log('Fatal error occured', err.message);
-    process.exit(1);
-  });
+  console.log('Fatal error occured', err.message);
+  process.exit(1);
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
