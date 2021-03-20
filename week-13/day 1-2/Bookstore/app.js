@@ -46,33 +46,29 @@ app.get('/fulldata', (req, res) => {
     let isFirstSearchField = true;
     queryFilter = queryFilter + ' WHERE ';
     if (category) {
-      queryFilter =
-        queryFilter + "category.cate_descrip = " + `'${category}'`;
-        isFirstSearchField = false;
+      queryFilter = queryFilter + 'category.cate_descrip = ' + `'${category}'`;
+      isFirstSearchField = false;
     }
     if (publisher) {
-      if(!isFirstSearchField){
+      if (!isFirstSearchField) {
         queryFilter = queryFilter + ' AND ';
       }
-      queryFilter =
-        queryFilter + "publisher.pub_name = " + `'${publisher}'`;
-        isFirstSearchField = false;
+      queryFilter = queryFilter + 'publisher.pub_name = ' + `'${publisher}'`;
+      isFirstSearchField = false;
     }
     if (plt) {
-      if(!isFirstSearchField){
+      if (!isFirstSearchField) {
         queryFilter = queryFilter + ' AND ';
       }
-      queryFilter =
-        queryFilter + "book_mast.book_price < " + `'${plt}'`;
-        isFirstSearchField = false;
+      queryFilter = queryFilter + 'book_mast.book_price < ' + `'${plt}'`;
+      isFirstSearchField = false;
     }
     if (pgt) {
-      if(!isFirstSearchField){
+      if (!isFirstSearchField) {
         queryFilter = queryFilter + ' AND ';
       }
-      queryFilter =
-        queryFilter + "book_mast.book_price > " + `'${pgt}'`;
-        isFirstSearchField = false;
+      queryFilter = queryFilter + 'book_mast.book_price > ' + `'${pgt}'`;
+      isFirstSearchField = false;
     }
   }
 
