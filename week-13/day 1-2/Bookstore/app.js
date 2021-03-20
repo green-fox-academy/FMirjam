@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { query } from 'express';
 import mysql from 'mysql';
 
 const app = express();
@@ -17,6 +17,7 @@ databaseConnection.connect((err) => {
   }
   console.log('Database Connection is OK');
 });
+
 app.use(express.static('public'));
 app.use(express.json());
 
@@ -33,23 +34,57 @@ app.get('/booktitles', (req, res) => {
 });
 
 app.get('/fulldata', (req, res) => {
-  const category = req.query.category;
-  const publisher = req.query.publisher;
-  const plt = req.query.plt;
-  const pgt = req.query.pgt;
+  let category = req.query.category;
+  let publisher = req.query.publisher;
+  let plt = req.query.plt;
+  let pgt = req.query.pgt;
+  let queryFullData =
+    'SELECT * FROM book_mast JOIN author ON author.aut_id = book_mast.aut_id JOIN category ON category.cate_id = book_mast.cate_id JOIN publisher ON publisher.pub_id = book_mast.pub_id';
+  let queryFilter = queryFullData;
 
-  databaseConnection.query(
-    'SELECT * FROM book_mast JOIN author ON author.aut_id = book_mast.aut_id JOIN category ON category.cate_id = book_mast.cate_id JOIN publisher ON publisher.pub_id = book_mast.pub_id;',
-    (err, rows) => {
-      if (err) {
-        res.status(500).json({
-          error: err.message,
-        });
-        return;
-      }
-      res.json(rows);
+  if (category || publisher || plt || pgt) {
+    let isFirstSearchField = true;
+    queryFilter = queryFilter + ' WHERE ';
+    if (category) {
+      queryFilter =
+        queryFilter + "category.cate_descrip = " + `'${category}'`;
+        isFirstSearchField = false;
     }
-  );
+    if (publisher) {
+      if(!isFirstSearchField){
+        queryFilter = queryFilter + ' AND ';
+      }
+      queryFilter =
+        queryFilter + "publisher.pub_name = " + `'${publisher}'`;
+        isFirstSearchField = false;
+    }
+    if (plt) {
+      if(!isFirstSearchField){
+        queryFilter = queryFilter + ' AND ';
+      }
+      queryFilter =
+        queryFilter + "book_mast.book_price < " + `'${plt}'`;
+        isFirstSearchField = false;
+    }
+    if (pgt) {
+      if(!isFirstSearchField){
+        queryFilter = queryFilter + ' AND ';
+      }
+      queryFilter =
+        queryFilter + "book_mast.book_price > " + `'${pgt}'`;
+        isFirstSearchField = false;
+    }
+  }
+
+  databaseConnection.query(queryFilter, (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.json(rows);
+  });
 });
 
 process.on('uncaughtException', (err) => {
