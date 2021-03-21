@@ -62,17 +62,17 @@ function filterUrl() {
   }
   if (pltValue) {
     if (!isFirstSearchField) {
-      url = url + `&plt<${pltValue}`;
+      url = url + `&plt=${pltValue}`;
     } else {
-      url = url + `?plt<${pltValue}`;
+      url = url + `?plt=${pltValue}`;
       isFirstSearchField = false;
     }
   }
   if (pgtValue) {
     if (!isFirstSearchField) {
-      url = url + `&pgt>${pltValue}`;
+      url = url + `&pgt=${pltValue}`;
     } else {
-      url = url + `?pgt>${pltValue}`;
+      url = url + `?pgt=${pltValue}`;
       isFirstSearchField = false;
     }
   }
