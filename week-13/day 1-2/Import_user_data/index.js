@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
       if (i === 0) {
         let columns = contentInLines;
         let tableCreateQuery = `CREATE TABLE IF NOT EXISTS users (
-        ${columns[0]}  INT NOT NULL AUTO_INCREMENT,
+        ${columns[0]}  INT AUTO_INCREMENT,
         ${columns[1]}  VARCHAR(45) NULL,
         ${columns[2]}  VARCHAR(45) NULL,
         ${columns[3]}  VARCHAR(45) NULL,
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
         });
       } else {
         let values = {
-          id: parseInt(contentInLines[0]),
+          id: contentInLines[0],
           prefix: contentInLines[1],
           first_name: contentInLines[2],
           last_name: contentInLines[3],
