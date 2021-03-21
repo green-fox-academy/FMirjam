@@ -1,5 +1,6 @@
 import mysql from 'mysql';
 import fs from 'fs';
+import express from 'express';
 
 const databaseConnection = mysql.createConnection({
   host: 'localhost',
@@ -18,10 +19,8 @@ databaseConnection.connect((err) => {
 try {
   let csvContent = fs.readFileSync('users.csv', 'utf-8');
   let splittedContent = csvContent.split('\n');
-  console.log(splittedContent);
   for (let i = 0; i < splittedContent.length; i++) {
     let contentInLines = splittedContent[i].split(';');
-    console.log(contentInLines);
     if (i === 0) {
       let columns = contentInLines;
       let tableCreateQuery = `CREATE TABLE IF NOT EXISTS users (
@@ -37,12 +36,10 @@ try {
 
       databaseConnection.query(tableCreateQuery, (err, rows) => {
         if (err) {
-          res.status(500).json({
-            error: err.message,
-          });
+          console.log(err.message);
           return;
         }
-        res.json();
+        console.log('Table created');
       });
     } else {
       let values = {
@@ -60,12 +57,10 @@ try {
         values,
         (err, rows) => {
           if (err) {
-            res.status(500).json({
-              erro: err.message,
-            });
+            console.log(err.message);
             return;
           }
-          res.json();
+          // console.log('Data added');
         }
       );
     }
@@ -73,3 +68,8 @@ try {
 } catch (err) {
   console.log(err.message);
 }
+
+process.on('uncaughtException', (err) => {
+  console.log('Fatal error occured', err.message);
+  process.exit(1);
+});
