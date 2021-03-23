@@ -18,9 +18,11 @@
 
         let button = document.querySelector('button');
 
-        button.addEventListener('click', () => {
-            console.log(Date.now())
-        })
+        function click() {
+            console.log(Date.now());
+        }
+
+        button.addEventListener('click', click, { once: true })
 
     </script>
 
