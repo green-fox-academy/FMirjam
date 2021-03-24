@@ -13,4 +13,28 @@ const candies = document.querySelector('.candies');
 const lollypops = document.querySelector('.lollypops');
 const speed = document.querySelector('.speed');
 let candiesStatus = 0;
+let lollypopsStatus = 3;
 let candiesPerSec = 0;
+
+createCandyButton.addEventListener('click', () => {
+  candiesStatus++;
+  candies.innerHTML = candiesStatus;
+});
+
+buyLollyPopsButton.addEventListener('click', () => {
+  if (candiesStatus > 100) {
+    lollypops.innerHTML += '🍭';
+    lollypopsStatus++;
+    candiesStatus -= 100;
+    candies.innerHTML = candiesStatus;
+  }
+  if (lollypopsStatus > 9) {
+    candiesPerSec = Math.floor(lollypopsStatus / 10);
+    speed.innerHTML = candiesPerSec;
+  }
+});
+
+makeCandyRainButton.addEventListener('click', () => {
+  candiesPerSec *= 10;
+  speed.innerHTML = candiesPerSec;
+});
