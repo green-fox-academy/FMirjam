@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../foundation"
+		},
+		{
+			"path": "../../../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "orientation"
+	}
+}

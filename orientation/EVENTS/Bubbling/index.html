@@ -24,8 +24,8 @@
             width: 500px;
             height: 320px;
             border: 1px solid #3a3a3a;
-            background-image: url("../assets/mp.jpg");
-            background-size: 200%;
+            background-image: url("assets/FullSizeRender\ 19.jpg");
+            background-size: 100%;
         }
     </style>
 </head>
@@ -61,15 +61,26 @@
         navigationBar.addEventListener('click', (e) => {
             const direction = e.target.dataset.direction;
             if (direction === 'up') {
+                imageInspector.style.backgroundPositionY = `${positionY -= 10}px`
             }
             if (direction === 'down') {
-
+                imageInspector.style.backgroundPositionY = `${positionY += 10}px`
             }
             if (direction === 'left') {
-
+                imageInspector.style.backgroundPositionX = `${positionX -= 10}px`
             }
             if (direction === 'right') {
+                imageInspector.style.backgroundPositionX = `${positionX += 10}px`
+            }
+        })
 
+        navigationBar.addEventListener('click', (e) => {
+            const direction = e.target.dataset.direction;
+            if (direction === 'in') {
+                imageInspector.style.backgroundSize = `${backgroundSize += 20}%`
+            }
+            if (direction === 'out') {
+                imageInspector.style.backgroundSize = `${backgroundSize -= 20}%`
             }
         })
 
