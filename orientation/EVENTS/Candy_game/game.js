@@ -38,3 +38,10 @@ makeCandyRainButton.addEventListener('click', () => {
   candiesPerSec *= 10;
   speed.innerHTML = candiesPerSec;
 });
+
+const countInterval = setInterval(() => {
+  if (candiesPerSec > 0) {
+    candiesStatus = candiesStatus + Number(candiesPerSec);
+    candies.innerHTML = candiesStatus;
+  }
+}, 1000);
