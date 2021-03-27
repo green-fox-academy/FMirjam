@@ -1,14 +1,128 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(11, 11, 203, 0.723);
+body {
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  background-color: #003366;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-items: center;
-    align-items: center;
-    grid-gap: 40px;
-  }
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 40px;
+}
+
+button {
+  width: 120px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: not-allowed;
+}
+
+
+.blue {
+  background-color: #0066cc;
+  box-shadow: 0px 3px 0px  #0080ff;
+}
+.blue:hover {
+  background-color: #0080ff;
+  color: #004d99;
+}
+.blue:active {
+  background-color: #004d99;
+}
+
+button:nth-child(1){
+    color: #0080ff;
+}
+
+.green {
+  background-color: #00cc66;
+  box-shadow: 0px 3px 0px #00ff80;
+}
+
+.green:hover {
+  background-color: #00ff80;
+  color: #00994d;
+}
+
+.green:active {
+  background-color: #00994d;
+}
+
+button:nth-child(2){
+    color: #00ff80;
+}
+.red {
+  background-color: #b32d00;
+  box-shadow: 0px 3px 0px #e63900;
+}
+
+.red:hover {
+  background-color: #e63900;
+  color: #802000;
+}
+
+.red:active {
+  background-color: #802000;
+}
+
+button:nth-child(3){
+    color: #e63900;
+}
+.light {
+  background-color: #00aaff;
+  box-shadow: 0px 3px 0px #33bbff;
+}
+
+.light:hover {
+  background-color: #33bbff;
+  color: #0088cc;
+}
+
+.light:active {
+  background-color: #0088cc;
+}
+
+button:nth-child(4){
+    color:  #75d0fe;
+}
+
+.black {
+  background-color: black;
+  box-shadow: 0px 3px 0px #1a1a1a;
+}
+
+.black:hover {
+  background-color: #1a1a1a;
+  color: black;
+}
+.black:active {
+  background-color: black;
+}
+
+button:nth-child(5){
+    color: rgba(52, 49, 49, 0.945);
+}
+
+.white {
+  background-color: white;
+  box-shadow: 0px 3px 0px white;
+}
+
+.white:hover {
+  background-color: white;
+  color: #e6e6e6;
+}
+
+.white:active {
+  background-color: #e6e6e6;
+}
+
+button:nth-child(6){
+    color: rgb(213, 210, 210);
+}
