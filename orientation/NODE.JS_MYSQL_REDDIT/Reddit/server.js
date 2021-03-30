@@ -21,18 +21,23 @@ databaseConnection.connect((err) => {
 app.use(express.static('public'));
 app.use(express.json());
 
-
-app.get('/posts', (req, res) => {})
-app.post('/posts', (req, res) => {})
-app.put('/posts/:id/upvote', (req, res) => {})
-app.put('/posts/:id/downvote', (req, res) => {})
-app.delete('/posts/:id', (req, res) => {})
-app.put('/posts/:id', (req, res) => {})
-
-
-
-
-
+app.get('/posts', (req, res) => {
+    let getPosts = //SELECT...
+  databaseConnection.query(getPosts, (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.json(rows);
+  });
+});
+app.post('/posts', (req, res) => {});
+app.put('/posts/:id/upvote', (req, res) => {});
+app.put('/posts/:id/downvote', (req, res) => {});
+app.delete('/posts/:id', (req, res) => {});
+app.put('/posts/:id', (req, res) => {});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
