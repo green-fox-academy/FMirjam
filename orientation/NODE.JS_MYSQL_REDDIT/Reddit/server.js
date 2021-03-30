@@ -22,8 +22,8 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/posts', (req, res) => {
-    let getPosts = //SELECT...
-  databaseConnection.query(getPosts, (err, rows) => {
+  let getPosts  //SELECT...
+  databaseConnection.query(getPosts, (err, rows) => { 
     if (err) {
       res.status(500).json({
         error: err.message,
@@ -33,7 +33,25 @@ app.get('/posts', (req, res) => {
     res.json(rows);
   });
 });
-app.post('/posts', (req, res) => {});
+
+app.post('/posts', (req, res) => {
+  let newPost = {
+    title: JSON.parse(req.body).title,
+    url: JSON.parse(req.body).url,
+  };
+
+  databaseConnection.query('INSERT INTO posts SET ?', newPost, (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+
 app.put('/posts/:id/upvote', (req, res) => {});
 app.put('/posts/:id/downvote', (req, res) => {});
 app.delete('/posts/:id', (req, res) => {});
