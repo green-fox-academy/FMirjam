@@ -22,8 +22,12 @@ app.use(express.static('public'));
 app.use(express.json());
 
 
-
-
+app.get('/posts', (req, res) => {})
+app.post('/posts', (req, res) => {})
+app.put('/posts/:id/upvote', (req, res) => {})
+app.put('/posts/:id/downvote', (req, res) => {})
+app.delete('/posts/:id', (req, res) => {})
+app.put('/posts/:id', (req, res) => {})
 
 
 
