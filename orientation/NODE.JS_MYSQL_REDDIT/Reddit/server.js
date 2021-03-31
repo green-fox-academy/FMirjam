@@ -2,7 +2,7 @@ import express from 'express';
 import mysql from 'mysql';
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 const databaseConnection = mysql.createConnection({
   host: 'localhost',
@@ -21,16 +21,24 @@ databaseConnection.connect((err) => {
 app.use(express.static('public'));
 app.use(express.json());
 
+app.get('/hello', (req, res) => {
+  const user = req.headers.user;
+  if (user === undefined) {
+    res.send('hello world');
+  } else {
+    res.send(`hello ${user}`);
+  }
+});
+
 app.get('/posts', (req, res) => {
-  let getPosts  //SELECT...
-  databaseConnection.query(getPosts, (err, rows) => { 
+  databaseConnection.query('SELECT * from posts', (err, rows) => {
     if (err) {
       res.status(500).json({
         error: err.message,
       });
       return;
     }
-    res.json(rows);
+    res.status(200).json(rows);
   });
 });
 
@@ -47,13 +55,37 @@ app.post('/posts', (req, res) => {
       });
       return;
     }
-    res.json(rows);
+    res.status(200).json(rows);
+  });
+});
+
+app.put('/posts/:id/upvote', (req, res) => {
+  const id = req.params.id;
+  databaseConnection.query('UPDATE posts SET score = score + 1 WHERE id = ?', id, (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.status(200).json(rows);
   });
 });
 
 
-app.put('/posts/:id/upvote', (req, res) => {});
-app.put('/posts/:id/downvote', (req, res) => {});
+app.put('/posts/:id/downvote', (req, res) => {
+  const id = req.params.id;
+  databaseConnection.query('UPDATE posts SET score = score - 1 WHERE id = ?', id, (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.status(200).json(rows);
+  });
+});
+
 app.delete('/posts/:id', (req, res) => {});
 app.put('/posts/:id', (req, res) => {});
 
