@@ -42,7 +42,7 @@ app.get('/posts', (req, res) => {
   });
 });
 
-app.post('/posts', (req, res) => {
+app.post('/posts', (req, res) => { //Postman
   let newPost = {
     title: req.body.title,
     url: req.body.url,
@@ -76,7 +76,7 @@ app.get('/posts/:id', (req, res) => {
   );
 });
 
-app.put('/posts/:id/upvote', (req, res) => {
+app.put('/posts/:id/upvote', (req, res) => { //Postman
   let id = req.params.id;
   databaseConnection.query(
     'UPDATE posts SET score = score + 1 WHERE id = ?',
@@ -93,7 +93,7 @@ app.put('/posts/:id/upvote', (req, res) => {
   );
 });
 
-app.put('/posts/:id/downvote', (req, res) => {
+app.put('/posts/:id/downvote', (req, res) => { //Postman
   const id = req.params.id;
   console.log(id);
   databaseConnection.query(
