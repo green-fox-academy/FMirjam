@@ -44,8 +44,8 @@ app.get('/posts', (req, res) => {
 
 app.post('/posts', (req, res) => {
   let newPost = {
-    title: JSON.parse(req.body).title,
-    url: JSON.parse(req.body).url,
+    title: req.body.title,
+    url: req.body.url,
   };
 
   databaseConnection.query('INSERT INTO posts SET ?', newPost, (err, rows) => {
@@ -61,43 +61,54 @@ app.post('/posts', (req, res) => {
 
 app.get('/posts/:id', (req, res) => {
   const id = req.params.id;
-  databaseConnection.query('SELECT * FROM posts WHERE posts.id = ?', [id], (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
+  databaseConnection.query(
+    'SELECT * FROM posts WHERE posts.id = ?',
+    [id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      }
+      res.status(200).json(rows);
     }
-    res.status(200).json(rows);
-  });
+  );
 });
 
 app.put('/posts/:id/upvote', (req, res) => {
   let id = req.params.id;
-  databaseConnection.query('UPDATE posts SET score = score + 1 WHERE id = ?', [id], (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
+  databaseConnection.query(
+    'UPDATE posts SET score = score + 1 WHERE id = ?',
+    [id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      }
+      res.status(200).json(rows);
     }
-    res.status(200).json(rows);
-  });
+  );
 });
-
 
 app.put('/posts/:id/downvote', (req, res) => {
   const id = req.params.id;
-  console.log(id)
-  databaseConnection.query('UPDATE posts SET score = score - 1 WHERE id = ?', [id], (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
+  console.log(id);
+  databaseConnection.query(
+    'UPDATE posts SET score = score - 1 WHERE id = ?',
+    [id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      }
+      res.status(200).json(rows);
     }
-    res.status(200).json(rows);
-  });
+  );
 });
 
 app.delete('/posts/:id', (req, res) => {});
