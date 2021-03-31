@@ -73,8 +73,7 @@ app.get('/posts/:id', (req, res) => {
 });
 
 app.put('/posts/:id/upvote', (req, res) => {
-  const id = req.params.id;
-  console.log(id)
+  let id = req.params.id;
   databaseConnection.query('UPDATE posts SET score = score + 1 WHERE id = ?', [id], (err, rows) => {
     if (err) {
       res.status(500).json({
