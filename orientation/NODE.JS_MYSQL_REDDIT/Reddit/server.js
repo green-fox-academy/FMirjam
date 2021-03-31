@@ -59,9 +59,23 @@ app.post('/posts', (req, res) => {
   });
 });
 
+app.get('/posts/:id', (req, res) => {
+  const id = req.params.id;
+  databaseConnection.query('SELECT * FROM posts WHERE posts.id = ?', [id], (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    }
+    res.status(200).json(rows);
+  });
+});
+
 app.put('/posts/:id/upvote', (req, res) => {
   const id = req.params.id;
-  databaseConnection.query('UPDATE posts SET score = score + 1 WHERE id = ?', id, (err, rows) => {
+  console.log(id)
+  databaseConnection.query('UPDATE posts SET score = score + 1 WHERE id = ?', [id], (err, rows) => {
     if (err) {
       res.status(500).json({
         error: err.message,
@@ -75,7 +89,8 @@ app.put('/posts/:id/upvote', (req, res) => {
 
 app.put('/posts/:id/downvote', (req, res) => {
   const id = req.params.id;
-  databaseConnection.query('UPDATE posts SET score = score - 1 WHERE id = ?', id, (err, rows) => {
+  console.log(id)
+  databaseConnection.query('UPDATE posts SET score = score - 1 WHERE id = ?', [id], (err, rows) => {
     if (err) {
       res.status(500).json({
         error: err.message,
