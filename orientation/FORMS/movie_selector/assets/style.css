@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  font-family: sans-serif;
+}
+
+.container {
+  background-color: pink;
+  width: 600px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 20px 20px rgb(126, 80, 183);
+}
+
+h1 {
+  font-weight: 50;
+  margin-left: -50px;
+}
+
+form {
+  display: flex;
+}
+
+p {
+  font-size: 12;
+  font-weight: 100;
+  margin-left: -100px;
+}
