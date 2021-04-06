@@ -1,0 +1,13 @@
+body{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
