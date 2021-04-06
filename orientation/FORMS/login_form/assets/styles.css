@@ -51,7 +51,7 @@ input {
 }
 
 input:focus {
-  outline: 2px solid rgb(9, 198, 9);
+  outline: 4px solid rgb(17, 147, 17);
 }
 
 .password {
@@ -60,8 +60,12 @@ input:focus {
 
 i {
   position: absolute;
-  right: 10px;
+  right: 25px;
   top: 35px;
+}
+
+i:hover {
+  cursor: pointer;
 }
 
 p {
