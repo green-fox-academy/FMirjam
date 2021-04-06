@@ -1,13 +1,28 @@
-body{
-    display: flex;
-    justify-content: center;
-    font-family: sans-serif;
+body {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
 }
 
-.question{
-    display: flex;
-    flex-direction: column;
-    position: relative;
+.question {
+  display: flex;
+  flex-direction: column;
+}
+
+input{
+    margin: 10px;
 }
 
 
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.cats,
+.sign {
+  border: 1px solid rgb(164, 164, 164);
+  border-radius: 5px;
+  background-color: rgb(200, 198, 198);
+}
