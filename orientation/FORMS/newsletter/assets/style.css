@@ -20,4 +20,44 @@ body {
   align-items: center;
   background-color: white;
   border-radius: 90px;
+  box-shadow: 22px 22px 49px -3px rgba(0, 0, 0, 0.78);
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 400px;
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    rgb(176, 171, 171) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  border: none;
+}
+
+::placeholder {
+  color: gray;
+  font-size: 20px;
+  text-indent: 10px;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(99, 187, 233, 1) 0%,
+    rgba(155, 218, 136, 1) 100%
+  );
 }
