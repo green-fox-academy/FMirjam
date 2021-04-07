@@ -21,7 +21,6 @@ body {
 
 h1 {
   font-weight: 50;
-  margin-left: -50px;
 }
 
 form {
@@ -31,5 +30,4 @@ form {
 p {
   font-size: 12;
   font-weight: 100;
-  margin-left: -100px;
 }
