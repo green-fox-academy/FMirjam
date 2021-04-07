@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Newsletter</title>
+</head>
+
+<body>
+    <form method="POST" action="http://localhost:3000/signup">
+        <h1>Subscribe to our newsletter</h1>
+        <div>
+            <label for="name">Full name</label>
+            <input name="name" id="name" type="text" placeholder="name" required>
+        </div>
+        <div>
+            <label for="email">E-mail adress</label>
+            <input name="email" id="email" type="text" placeholder="e-mail" required>
+        </div>
+        <button type="submit">Sign up!</button>
+    </form>
+</body>
+
+</html>
