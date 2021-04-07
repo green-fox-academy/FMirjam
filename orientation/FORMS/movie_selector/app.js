@@ -9,16 +9,22 @@ const movies = {
 };
 
 genreSelector.addEventListener('change', (event) => {
-  const selectAMovieOption = new Option();
-  movieSelector.add(selectAMovieOption);
   let selectedIndex = event.target.selectedIndex;
   let selectedGenre = event.target[selectedIndex].value;
   if (movies[selectedGenre] !== undefined) {
     movieSelector.innerHTML = '';
-    movies[selectedGenre].forEach((movie) => {
+    movies[selectedGenre].forEach((movie, index) => {
       let optionElement = new Option(movie);
       movieSelector.add(optionElement);
+      if (index === 0) {
+        result.innerHTML = `The selected movie is: ${movie}`;
+      }
     });
+  } else {
+    movieSelector.innerHTML = '';
+    let selectMovieOption = new Option('Select a movie');
+    movieSelector.add(selectMovieOption)
+    result.innerHTML = `The selected movie is: -`
   }
 });
 
