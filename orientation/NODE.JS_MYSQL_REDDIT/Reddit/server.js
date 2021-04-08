@@ -42,21 +42,45 @@ app.get('/posts', (req, res) => {
   });
 });
 
-app.post('/posts', (req, res) => { //Postman
-  let newPost = {
-    title: req.body.title,
-    url: req.body.url,
-  };
+app.post('/posts', (req, res) => {
+  //Postman
+  const userId = req.headers.userid; //Postman headers key = userid value = 1
+  console.log(userId); //1-est kikonzolozza
+  databaseConnection.query(
+    'SELECT * FROM users WHERE user_id = ?',
+    [userId],
+    (err, rows) => {
+      console.log(rows);
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length !== 0) {
+        let newPost = {
+          title: req.body.title,
+          url: req.body.url,
+          user_id: userId,
+        };
 
-  databaseConnection.query('INSERT INTO posts SET ?', newPost, (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
+        databaseConnection.query(
+          'INSERT INTO posts SET ?',
+          newPost,
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+              return;
+            }
+            res.status(200).json(rows);
+          }
+        );
+      } else {
+        res.status(401).send('Unauthorized user')//ha rows.length === 0
+      }
     }
-    res.status(200).json(rows);
-  });
+  );
 });
 
 app.get('/posts/:id', (req, res) => {
@@ -76,7 +100,8 @@ app.get('/posts/:id', (req, res) => {
   );
 });
 
-app.put('/posts/:id/upvote', (req, res) => { //Postman
+app.put('/posts/:id/upvote', (req, res) => {
+  //Postman
   let id = req.params.id;
   databaseConnection.query(
     'UPDATE posts SET score = score + 1 WHERE id = ?',
@@ -93,7 +118,8 @@ app.put('/posts/:id/upvote', (req, res) => { //Postman
   );
 });
 
-app.put('/posts/:id/downvote', (req, res) => { //Postman
+app.put('/posts/:id/downvote', (req, res) => {
+  //Postman
   const id = req.params.id;
   console.log(id);
   databaseConnection.query(
