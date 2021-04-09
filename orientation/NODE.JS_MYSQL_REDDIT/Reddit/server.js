@@ -102,41 +102,95 @@ app.get('/posts/:id', (req, res) => {
 });
 
 app.put('/posts/:id/upvote', (req, res) => {
-  //Postman
-  let id = req.params.id;
+  const post_id = req.params.id;
+  const userId = parseInt(req.headers.userid);
+  let foundPost;
   databaseConnection.query(
-    'UPDATE posts SET score = score + 1 WHERE id = ?',
-    [id],
+    'SELECT * FROM posts WHERE id = ?',
+    [post_id],
     (err, rows) => {
       if (err) {
         res.status(500).json({
           error: err.message,
         });
         return;
+      } else {
+        if (rows.length === 0) {
+          res.status(404).send('Post not found');
+        } else {
+          foundPost = rows[0];
+          if (foundPost.user_id === userId) {
+            res.status(400).send('This is your post, you cannot vote on it');
+          } else {
+            databaseConnection.query(
+              'SELECT * FROM votes WHERE post_id = ? AND user_id = ?',
+              [post_id, userId],
+              (err, rows) => {
+                if (err) {
+                  res.status(500).json({
+                    error: err.message,
+                  });
+                  return;
+                } else {
+                  if (
+                    (rows.length !== 0 && rows[0].vote === 0) ||
+                    (rows.length !== 0 && rows[0].vote === -1)
+                  ) {
+                    databaseConnection.query(
+                      'UPDATE votes SET vote = 1 WHERE post_id = ? AND user_id = ?',
+                      [post_id, userId],
+                      (err, rows) => {
+                        if (err) {
+                          res.status(500).json({
+                            error: err.message,
+                          });
+                          return;
+                        } else {
+                          res.status(200).send('Your vote has been registered');
+                        }
+                      }
+                    );
+                  } else if (rows.length !== 0 && rows[0].vote === 1) {
+                    databaseConnection.query(
+                      'UPDATE votes SET vote = 0 WHERE post_id = ? AND user_id = ?',
+                      [post_id, userId],
+                      (err, rows) => {
+                        if (err) {
+                          res.status(500).json({
+                            error: err.message,
+                          });
+                          return;
+                        } else {
+                          res.status(200).send('Your vote is set to 0');
+                        }
+                      }
+                    );
+                  } else {
+                    databaseConnection.query(
+                      'INSERT INTO votes (post_id, user_id, vote) VALUES (?,?,1)',
+                      (err, rows) => {
+                        if (err) {
+                          res.status(500).json({
+                            error: err.message,
+                          });
+                          return;
+                        } else {
+                          res.status(200).send('Your vote is registered');
+                        }
+                      }
+                    );
+                  }
+                }
+              }
+            );
+          }
+        }
       }
-      res.status(200).json(rows);
     }
   );
 });
 
-app.put('/posts/:id/downvote', (req, res) => {
-  //Postman
-  const id = req.params.id;
-  console.log(id);
-  databaseConnection.query(
-    'UPDATE posts SET score = score - 1 WHERE id = ?',
-    [id],
-    (err, rows) => {
-      if (err) {
-        res.status(500).json({
-          error: err.message,
-        });
-        return;
-      }
-      res.status(200).json(rows);
-    }
-  );
-});
+app.put('/posts/:id/downvote', (req, res) => {});
 
 app.delete('/posts/:id', (req, res) => {
   const post_id = req.params.id; //POSTMAN tesztelésnél: /posts/2
@@ -165,7 +219,8 @@ app.delete('/posts/:id', (req, res) => {
           res.status(400).send('The post is not yours idiot');
         } else {
           databaseConnection.query(
-            'DELETE FROM posts WHERE id = ?', [post_id],
+            'DELETE FROM posts WHERE id = ?',
+            [post_id],
             (err, rows) => {
               if (err) {
                 res.status(500).json({
