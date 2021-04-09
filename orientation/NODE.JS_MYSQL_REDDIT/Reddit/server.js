@@ -57,6 +57,7 @@ app.post('/posts', (req, res) => {
         });
         return;
       } else if (rows.length !== 0) {
+        //ha ezt akarom tesztelni akkor headers-be megadok egy létező userid-t és body-ba egy új tételt címmel és url-lel
         let newPost = {
           title: req.body.title,
           url: req.body.url,
@@ -77,7 +78,7 @@ app.post('/posts', (req, res) => {
           }
         );
       } else {
-        res.status(401).send('Unauthorized user')//ha rows.length === 0
+        res.status(401).send('Unauthorized user'); //ha rows.length === 0
       }
     }
   );
@@ -137,7 +138,51 @@ app.put('/posts/:id/downvote', (req, res) => {
   );
 });
 
-app.delete('/posts/:id', (req, res) => {});
+app.delete('/posts/:id', (req, res) => {
+  const post_id = req.params.id; //POSTMAN tesztelésnél: /posts/2
+  const userId = parseInt(req.headers.userid);
+  // console.log(userId)
+  let foundPost;
+  // console.log(post_id);
+  databaseConnection.query(
+    'SELECT * FROM posts WHERE id = ?',
+    [post_id],
+    (err, rows) => {
+      console.log(rows); //2-es id-hoz tartozó post-ot mutatja ha id = 2
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).send('Post not found'); //ha id = 20
+      } else {
+        foundPost = rows[0];
+        // console.log(foundPost);
+        // console.log(foundPost.user_id);
+        // console.log(userId);
+        if (foundPost.user_id !== userId) {
+          res.status(400).send('The post is not yours idiot');
+        } else {
+          databaseConnection.query(
+            'DELETE FROM posts WHERE id = ?', [post_id],
+            (err, rows) => {
+              if (err) {
+                res.status(500).json({
+                  error: err.message,
+                });
+                return;
+              } else {
+                res.status(200).send('Successfully deleted');
+              }
+            }
+          );
+        }
+      }
+    }
+  );
+});
+
 app.put('/posts/:id', (req, res) => {});
 
 process.on('uncaughtException', (err) => {
