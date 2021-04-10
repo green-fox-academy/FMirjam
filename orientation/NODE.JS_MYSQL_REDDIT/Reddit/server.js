@@ -31,15 +31,26 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  databaseConnection.query('SELECT * from posts', (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
+  databaseConnection.query(
+    'SELECT p.id, p.title, p.url, p.timestamp, SUM(v.vote) AS score, u.user_name FROM posts p JOIN votes v ON p.id = v.post_id JOIN users u ON p.user_id = u.user_id GROUP BY p.id',
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else {
+        if (rows.length === 0) {
+          res.status(500).json({
+            error: err.message,
+          });
+          return;
+        } else {
+          res.status(200).json(rows);
+        }
+      }
     }
-    res.status(200).json(rows);
-  });
+  );
 });
 
 app.post('/posts', (req, res) => {
@@ -353,7 +364,7 @@ app.put('/posts/:id', (req, res) => {
               title: req.body.title,
               url: req.body.url,
             };
-    
+
             databaseConnection.query(
               'UPDATE posts SET ? WHERE id = ?',
               [modifiedPost, post_id],
