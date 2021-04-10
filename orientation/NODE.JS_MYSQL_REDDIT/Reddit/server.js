@@ -167,7 +167,8 @@ app.put('/posts/:id/upvote', (req, res) => {
                     );
                   } else {
                     databaseConnection.query(
-                      'INSERT INTO votes (post_id, user_id, vote) VALUES (?,?,1)', //parse error
+                      'INSERT INTO votes (post_id, user_id, vote) VALUES (?,?,1)',
+                      [post_id, userId],
                       (err, rows) => {
                         if (err) {
                           res.status(500).json({
@@ -256,7 +257,8 @@ app.put('/posts/:id/downvote', (req, res) => {
                     );
                   } else {
                     databaseConnection.query(
-                      'INSERT INTO votes (post_id, user_id, vote) VALUES (?,?,-1)', //parse error
+                      'INSERT INTO votes (post_id, user_id, vote) VALUES (?,?,-1)',
+                      [post_id, userId],
                       (err, rows) => {
                         if (err) {
                           res.status(500).json({
