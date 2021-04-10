@@ -133,8 +133,8 @@ app.put('/posts/:id/upvote', (req, res) => {
                   return;
                 } else {
                   if (
-                    (rows.length !== 0 && rows[0].vote === 0) ||
-                    (rows.length !== 0 && rows[0].vote === -1)
+                    rows.length !== 0 &&
+                    (rows[0].vote === 0 || rows[0].vote === -1)
                   ) {
                     databaseConnection.query(
                       'UPDATE votes SET vote = 1 WHERE post_id = ? AND user_id = ?',
@@ -223,8 +223,8 @@ app.put('/posts/:id/downvote', (req, res) => {
                   return;
                 } else {
                   if (
-                    (rows.length !== 0 && rows[0].vote === 0) ||
-                    (rows.length !== 0 && rows[0].vote === 1)
+                    rows.length !== 0 &&
+                    (rows[0].vote === 0 || rows[0].vote === 1)
                   ) {
                     databaseConnection.query(
                       'UPDATE votes SET vote = -1 WHERE post_id = ? AND user_id = ?',
@@ -327,7 +327,53 @@ app.delete('/posts/:id', (req, res) => {
   );
 });
 
-app.put('/posts/:id', (req, res) => {});
+app.put('/posts/:id', (req, res) => {
+  const post_id = req.params.id;
+  const userId = parseInt(req.headers.userid);
+  let foundPost;
+  databaseConnection.query(
+    'SELECT * FROM posts WHERE id = ?',
+    [post_id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else {
+        if (rows.length === 0) {
+          res.status(404).send('Post not found');
+        } else {
+          foundPost = rows[0];
+          if (foundPost.user_id !== userId) {
+            res.status(400).send('The post is not yours, you cannot modify it');
+          } else {
+            let modifiedPost = {
+              ...foundPost,
+              title: req.body.title,
+              url: req.body.url,
+            };
+    
+            databaseConnection.query(
+              'UPDATE posts SET ? WHERE id = ?',
+              [modifiedPost, post_id],
+              (err, rows) => {
+                if (err) {
+                  res.status(500).json({
+                    error: err.message,
+                  });
+                  return;
+                } else {
+                  res.status(200).send('Post has been successfully modified');
+                }
+              }
+            );
+          }
+        }
+      }
+    }
+  );
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
