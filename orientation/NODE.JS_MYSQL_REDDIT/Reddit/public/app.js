@@ -11,7 +11,7 @@ function getPosts() {
   http.open('GET', `http://localhost:3001/posts`);
 
   http.onload = () => {
-    posts = JSON.parse(http.responseText);
+    posts = JSON.parse(http.response);
     console.log(posts);
 
     for (let i = 0; i < posts.length; i++) {
