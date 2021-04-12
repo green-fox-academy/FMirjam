@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.container {
+  display: grid;
+  background-color: white;
+  grid-gap: 0.25rem;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-color: black;
+}
+.bigdiv {
+  grid-column: 2 / 7;
+  grid-row: 2 / 6;
+  background-color: green;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.smalldiv {
+  background-color: purple;
+  align-self: center;
+  width: 400px;
+  height: 220px;
+  margin-right: 20px;
+  color: white;
+  font-size: 30px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  background-color: yellow;
+}
+
+.start {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.pub {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate {
+  transform: rotate(-45deg);
+  font-size: 40px;
+}
