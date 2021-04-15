@@ -1,0 +1,22 @@
+{
+  "name": "cargo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha 'test/*.js'",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2",
+    "mysql": "^2.18.1",
+    "supertest": "^6.1.3"
+  }
+}
