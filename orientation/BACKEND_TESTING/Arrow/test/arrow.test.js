@@ -25,3 +25,16 @@ describe('yondu endpoint with data', () => {
   });
 });
 
+describe('yondu endpoint without data', () => {
+  it('should return no data', (done) => {
+    request(app)
+      .get(`/yondu`)
+      .expect(400)
+      .end((err, res) => {
+        expect(err).to.be.null;
+
+        expect(res.body).to.deep.equal({});
+        done();
+      });
+  });
+});
