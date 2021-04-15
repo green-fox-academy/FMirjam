@@ -1,6 +1,6 @@
 import express from 'express';
 import mysql from 'mysql';
-const app = express();
+export const app = express();
 
 app.use(express.json());
 
@@ -22,7 +22,7 @@ app.get('/groot', (req, res) => {
   let message = req.query.message;
   let response = {};
   if (message) {
-    response = { received: 'somemessage', translated: 'I am Groot!' };
+    response = { received: `${message}`, translated: 'I am Groot!' };
   } else {
     response = { error: 'I am Groot!' };
   }
@@ -33,4 +33,4 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-module.exports = app;
+

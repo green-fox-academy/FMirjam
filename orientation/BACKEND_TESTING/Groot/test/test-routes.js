@@ -1,4 +1,5 @@
-import test from 'tape'
 import request from 'supertest'
-import expect from 'chai'
-// const app = require('../routes');
+import chai from 'chai'
+import {app} from '../routes.js'
+let expect = chai.expect
+

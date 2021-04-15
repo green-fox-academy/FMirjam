@@ -1,6 +1,6 @@
-// const routes = require('./routes');
+import {app} from './routes.js'
 const port = 3000;
 
-routes.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
