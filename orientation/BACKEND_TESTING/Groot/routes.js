@@ -23,14 +23,15 @@ app.get('/groot', (req, res) => {
   let response = {};
   if (message) {
     response = { received: `${message}`, translated: 'I am Groot!' };
+    res.status(200).send(response);
   } else {
     response = { error: 'I am Groot!' };
+    res.status(400).send(response);
   }
+  res.send(response);
 });
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
 });
-
-
