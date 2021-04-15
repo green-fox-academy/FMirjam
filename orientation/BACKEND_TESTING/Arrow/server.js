@@ -8,7 +8,6 @@ app.use(express.json());
 const databaseConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'groot',
 });
 
 databaseConnection.connect((err) => {
@@ -33,7 +32,6 @@ app.get('/yondu', (req, res) => {
   } else {
     res.status(400).send(response);
   }
-  res.send(response);
 });
 
 process.on('uncaughtException', (err) => {
