@@ -13,9 +13,27 @@ describe('groot endpoint with message', () => {
       .end((err, res) => {
         expect(err).to.be.null;
 
-        expect(res.body).to.deep.equal({ //use deep equal when we compare objects
+        expect(res.body).to.deep.equal({
+          //use deep equal when we compare objects
           received: `${message}`,
           translated: 'I am Groot!',
+        });
+
+        done();
+      });
+  });
+});
+
+describe('groot endpoint without message', () => {
+  it('should return a message', (done) => {
+    request(app)
+      .get(`/groot`)
+      .expect(400)
+      .end((err, res) => {
+        expect(err).to.be.null;
+
+        expect(res.body).to.deep.equal({
+          error: 'I am Groot!',
         });
 
         done();
