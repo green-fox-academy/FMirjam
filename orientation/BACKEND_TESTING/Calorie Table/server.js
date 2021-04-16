@@ -8,7 +8,7 @@ app.use(express.json());
 const databaseConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'calories'
+  database: 'calories',
 });
 
 databaseConnection.connect((err) => {
@@ -19,7 +19,29 @@ databaseConnection.connect((err) => {
   console.log('Database Connection is OK');
 });
 
+app.get('/drax', (req, res) => {
+  databaseConnection.query('SELECT * FROM food', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      if (rows.length === 0) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else {
+        res.status(200).json(rows);
+      }
+    }
+  });
+});
 
+app.post('/drax', (req, res) => {});
+app.delete('/drax', (req, res) => {});
+app.put('/drax', (req, res) => {});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
