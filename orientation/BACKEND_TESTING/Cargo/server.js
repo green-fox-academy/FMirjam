@@ -28,44 +28,7 @@ app.get('/rocket', (req, res) => {
   });
 });
 
-app.get('/rocket/fill', (req, res) => {
-  let caliber = req.query.caliber;
-  let amount = req.query.amount;
-  let response = {};
-  let maximumAmount = 12500;
 
-  function shipStatus(amount, maximumAmount) {
-    let ratio = amount / maximumAmount;
-    let ratioInPercentage = ratio * 100;
-    if (ratio === 0) {
-      return 'empty';
-    } else if (ratio === 1) {
-      return 'full';
-    } else if (ratio > 1) {
-      return 'overloaded';
-    } else {
-      return `${ratioInPercentage}%`;
-    }
-  }
-  function ready(amount, maximumAmount) {
-    let ratio = amount / maximumAmount;
-    if (ratio === 1) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  if (caliber && amount) {
-    response = {
-      received: `${caliber}`,
-      amount: `${amount}`,
-      shipstatus: shipStatus(amount, maximumAmount),
-      ready: ready(amount, maximumAmount),
-    };
-    res.status(200).send(response);
-    console.log(response);
-  }
-});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
