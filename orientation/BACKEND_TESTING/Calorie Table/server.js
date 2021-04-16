@@ -71,7 +71,44 @@ app.post('/drax', (req, res) => {
     }
   });
 });
-app.delete('/drax', (req, res) => {});
+
+app.delete('/drax', (req, res) => {
+  const foodName = req.query.food_name;
+  console.log(foodName)
+  let foundFood;
+  databaseConnection.query('SELECT * FROM food', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else if (rows.length === 0) {
+      res.status(404).send('No data available');
+    } else {
+      foundFood = rows[0];
+      console.log(foundFood)
+      if (foundFood.food_name !== foodName) {
+        res.status(400).send('Food is not on the list');
+      } else {
+        databaseConnection.query(
+          'DELETE FROM food WHERE food_name = ?',
+          [foodName],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+              return;
+            } else {
+              res.status(200).send('Successfully deleted');
+              console.log(rows)
+            }
+          }
+        );
+      }
+    }
+  });
+});
 app.put('/drax', (req, res) => {});
 
 process.on('uncaughtException', (err) => {
