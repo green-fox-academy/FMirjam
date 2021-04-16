@@ -39,7 +39,38 @@ app.get('/drax', (req, res) => {
   });
 });
 
-app.post('/drax', (req, res) => {});
+app.post('/drax', (req, res) => {
+  databaseConnection.query('SELECT * FROM food', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else if (rows.length !== 0) {
+      let newFood = {
+        food_name: req.body.food_name,
+        amount: parseInt(req.body.amount),
+        calorie: parseInt(req.body.calorie),
+      };
+      databaseConnection.query(
+        'INSERT INTO food SET ?',
+        [newFood],
+        (err, rows) => {
+          if (err) {
+            res.status(500).json({
+              error: err.message,
+            });
+            return;
+          } else {
+            res.status(200).send('New food item has been registered');
+          }
+        }
+      );
+    } else {
+      res.status(400).send();
+    }
+  });
+});
 app.delete('/drax', (req, res) => {});
 app.put('/drax', (req, res) => {});
 
