@@ -74,7 +74,6 @@ app.post('/drax', (req, res) => {
 
 app.delete('/drax', (req, res) => {
   const foodName = req.query.food_name;
-  console.log(foodName)
   let foundFood;
   databaseConnection.query('SELECT * FROM food', (err, rows) => {
     if (err) {
@@ -86,7 +85,7 @@ app.delete('/drax', (req, res) => {
       res.status(404).send('No data available');
     } else {
       foundFood = rows[0];
-      console.log(foundFood)
+      console.log(foundFood);
       if (foundFood.food_name !== foodName) {
         res.status(400).send('Food is not on the list');
       } else {
@@ -101,7 +100,6 @@ app.delete('/drax', (req, res) => {
               return;
             } else {
               res.status(200).send('Successfully deleted');
-              console.log(rows)
             }
           }
         );
@@ -109,7 +107,45 @@ app.delete('/drax', (req, res) => {
     }
   });
 });
-app.put('/drax', (req, res) => {});
+
+app.put('/drax', (req, res) => {
+  const foodName = req.query.food_name;
+  let foundFood;
+  databaseConnection.query('SELECT * FROM food WHERE food_name = ?', [foodName], (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else if (rows.length === 0) {
+      res.status(404).send('No data available');
+    } else {
+      foundFood = rows[0];
+      if (foundFood.food_name !== foodName) {
+        res.status(400).send('Food is not on the list');
+      } else {
+        let modifiedFood = {
+          ...foundFood,
+          amount: parseInt(req.body.amount),
+        };
+        databaseConnection.query(
+          'UPDATE food SET ? WHERE food_name = ?',
+          [modifiedFood, foodName],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+              return;
+            } else {
+              res.status(200).send('Successfully modified');
+            }
+          }
+        );
+      }
+    }
+  });
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
