@@ -77,7 +77,7 @@ app.post('/drax', (req, res) => {
 app.delete('/drax', (req, res) => {
   const foodName = req.query.food_name;
   let foundFood;
-  databaseConnection.query('SELECT * FROM food', (err, rows) => {
+  databaseConnection.query('SELECT * FROM food WHERE food_name = ?', [foodName] (err, rows) => {
     if (err) {
       res.status(500).json({
         error: err.message,
