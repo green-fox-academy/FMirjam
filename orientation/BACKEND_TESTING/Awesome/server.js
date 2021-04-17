@@ -157,6 +157,26 @@ app.put('/awesome', (req, res) => {
   );
 });
 
+app.get('/favourites', (req, res) => {
+    databaseConnection.query('SELECT * FROM playlist WHERE rating = 1 OR rating = 3 OR rating = 5', (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else {
+        if (rows.length === 0) {
+          res.status(500).json({
+            error: err.message,
+          });
+          return;
+        } else {
+          res.status(200).json(rows);
+        }
+      }
+    });
+  });
+
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
