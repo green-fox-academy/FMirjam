@@ -5,7 +5,7 @@ import { app } from '../server.js';
 let expect = chai.expect;
 
 describe('insert new item into the table', () => {
-  it('shoud return a new list', (done) => {
+  it('should return message', (done) => {
     request(app)
       .post('/drax')
       .send({ food_name: 'Lasagne', amount: 2, calorie: 680 })
@@ -14,10 +14,8 @@ describe('insert new item into the table', () => {
       .expect(200)
       .end((err, res) => {
         expect(err).to.be.null;
-        expect(res.body.result).to.deep.equal({
-          food_name: 'Lasagne',
-          amount: 2,
-          calorie: 680,
+        expect(res.body).to.deep.equal({
+          result: 'New food item has been registered',
         });
 
         done();

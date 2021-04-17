@@ -62,7 +62,7 @@ app.post('/drax', (req, res) => {
             });
             return;
           } else {
-            res.status(200).send('New food item has been registered');
+            res.status(200).json({result: 'New food item has been registered'});
           }
         }
       );
