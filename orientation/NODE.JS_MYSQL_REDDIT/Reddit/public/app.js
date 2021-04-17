@@ -1,5 +1,6 @@
-const container = document.querySelector('.container');
-let http = new XMLHttpRequest();
+const postContainer = document.querySelector('.posts');
+const http = new XMLHttpRequest();
+const userId = 2;
 
 window.onload = () => {
   getPosts();
@@ -8,16 +9,15 @@ window.onload = () => {
 let posts;
 
 function getPosts() {
+  postContainer.innerHTML = '';
   http.open('GET', `http://localhost:3001/posts`);
 
   http.onload = () => {
     posts = JSON.parse(http.response);
-    console.log(posts);
-
     for (let i = 0; i < posts.length; i++) {
       let div = document.createElement('div');
       div.classList.add('postHolder');
-      container.appendChild(div);
+      postContainer.appendChild(div);
       let buttonDiv = document.createElement('div');
       buttonDiv.classList.add('buttonDiv');
       div.appendChild(buttonDiv);
@@ -40,11 +40,11 @@ function getPosts() {
       downVote = document.createElement('img');
       downVote.setAttribute('src', '../assets/downvote.png');
       buttonUp = document.createElement('button');
-      buttonUp.addEventListener('click', () => {})
       buttonUp.classList.add('buttonUp');
+      upVoteHandler(posts[i].id, buttonUp);
       buttonDown = document.createElement('button');
-      buttonDown.addEventListener('click', () => {})
       buttonDown.classList.add('buttonDown');
+      downVoteHandler(posts[i].id,buttonDown)
       buttonUp.appendChild(upVote);
       buttonDown.appendChild(downVote);
       buttonDiv.appendChild(buttonUp);
@@ -54,5 +54,27 @@ function getPosts() {
   http.send();
 }
 
-function upVote(){}
-function downVote(){}
+function upVoteHandler(postId, buttonUp) {
+  buttonUp.addEventListener('click', () => {
+    const http = new XMLHttpRequest();
+    http.open('PUT', `http://localhost:3001/posts/${postId}/upvote`);
+    http.setRequestHeader('userid', userId);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onload = () => {
+      getPosts();
+    };
+    http.send();
+  });
+}
+function downVoteHandler(postId, buttonDown) {
+  buttonDown.addEventListener('click', () => {
+    const http = new XMLHttpRequest();
+    http.open('PUT', `http://localhost:3001/posts/${postId}/downvote`);
+    http.setRequestHeader('userid', userId);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onload = () => {
+      getPosts();
+    };
+    http.send();
+  });
+}

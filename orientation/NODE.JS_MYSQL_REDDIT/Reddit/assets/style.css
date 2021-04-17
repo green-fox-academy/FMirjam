@@ -53,16 +53,13 @@ input[type='text'],
   margin-left: 20px;
 }
 
-input[type='submit'] {
+ button {
   background-color: rgb(0, 115, 255);
   border: none;
   width: 400px;
   height: 30px;
   margin-top: 10px;
-}
-
-input[value='SUBMIT'] {
   color: white;
   font-weight: bolder;
   letter-spacing: 1px;
-}
+} 
