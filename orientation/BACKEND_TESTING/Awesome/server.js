@@ -74,6 +74,42 @@ app.post('/awesome', (req, res) => {
   });
 });
 
+app.delete('/awesome', (req, res) => {
+    const title = req.query.title;
+    let foundSong;
+    databaseConnection.query('SELECT * FROM playlist WHERE title = ?', [title],(err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).send('No data available');
+      } else {
+        foundSong = rows[0];
+        console.log(foundSong)
+        if (foundSong.title !== title) {
+          res.status(400).send('Song is not on the list');
+        } else {
+          databaseConnection.query(
+            'DELETE FROM playlist WHERE title = ?',
+            [title],
+            (err, rows) => {
+              if (err) {
+                res.status(500).json({
+                  error: err.message,
+                });
+                return;
+              } else {
+                res.status(200).send('Successfully deleted');
+              }
+            }
+          );
+        }
+      }
+    });
+  });
+
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
