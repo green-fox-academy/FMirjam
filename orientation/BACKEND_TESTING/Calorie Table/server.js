@@ -33,7 +33,7 @@ app.get('/drax', (req, res) => {
         });
         return;
       } else {
-        res.status(200).json(rows);
+        res.status(200).json({ result: 'Successfully retrieved data' });
       }
     }
   });
@@ -62,7 +62,9 @@ app.post('/drax', (req, res) => {
             });
             return;
           } else {
-            res.status(200).json({result: 'New food item has been registered'});
+            res
+              .status(200)
+              .json({ result: 'New food item has been registered' });
           }
         }
       );
@@ -111,40 +113,44 @@ app.delete('/drax', (req, res) => {
 app.put('/drax', (req, res) => {
   const foodName = req.query.food_name;
   let foundFood;
-  databaseConnection.query('SELECT * FROM food WHERE food_name = ?', [foodName], (err, rows) => {
-    if (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-      return;
-    } else if (rows.length === 0) {
-      res.status(404).send('No data available');
-    } else {
-      foundFood = rows[0];
-      if (foundFood.food_name !== foodName) {
-        res.status(400).send('Food is not on the list');
+  databaseConnection.query(
+    'SELECT * FROM food WHERE food_name = ?',
+    [foodName],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).send('No data available');
       } else {
-        let modifiedFood = {
-          ...foundFood,
-          amount: parseInt(req.body.amount),
-        };
-        databaseConnection.query(
-          'UPDATE food SET ? WHERE food_name = ?',
-          [modifiedFood, foodName],
-          (err, rows) => {
-            if (err) {
-              res.status(500).json({
-                error: err.message,
-              });
-              return;
-            } else {
-              res.status(200).send('Successfully modified');
+        foundFood = rows[0];
+        if (foundFood.food_name !== foodName) {
+          res.status(400).send('Food is not on the list');
+        } else {
+          let modifiedFood = {
+            ...foundFood,
+            amount: parseInt(req.body.amount),
+          };
+          databaseConnection.query(
+            'UPDATE food SET ? WHERE food_name = ?',
+            [modifiedFood, foodName],
+            (err, rows) => {
+              if (err) {
+                res.status(500).json({
+                  error: err.message,
+                });
+                return;
+              } else {
+                res.status(200).send('Successfully modified');
+              }
             }
-          }
-        );
+          );
+        }
       }
     }
-  });
+  );
 });
 
 process.on('uncaughtException', (err) => {
