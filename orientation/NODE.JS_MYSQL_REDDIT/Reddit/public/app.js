@@ -40,8 +40,10 @@ function getPosts() {
       downVote = document.createElement('img');
       downVote.setAttribute('src', '../assets/downvote.png');
       buttonUp = document.createElement('button');
+      buttonUp.addEventListener('click', () => {})
       buttonUp.classList.add('buttonUp');
       buttonDown = document.createElement('button');
+      buttonDown.addEventListener('click', () => {})
       buttonDown.classList.add('buttonDown');
       buttonUp.appendChild(upVote);
       buttonDown.appendChild(downVote);
@@ -51,3 +53,6 @@ function getPosts() {
   };
   http.send();
 }
+
+function upVote(){}
+function downVote(){}
