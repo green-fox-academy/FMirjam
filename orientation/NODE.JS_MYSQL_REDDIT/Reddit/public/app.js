@@ -15,21 +15,38 @@ function getPosts() {
     console.log(posts);
 
     for (let i = 0; i < posts.length; i++) {
-      let postId = posts[i]['id'];
       let div = document.createElement('div');
       div.classList.add('postHolder');
-      div.classList.add(`div${postId}`);
-      let ul = document.createElement('ul');
-      ul.classList.add(`ul${postId}`);
-      let buttons = document.createElement('div');
-      buttons.classList.add('buttonContainer');
-      for (let j = 0; j < posts.length; j++) {
-        if (Object.keys(posts[j]) === 'score') {
-        } else if (Object.keys(posts[j]) === 'user_name') {
-        } else{
-            
-        }
-      }
+      container.appendChild(div);
+      let buttonDiv = document.createElement('div');
+      buttonDiv.classList.add('buttonDiv');
+      div.appendChild(buttonDiv);
+      let postDetailsUl = document.createElement('ul');
+      let titleP = document.createElement('p');
+      titleP.innerHTML = posts[i].title;
+      let timeStampP = document.createElement('p');
+      timeStampP.innerHTML = posts[i].timestamp;
+      let userName = document.createElement('p');
+      userName.innerHTML = posts[i].user_name;
+      postDetailsUl.appendChild(titleP);
+      postDetailsUl.appendChild(userName);
+      postDetailsUl.appendChild(timeStampP);
+      div.appendChild(postDetailsUl);
+      let score = document.createElement('li');
+      score.innerHTML = posts[i].score;
+      buttonDiv.appendChild(score);
+      upVote = document.createElement('img');
+      upVote.setAttribute('src', '../assets/upvote.png');
+      downVote = document.createElement('img');
+      downVote.setAttribute('src', '../assets/downvote.png');
+      buttonUp = document.createElement('button');
+      buttonUp.classList.add('buttonUp');
+      buttonDown = document.createElement('button');
+      buttonDown.classList.add('buttonDown');
+      buttonUp.appendChild(upVote);
+      buttonDown.appendChild(downVote);
+      buttonDiv.appendChild(buttonUp);
+      buttonDiv.appendChild(buttonDown);
     }
   };
   http.send();
