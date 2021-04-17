@@ -75,9 +75,12 @@ app.post('/awesome', (req, res) => {
 });
 
 app.delete('/awesome', (req, res) => {
-    const title = req.query.title;
-    let foundSong;
-    databaseConnection.query('SELECT * FROM playlist WHERE title = ?', [title],(err, rows) => {
+  const title = req.query.title;
+  let foundSong;
+  databaseConnection.query(
+    'SELECT * FROM playlist WHERE title = ?',
+    [title],
+    (err, rows) => {
       if (err) {
         res.status(500).json({
           error: err.message,
@@ -87,7 +90,7 @@ app.delete('/awesome', (req, res) => {
         res.status(404).send('No data available');
       } else {
         foundSong = rows[0];
-        console.log(foundSong)
+        console.log(foundSong);
         if (foundSong.title !== title) {
           res.status(400).send('Song is not on the list');
         } else {
@@ -107,8 +110,52 @@ app.delete('/awesome', (req, res) => {
           );
         }
       }
-    });
-  });
+    }
+  );
+});
+
+app.put('/awesome', (req, res) => {
+  const title = req.query.title;
+  let foundSong;
+  databaseConnection.query(
+    'SELECT * FROM playlist WHERE title = ?',
+    [title],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).send('No data available');
+      } else {
+        foundSong = rows[0];
+        if (foundSong.title !== title) {
+          res.status(400).send('Song is not on the list');
+        } else {
+          let modifiedSong = {
+            ...foundSong,
+            rating: parseInt(req.body.rating),
+          };
+          databaseConnection.query(
+            'UPDATE playlist SET ? WHERE title = ?',
+            [modifiedSong, title],
+            (err, rows) => {
+              if (err) {
+                res.status(500).json({
+                  error: err.message,
+                });
+                return;
+              } else {
+                res.status(200).send('Successfully modified');
+              }
+            }
+          );
+        }
+      }
+    }
+  );
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
