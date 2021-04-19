@@ -44,11 +44,21 @@ function getPosts() {
       upVoteHandler(posts[i].id, buttonUp);
       buttonDown = document.createElement('button');
       buttonDown.classList.add('buttonDown');
-      downVoteHandler(posts[i].id,buttonDown)
+      downVoteHandler(posts[i].id, buttonDown);
       buttonUp.appendChild(upVote);
       buttonDown.appendChild(downVote);
       buttonDiv.appendChild(buttonUp);
       buttonDiv.appendChild(buttonDown);
+      let deleteButton = document.createElement('button');
+      deleteButton.innerHTML = 'Delete';
+      deleteButton.classList.add = 'delete';
+      postDetailsUl.appendChild(deleteButton);
+      let modifyButton = document.createElement('button');
+      modifyButton.innerHTML = 'Modify';
+      postDetailsUl.appendChild(modifyButton);
+      modifyButton.addEventListener('click', () => {
+        location.href = 'modify.html';
+      });
     }
   };
   http.send();
