@@ -18,7 +18,7 @@ databaseConnection.connect((err) => {
   }
   console.log('Database Connection is OK');
 });
-app.use(cors())
+app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
 
@@ -48,7 +48,7 @@ app.get('/posts', (req, res) => {
           return;
         } else {
           res.status(200).json(rows);
-          console.log(rows)
+          console.log(rows);
         }
       }
     }

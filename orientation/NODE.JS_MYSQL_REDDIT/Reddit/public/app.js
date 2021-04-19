@@ -52,6 +52,7 @@ function getPosts() {
       let deleteButton = document.createElement('button');
       deleteButton.innerHTML = 'Delete';
       deleteButton.classList.add = 'delete';
+      deletePost(posts[i].id, deleteButton);
       postDetailsUl.appendChild(deleteButton);
       let modifyButton = document.createElement('button');
       modifyButton.innerHTML = 'Modify';
@@ -80,6 +81,19 @@ function downVoteHandler(postId, buttonDown) {
   buttonDown.addEventListener('click', () => {
     const http = new XMLHttpRequest();
     http.open('PUT', `http://localhost:3001/posts/${postId}/downvote`);
+    http.setRequestHeader('userid', userId);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onload = () => {
+      getPosts();
+    };
+    http.send();
+  });
+}
+
+function deletePost(postId, deleteButton) {
+  deleteButton.addEventListener('click', () => {
+    const http = new XMLHttpRequest();
+    http.open('DELETE', `http://localhost:3001/posts/${postId}`);
     http.setRequestHeader('userid', userId);
     http.setRequestHeader('Content-Type', 'application/json');
     http.onload = () => {
