@@ -59,7 +59,20 @@ app.get('/api/game/', (req, res) => {
     }
   });
 });
-app.get('/api/questions', (req, res) => {});
+
+app.get('/api/questions', (req, res) => {
+  databaseConnection.query('SELECt * FROM questions', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      res.status(200).send(rows);
+    }
+  });
+});
+
 app.post('/api/questions', (req, res) => {});
 app.delete('/api/questions/:id', (req, res) => {});
 
