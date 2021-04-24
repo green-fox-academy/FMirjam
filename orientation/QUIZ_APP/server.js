@@ -12,8 +12,6 @@ const databaseConnection = mysql.createConnection({
   database: 'quiz',
 });
 
-console.log(path.resolve());
-
 databaseConnection.connect((err) => {
   if (err) {
     console.error('Cannot connect to the database', err);
@@ -101,9 +99,7 @@ app.post('/api/questions', (req, res) => {
             });
             return;
           } else {
-            console.log(rows);
             const questionId = rows.insertId;
-            console.log(questionId);
             const answers = req.body.answers;
             const newAnswers = [
               questionId,
