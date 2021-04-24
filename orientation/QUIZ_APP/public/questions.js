@@ -5,6 +5,8 @@ const answer2 = document.querySelector('#answer_2');
 const answer3 = document.querySelector('#answer_3');
 const answer4 = document.querySelector('#answer_4');
 const radio = document.getElementsByName('radio');
+const manageContainer = document.querySelector('.question-container');
+let questions;
 
 submit.addEventListener('click', () => {
   const http = new XMLHttpRequest();
@@ -23,3 +25,29 @@ submit.addEventListener('click', () => {
     })
   );
 });
+
+window.onload = () => {
+  getQuestions();
+};
+
+function getQuestions() {
+  const http = new XMLHttpRequest();
+  http.open('GET', `http://localhost:3004/api/questions`);
+  http.onload = () => {
+    questions = JSON.parse(http.response);
+    for (let i = 0; i < questions.length; i++) {
+      const questionList = document.createElement('div');
+      questionList.classList.add('questionList')
+      const questionTitle = document.createElement('p');
+      questionTitle.classList.add('title')
+      questionTitle.innerHTML = questions[i].question;
+      questionList.appendChild(questionTitle);
+      const deleteButton = document.createElement('button');
+      deleteButton.classList.add('delete');
+      deleteButton.innerHTML = 'delete';
+      questionList.appendChild(deleteButton);
+      manageContainer.appendChild(questionList);
+    }
+  };
+  http.send();
+}

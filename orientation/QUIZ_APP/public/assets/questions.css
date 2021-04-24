@@ -17,10 +17,23 @@ body {
   display: flex;
 }
 .question-container {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   width: 50%;
-  height: 200px;
+  height: 600px;
   border-radius: 20px;
+}
+.questionList{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.title{
+  margin-left: 20px;
+}
+.delete{
+  margin-right: 60px;
 }
 .create-container {
   display: flex;
