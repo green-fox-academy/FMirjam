@@ -31,23 +31,37 @@ window.onload = () => {
 };
 
 function getQuestions() {
+  manageContainer.innerHTML = '';
   const http = new XMLHttpRequest();
   http.open('GET', `http://localhost:3004/api/questions`);
   http.onload = () => {
     questions = JSON.parse(http.response);
     for (let i = 0; i < questions.length; i++) {
       const questionList = document.createElement('div');
-      questionList.classList.add('questionList')
+      questionList.classList.add('questionList');
       const questionTitle = document.createElement('p');
-      questionTitle.classList.add('title')
+      questionTitle.classList.add('title');
       questionTitle.innerHTML = questions[i].question;
       questionList.appendChild(questionTitle);
       const deleteButton = document.createElement('button');
       deleteButton.classList.add('delete');
       deleteButton.innerHTML = 'delete';
+      deleteQuestion(questions[i].id, deleteButton);
       questionList.appendChild(deleteButton);
       manageContainer.appendChild(questionList);
     }
   };
   http.send();
+}
+
+function deleteQuestion(id, button) {
+  button.addEventListener('click', () => {
+    const http = new XMLHttpRequest();
+    http.open('DELETE', `http://localhost:3004/api/questions/${id}`);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.onload = () => {
+      getQuestions();
+    };
+    http.send();
+  });
 }
