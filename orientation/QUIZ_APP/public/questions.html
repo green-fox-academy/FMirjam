@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/questions.css">
     <title>Quiz Game</title>
 </head>
 
@@ -19,9 +20,43 @@
             <div class="title">
                 <h1>Create a new question</h1>
             </div>
-            <div class="create-container"></div>
+            <div class="create-container">
+                <div>
+                    <input type="text" name="question" id="question" placeholder="Type your question here">
+                </div>
+                <div>
+                    <h3>Answers</h3>
+                </div>
+                <div>
+                    <h4>#1</h4>
+                    <input type="text" name="answer_1" id="answer_1" placeholder="Type your answer here">
+                    <input type="radio" id="radio" name="radio">
+                </div>
+                <div>
+                    <h4>#2</h4>
+                    <input type="text" name="answer_2" id="answer_2" placeholder="Type your answer here">
+                    <input type="radio" id="radio" name="radio">
+                </div>
+                <div>
+                    <h4>#3</h4>
+                    <input type="text" name="answer_3" id="answer_3" placeholder="Type your answer here">
+                    <input type="radio" id="radio" name="radio">
+                </div>
+                <div>
+                    <h4>#4</h4>
+                    <input type="text" name="answer_4" id="answer_4" placeholder="Type your answer here">
+                    <input type="radio" id="radio" name="radio">
+                </div>
+                <div>
+                    <button>SUBMIT</button>
+                </div>
+                <div class="goback">
+                    <h5>Go back to the game</h5>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="questions.js"></script>
 </body>
 
 </html>
