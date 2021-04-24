@@ -73,8 +73,106 @@ app.get('/api/questions', (req, res) => {
   });
 });
 
-app.post('/api/questions', (req, res) => {});
-app.delete('/api/questions/:id', (req, res) => {});
+app.post('/api/questions', (req, res) => {
+  databaseConnection.query('SELECT * FROM questions', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      const newQuestion = {
+        question: req.body.question,
+      };
+      databaseConnection.query(
+        'INSERT INTO questions SET ?',
+        newQuestion,
+        (err, rows) => {
+          if (err) {
+            res.status(500).json({
+              error: err.message,
+            });
+            return;
+          } else {
+            console.log(rows);
+            const questionId = rows.insertId;
+            console.log(questionId);
+            const newAnswers = [
+              {
+                question_id: questionId,
+                answer: req.body.answer_1,
+                is_correct: req.body.is_correct_1,
+              },
+              {
+                question_id: questionId,
+                answer: req.body.answer_2,
+                is_correct: req.body.is_correct_2,
+              },
+              {
+                question_id: questionId,
+                answer: req.body.answer_3,
+                is_correct: req.body.is_correct_3,
+              },
+              {
+                question_id: questionId,
+                answer: req.body.answer_3,
+                is_correct: req.body.is_correct_4,
+              },
+            ];
+            databaseConnection.query(
+              'INSERT INTO answers SET ?',
+              newAnswers,
+              (err, rows) => {
+                if (err) {
+                  res.status(500).json({
+                    error: err.message,
+                  });
+                  return;
+                } else {
+                  res.status(200).send('Answers registered');
+                }
+              }
+            );
+            res.status(200).send('New question added');
+          }
+        }
+      );
+    }
+  });
+});
+
+app.delete('/api/questions/:id', (req, res) => {
+  const id = req.params.id;
+  databaseConnection.query(
+    'SELECT * FROM questions WHERE id = ?',
+    [id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).send('Question not found');
+      } else {
+        databaseConnection.query(
+          'DELETE FROm questions WHERE id = ?',
+          [id],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+              return;
+            } else {
+              res.status(200).send('Selected question is deleted');
+            }
+          }
+        );
+      }
+    }
+  );
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
