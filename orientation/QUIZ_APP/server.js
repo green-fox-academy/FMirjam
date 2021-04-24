@@ -26,7 +26,7 @@ app.use(express.json());
 app.get('/game', (req, res) => {
   res.sendFile(path.join(path.resolve() + '/public/game.html'));
 });
-app.get('/quetions', (req, res) => {
+app.get('/questions', (req, res) => {
   res.sendFile(path.join(path.resolve() + '/public/questions.html'));
 });
 app.get('/api/game/', (req, res) => {
