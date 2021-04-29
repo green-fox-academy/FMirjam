@@ -34,8 +34,13 @@ button{
     outline: none;
     width: 80%;
     height: 50px;
+    color: white;
 }
 
 .gotomanage{
     margin-top: 20px;
+}
+a {
+  color: rgb(105, 186, 236);
+  text-decoration: none;
 }
