@@ -15,6 +15,7 @@ function getAQuestion() {
   http.open('GET', `http://localhost:3004/api/game`);
   http.onload = () => {
     data = JSON.parse(http.response);
+    console.log(data);
     const questionText = document.createElement('p');
     questionText.innerHTML = data.question;
     randomQuestion.appendChild(questionText);
@@ -22,6 +23,9 @@ function getAQuestion() {
     answer2.innerHTML = data.answers[1].answer;
     answer3.innerHTML = data.answers[2].answer;
     answer4.innerHTML = data.answers[3].answer;
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {});
+    });
   };
   http.send();
 }
