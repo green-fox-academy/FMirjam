@@ -23,9 +23,15 @@ function getAQuestion() {
     answer2.innerHTML = data.answers[1].answer;
     answer3.innerHTML = data.answers[2].answer;
     answer4.innerHTML = data.answers[3].answer;
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {});
-    });
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', () => {
+        if (data.answers[i].is_correct === 1) {
+          buttons[i].classList.add('correct');
+        } else {
+          buttons[i].classList.add('incorrect');
+        }
+      });
+    }
   };
   http.send();
 }
