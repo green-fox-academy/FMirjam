@@ -1,5 +1,10 @@
 let data;
 const randomQuestion = document.querySelector('.question');
+const buttons = document.querySelectorAll('button');
+const answer1 = buttons[0];
+const answer2 = buttons[1];
+const answer3 = buttons[2];
+const answer4 = buttons[3];
 
 window.onload = () => {
   getAQuestion();
@@ -13,6 +18,10 @@ function getAQuestion() {
     const questionText = document.createElement('p');
     questionText.innerHTML = data.question;
     randomQuestion.appendChild(questionText);
+    answer1.innerHTML = data.answers[0].answer;
+    answer2.innerHTML = data.answers[1].answer;
+    answer3.innerHTML = data.answers[2].answer;
+    answer4.innerHTML = data.answers[3].answer;
   };
   http.send();
 }
