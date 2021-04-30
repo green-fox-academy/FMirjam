@@ -19,6 +19,9 @@ function getAQuestion() {
     const questionText = document.createElement('p');
     questionText.innerHTML = data.question;
     randomQuestion.appendChild(questionText);
+    let score = 0;
+    const scoreBarText = document.querySelector('h1');
+    scoreBarText.innerHTML = `SCORE: ${score}`;
     answer1.innerHTML = data.answers[0].answer;
     answer2.innerHTML = data.answers[1].answer;
     answer3.innerHTML = data.answers[2].answer;
@@ -27,6 +30,8 @@ function getAQuestion() {
       buttons[i].addEventListener('click', () => {
         if (data.answers[i].is_correct === 1) {
           buttons[i].classList.add('correct');
+          score++;
+          scoreBarText.innerHTML = `SCORE: ${score}`;
         } else {
           buttons[i].classList.add('incorrect');
         }
