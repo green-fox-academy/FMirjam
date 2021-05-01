@@ -22,6 +22,19 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
 
+app.get('/playlists', (req, res) => {
+  databaseConnection.query('SELECT * FROM playlists', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      res.status(200).send(rows);
+    }
+  });
+});
+
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
