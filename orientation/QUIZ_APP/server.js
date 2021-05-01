@@ -39,7 +39,7 @@ app.get('/api/game/', (req, res) => {
     } else if (rows.length === 0) {
       res.status(404).send('Question not found');
     } else {
-      const randomNumber = Math.floor(Math.random() * (rows.length + 1));
+      const randomNumber = Math.floor(Math.random() * (rows.length));
       const randomQuestion = rows[randomNumber];
       const foundQuestionId = randomQuestion.id;
       databaseConnection.query(

@@ -1,5 +1,6 @@
 let data;
 const randomQuestion = document.querySelector('.question');
+const container = document.querySelector('.container');
 const buttons = document.querySelectorAll('button');
 const answer1 = buttons[0];
 const answer2 = buttons[1];
@@ -8,9 +9,13 @@ const answer4 = buttons[3];
 
 window.onload = () => {
   getAQuestion();
+  setInterval(() => {
+    getAQuestion();
+  }, 6000);
 };
 
 function getAQuestion() {
+  randomQuestion.innerHTML = '';
   const http = new XMLHttpRequest();
   http.open('GET', `http://localhost:3004/api/game`);
   http.onload = () => {
