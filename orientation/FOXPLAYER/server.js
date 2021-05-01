@@ -35,6 +35,35 @@ app.get('/playlists', (req, res) => {
   });
 });
 
+app.post('/playlists', (req, res) => {
+  databaseConnection.query('SELECT * FROM playlists', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      let newPlaylist = {
+        title: req.body.title,
+        system: 0,
+      };
+      databaseConnection.query(
+        'INSERT INTO playlists SET ?',
+        [newPlaylist],
+        (err, rows) => {
+          if (err) {
+            res.status(500).json({
+              error: err.message,
+            });
+          } else {
+            res.status(200).send('New playlist has been registered');
+          }
+        }
+      );
+    }
+  });
+});
+
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
