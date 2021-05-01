@@ -9,7 +9,7 @@ describe('insert new item into the table', () => {
     request(app)
       .post('/awesome')
       .send({
-        author_name: 'author6',
+        author: 'author6',
         title: 'song6',
         genre: 'pop',
         year: 2000,
@@ -23,8 +23,21 @@ describe('insert new item into the table', () => {
         expect(res.body).to.deep.equal({
           result: 'New song has been registered',
         });
-
         done();
       });
   });
 });
+
+describe('get all data', () => {
+    it('should return successfully the data', (done) => {
+      request(app)
+        .get(`/awesome`)
+        .expect(200)
+        .end((err, res) => {
+          expect(err).to.be.null;
+          expect(res.body).to.deep.equal({result: 'Successfully retrieved data'});
+          done();
+        });
+    });
+  });
+  

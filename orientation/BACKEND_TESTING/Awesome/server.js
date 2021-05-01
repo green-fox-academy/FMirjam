@@ -33,7 +33,7 @@ app.get('/awesome', (req, res) => {
         });
         return;
       } else {
-        res.status(200).json(rows);
+        res.status(200).json({ result: 'Successfully retrieved data' });
       }
     }
   });
@@ -54,6 +54,7 @@ app.post('/awesome', (req, res) => {
         year: parseInt(req.body.year),
         rating: parseInt(req.body.rating),
       };
+      console.log(newPlaylistItem)
       databaseConnection.query(
         'INSERT INTO playlist SET ?',
         [newPlaylistItem],
@@ -158,7 +159,9 @@ app.put('/awesome', (req, res) => {
 });
 
 app.get('/favourites', (req, res) => {
-    databaseConnection.query('SELECT * FROM playlist WHERE rating = 1 OR rating = 3 OR rating = 5', (err, rows) => {
+  databaseConnection.query(
+    'SELECT * FROM playlist WHERE rating = 1 OR rating = 3 OR rating = 5',
+    (err, rows) => {
       if (err) {
         res.status(500).json({
           error: err.message,
@@ -174,8 +177,9 @@ app.get('/favourites', (req, res) => {
           res.status(200).json(rows);
         }
       }
-    });
-  });
+    }
+  );
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
