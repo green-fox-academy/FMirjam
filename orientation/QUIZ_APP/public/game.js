@@ -9,7 +9,7 @@ window.onload = () => {
   setInterval(() => {
     clearQuestion();
     getAQuestion();
-  }, 6000);
+  }, 4000);
 };
 
 function getAQuestion() {
