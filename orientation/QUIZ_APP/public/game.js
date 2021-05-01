@@ -1,47 +1,48 @@
 let data;
+let score = 0;
 const randomQuestion = document.querySelector('.question');
 const container = document.querySelector('.container');
-const buttons = document.querySelectorAll('button');
-const answer1 = buttons[0];
-const answer2 = buttons[1];
-const answer3 = buttons[2];
-const answer4 = buttons[3];
+const answers = document.querySelector('.answers');
 
 window.onload = () => {
   getAQuestion();
   setInterval(() => {
+    clearQuestion();
     getAQuestion();
   }, 6000);
 };
 
 function getAQuestion() {
-  randomQuestion.innerHTML = '';
   const http = new XMLHttpRequest();
   http.open('GET', `http://localhost:3004/api/game`);
   http.onload = () => {
     data = JSON.parse(http.response);
-    console.log(data);
     const questionText = document.createElement('p');
     questionText.innerHTML = data.question;
     randomQuestion.appendChild(questionText);
-    let score = 0;
     const scoreBarText = document.querySelector('h1');
     scoreBarText.innerHTML = `SCORE: ${score}`;
-    answer1.innerHTML = data.answers[0].answer;
-    answer2.innerHTML = data.answers[1].answer;
-    answer3.innerHTML = data.answers[2].answer;
-    answer4.innerHTML = data.answers[3].answer;
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('click', () => {
+    for (let i = 0; i < data.answers.length; i++) {
+      const button = document.createElement('button');
+      button.innerHTML = data.answers[i].answer;
+      button.addEventListener('click', () => {
         if (data.answers[i].is_correct === 1) {
-          buttons[i].classList.add('correct');
+          button.classList.add('correct');
+          console.log('Kedves Tomi SE');
           score++;
           scoreBarText.innerHTML = `SCORE: ${score}`;
         } else {
-          buttons[i].classList.add('incorrect');
+          button.classList.add('incorrect');
         }
       });
+      button.classList.remove('correct');
+      answers.appendChild(button);
     }
   };
   http.send();
+}
+
+function clearQuestion() {
+  randomQuestion.innerHTML = '';
+  answers.innerHTML = '';
 }
