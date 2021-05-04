@@ -4,6 +4,7 @@ const amount = document.querySelector('#amount');
 const bid = document.querySelector('button');
 const p = document.querySelector('p');
 const list = document.querySelector('.list');
+const bidItem = document.querySelector('#items');
 
 window.onload = () => {
   getBids();
@@ -24,22 +25,22 @@ function getBids() {
 }
 
 bid.addEventListener('click', () => {
-  console.log('Tomi');
+  console.log(name.value);
   const http = new XMLHttpRequest();
   http.open('POST', `http://localhost:3010/api/items/:id/bids`);
   http.onload = () => {
-    // const data = JSON.parse(http.responseText);
-    if (http.status === 200) {
-      p.innerHTML('Successfull');
-    } else if (http.status === 400) {
-      p.innerHTML = 'Your bid is below the highest bid!';
-    } else {
+    if (http.status === 400) {
+      p.innerHTML('Your bid is below the highest bid!');
+    } else if (http.status === 404) {
       p.innerHTML = 'The auction is over!';
+    } else {
+      p.innerHTML = 'Successfull!';
     }
   };
   http.setRequestHeader('Content-Type', 'application/json');
   http.send(
     JSON.stringify({
+      title: bidItem.value,
       highestBid: amount.value,
       highestBidderName: name.value,
     })
