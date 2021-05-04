@@ -62,7 +62,7 @@ app.post('/api/items/:id/bids', (req, res) => {
         });
         return;
       } else if (baseDate > rows[0].expiryDate) {
-        res.status(400).json({
+        res.status(404).json({
           message: 'The auction is over!',
         });
         return;
