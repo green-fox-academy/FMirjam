@@ -23,6 +23,10 @@ databaseConnection.connect((err) => {
   app.use(express.static('public'));
   app.use(express.json());
 
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(path.resolve() + '/public/auction.html'));
+  });
+
   process.on('uncaughtException', (err) => {
     console.log('Fatal error occured', err.message);
     process.exit(1);
