@@ -46,6 +46,7 @@ app.post('/api/items/:id/bids', (req, res) => {
   const name = req.body.name;
   const amount = parseInt(req.body.amount);
   let foundItem;
+  let baseDate = new Date().toString();
   databaseConnection.query(
     'SELECT * FROM items WHERE id = ?',
     [id],
@@ -58,6 +59,11 @@ app.post('/api/items/:id/bids', (req, res) => {
       } else if (amount < rows[0].highestBid) {
         res.status(400).json({
           message: 'Your bid is below the highest bid!',
+        });
+        return;
+      } else if (baseDate > rows[0].expiryDate) {
+        res.status(400).json({
+          message: 'The auction is over!',
         });
         return;
       } else {
