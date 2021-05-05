@@ -46,7 +46,7 @@ app.post('/api/items/:id/bids', (req, res) => {
   const name = req.body.name;
   const amount = parseInt(req.body.amount);
   let foundItem;
-  let baseDate = 'Tue May 04 2021 10:58:42 GMT+0200';
+  let baseDate = new Date();
   databaseConnection.query(
     'SELECT * FROM items WHERE id = ?',
     [id],
@@ -60,23 +60,17 @@ app.post('/api/items/:id/bids', (req, res) => {
         res.status(400).json({
           message: 'Your bid is below the highest bid!',
         });
-        return;
-      }
-      //   else if (baseDate > rows[0].expiryDate) {
-      //     res.status(404).json({
-      //       message: 'The auction is over!',
-      //     });
-      //     return;
-      //   }
-      else {
+      } else if (baseDate < rows[0].expiryDate) {
+        res.status(404).json({
+          message: 'The auction is over!',
+        });
+      } else {
         foundItem = rows[0];
         const modifiedItem = {
           ...foundItem,
           highestBid: amount,
           highestBiddername: name,
         };
-
-        console.log(modifiedItem)
         databaseConnection.query(
           'UPDATE items SET ? WHERE id = ?',
           [modifiedItem, id],
