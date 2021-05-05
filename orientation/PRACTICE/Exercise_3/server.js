@@ -31,6 +31,10 @@ app.get('/error', (req, res) => {
   res.sendFile(path.join(path.resolve() + '/public/error.html'));
 });
 
+app.get('/error2', (req, res) => {
+  res.sendFile(path.join(path.resolve() + '/public/error2.html'));
+});
+
 app.post('/mentor', (req, res) => {
   const name = req.body.name;
   const className = req.body.className;
@@ -44,7 +48,7 @@ app.post('/mentor', (req, res) => {
         });
         return;
       } else if (rows.length !== 0) {
-        res.redirect('http://localhost:3011/error')
+        res.redirect('http://localhost:3011/error');
       } else {
         databaseConnection.query(
           'INSERT INTO mentors SET name = ?, className = ?',
@@ -67,7 +71,25 @@ app.post('/mentor', (req, res) => {
   );
 });
 
-app.get('/mentor/:id');
+app.get('/mentor/:id', (req, res) => {
+  const id = req.params.id;
+  databaseConnection.query(
+    'SELECT * FROM mentors WHERE id = ?',
+    [id],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.redirect('http://localhost:3011/error2');
+      } else {
+        res.status(200).send(rows);
+      }
+    }
+  );
+});
 
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
