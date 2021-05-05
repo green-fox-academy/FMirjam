@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(path.resolve() + 'public/index.html'));
 });
 
+app.get('/error', (req, res) => {
+  res.sendFile(path.join(path.resolve() + 'public/error.html'));
+});
+
 app.post('/mentor', (req, res) => {
   const name = req.body.name;
   const className = req.body.className;
@@ -40,7 +44,7 @@ app.post('/mentor', (req, res) => {
         });
         return;
       } else if (rows.length !== 0) {
-        res.status(404).send('Mentor already exists');
+        res.redirect('http://localhost:3011/error')
       } else {
         databaseConnection.query(
           'INSERT INTO mentors SET name = ?, className = ?',
