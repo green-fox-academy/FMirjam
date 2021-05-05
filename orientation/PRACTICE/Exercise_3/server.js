@@ -27,12 +27,49 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(path.resolve() + 'public/index.html'));
 });
 
+app.post('/mentor', (req, res) => {
+  const name = req.body.name;
+  const className = req.body.className;
+  databaseConnection.query(
+    'SELECT * FROM mentors WHERE name = ?',
+    [name],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length !== 0) {
+        res.status(404).send('Mentor already exists');
+      } else {
+        databaseConnection.query(
+          'INSERT INTO mentors SET name = ?, className = ?',
+          [name, className],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+              return;
+            } else {
+              res.status(200).json({
+                message: 'Successfull!y inserted',
+              });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
+app.get('/mentor/:id');
 
 process.on('uncaughtException', (err) => {
-    console.log('Fatal error occured', err.message);
-    process.exit(1);
-  });
-  
-  app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-  });
+  console.log('Fatal error occured', err.message);
+  process.exit(1);
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
