@@ -24,11 +24,11 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(path.resolve() + 'public/index.html'));
+  res.sendFile(path.join(path.resolve() + '/public/index.html'));
 });
 
 app.get('/error', (req, res) => {
-  res.sendFile(path.join(path.resolve() + 'public/error.html'));
+  res.sendFile(path.join(path.resolve() + '/public/error.html'));
 });
 
 app.post('/mentor', (req, res) => {
