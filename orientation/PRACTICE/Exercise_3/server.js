@@ -74,7 +74,7 @@ app.post('/mentor', (req, res) => {
 app.get('/mentor/:id', (req, res) => {
   const id = req.params.id;
   databaseConnection.query(
-    'SELECT * FROM mentors WHERE id = ?',
+    'SELECT name, className FROM mentors WHERE id = ?',
     [id],
     (err, rows) => {
       if (err) {
