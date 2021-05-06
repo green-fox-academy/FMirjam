@@ -72,6 +72,19 @@ app.post('/mentor', (req, res) => {
   );
 });
 
+app.get('/mentors', (req, res) => {
+  databaseConnection.query('SELECT * FROM mentors', (err, rows) => {
+    if (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+      return;
+    } else {
+      res.status(200).send(rows);
+    }
+  });
+});
+
 app.get('/mentor/:id', (req, res) => {
   const id = req.params.id;
   databaseConnection.query(

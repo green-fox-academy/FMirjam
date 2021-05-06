@@ -11,13 +11,20 @@ window.onload = () => {
 };
 
 function getMentors() {
-//   const http = new XMLHttpRequest();
-//   http.open('GET', `http://localhost:3011/api/mentors`);
-//   http.onload = () => {
-//     data = JSON.parse(http.response);
-//   };
-
-//   http.send();
+  const http = new XMLHttpRequest();
+  http.open('GET', `http://localhost:3011/mentors`);
+  http.onload = () => {
+    data = JSON.parse(http.response);
+    for (let i = 0; i < data.length; i++) {
+      const ul = document.createElement('a');
+      ul.innerHTML = data[i].name;
+      ul.setAttribute('href', `http://localhost:3011/mentor/${data[i].id}`)
+      const br = document.createElement('br');
+      mentorClass.appendChild(br)
+      mentorClass.appendChild(ul)
+    }
+  };
+  http.send();
 }
 
 submit.addEventListener('click', () => {
@@ -35,7 +42,7 @@ submit.addEventListener('click', () => {
 });
 
 function getOptions() {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < options.length; i++) {
     const dropDownOption = document.createElement('option');
     dropDownOption.innerHTML = options[i];
     dropDownOption.setAttribute('data-id', options.indexOf(options[i]));
