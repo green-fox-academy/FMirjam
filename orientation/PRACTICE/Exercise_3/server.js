@@ -92,9 +92,10 @@ app.get('/mentor/:id', (req, res) => {
 });
 
 app.get('/api/mentors', (req, res) => {
+  const classNameList = ['Really', 'Tiptop', 'Seadog', 'Robot'];
   const className = req.body.className;
   databaseConnection.query(
-    'SELECT name FROM mentors WHERE className = ?',
+    'SELECT * FROM mentors WHERE className = ?',
     [className],
     (err, rows) => {
       if (err) {
@@ -106,6 +107,13 @@ app.get('/api/mentors', (req, res) => {
         res.status(404).json({
           message: 'Class does not have mentors',
         });
+      } else if (
+        rows.length !== 0 &&
+        !classNameList.includes(rows[0].className)
+      ) {
+        res.status(400).json({
+          message: 'Invalid class name',
+        });
       } else {
         res.status(200).send(rows);
       }
@@ -114,6 +122,7 @@ app.get('/api/mentors', (req, res) => {
 });
 
 app.put('/api/mentors/:mentorId', (req, res) => {
+  const classNameList = ['Really', 'Tiptop', 'Seadog', 'Robot'];
   const mentorId = req.params.mentorId;
   const name = req.body.name;
   const className = req.body.className;
@@ -130,13 +139,11 @@ app.put('/api/mentors/:mentorId', (req, res) => {
         res.status(404).json({
           message: 'No mentor exists for the given id',
         });
-      }
-      //   else if (rows.length !== 0 && rows[0].className !== className) {
-      //     res.status(400).json({
-      //       message: 'Invalid class name',
-      //     });
-      //   }
-      else {
+      } else if (!classNameList.includes(className)) {
+        res.status(400).json({
+          message: 'Invalid class name',
+        });
+      } else {
         databaseConnection.query(
           'UPDATE mentors SET name = ?, className = ? WHERE id = ?',
           [name, className, mentorId],
