@@ -48,7 +48,7 @@ app.post('/mentor', (req, res) => {
         });
         return;
       } else if (rows.length !== 0) {
-        res.redirect('http://localhost:3011/error');
+        res.redirect(302, 'http://localhost:3011/error');
       } else {
         databaseConnection.query(
           'INSERT INTO mentors SET name = ?, className = ?',
@@ -83,7 +83,7 @@ app.get('/mentor/:id', (req, res) => {
         });
         return;
       } else if (rows.length === 0) {
-        res.redirect('http://localhost:3011/error2');
+        res.redirect(302, 'http://localhost:3011/error2');
       } else {
         res.status(200).send(rows);
       }

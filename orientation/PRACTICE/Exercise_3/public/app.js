@@ -1,7 +1,6 @@
 let data;
 const dropDownClass = document.querySelector('#items');
 const options = ['Really', 'Tiptop', 'Seadog', 'Robot'];
-console.log(options[0]);
 const mentorClass = document.querySelector('.mentors');
 const submit = document.querySelector('button');
 const name = document.querySelector('#name');
@@ -12,16 +11,17 @@ window.onload = () => {
 };
 
 function getMentors() {
-  const http = new XMLHttpRequest();
-  http.open('GET', `http://localhost:3011/api/mentors`);
-  http.onload = () => {
-    data = JSON.parse(http.response);
-  };
+//   const http = new XMLHttpRequest();
+//   http.open('GET', `http://localhost:3011/api/mentors`);
+//   http.onload = () => {
+//     data = JSON.parse(http.response);
+//   };
 
-  http.send();
+//   http.send();
 }
 
 submit.addEventListener('click', () => {
+  const optionValue = dropDownClass.options[dropDownClass.selectedIndex].value;
   const http = new XMLHttpRequest();
   http.open('POST', `http://localhost:3011/mentor`);
   http.onload = () => {};
@@ -29,7 +29,7 @@ submit.addEventListener('click', () => {
   http.send(
     JSON.stringify({
       name: name.value,
-      //   className:
+      className: optionValue,
     })
   );
 });
