@@ -61,7 +61,7 @@ app.post('/mentor', (req, res) => {
               return;
             } else {
               res.status(200).json({
-                message: 'Successfull!y inserted',
+                message: 'Successfull!y inserted', //redirect to get/mentor/:id endpoint
               });
             }
           }
@@ -84,6 +84,28 @@ app.get('/mentor/:id', (req, res) => {
         return;
       } else if (rows.length === 0) {
         res.redirect('http://localhost:3011/error2');
+      } else {
+        res.status(200).send(rows);
+      }
+    }
+  );
+});
+
+app.get('/api/mentors', (req, res) => {
+  const className = req.body.className;
+  databaseConnection.query(
+    'SELECT name FROM mentors WHERE className = ?',
+    [className],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(400).json({
+          message: 'Invalid class name',
+        });
       } else {
         res.status(200).send(rows);
       }
