@@ -60,9 +60,10 @@ app.post('/mentor', (req, res) => {
               });
               return;
             } else {
-              res.status(200).json({
-                message: 'Successfull!y inserted', //redirect to get/mentor/:id endpoint
-              });
+              res.redirect(
+                302,
+                `http://localhost:3011/mentor/${rows.insertId}`
+              );
             }
           }
         );
