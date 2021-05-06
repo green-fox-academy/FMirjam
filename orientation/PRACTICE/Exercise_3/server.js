@@ -103,8 +103,8 @@ app.get('/api/mentors', (req, res) => {
         });
         return;
       } else if (rows.length === 0) {
-        res.status(400).json({
-          message: 'Invalid class name',
+        res.status(404).json({
+          message: 'Class does not have mentors',
         });
       } else {
         res.status(200).send(rows);
