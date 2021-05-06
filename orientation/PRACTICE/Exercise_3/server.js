@@ -113,6 +113,50 @@ app.get('/api/mentors', (req, res) => {
   );
 });
 
+app.put('/api/mentors/:mentorId', (req, res) => {
+  const mentorId = req.params.mentorId;
+  const name = req.body.name;
+  const className = req.body.className;
+  databaseConnection.query(
+    'SELECT * FROM mentors WHERE id = ?',
+    [mentorId],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).json({
+          message: 'No mentor exists for the given id',
+        });
+      }
+      //   else if (rows.length !== 0 && rows[0].className !== className) {
+      //     res.status(400).json({
+      //       message: 'Invalid class name',
+      //     });
+      //   }
+      else {
+        databaseConnection.query(
+          'UPDATE mentors SET name = ?, className = ? WHERE id = ?',
+          [name, className, mentorId],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+            } else {
+              res.status(200).json({
+                message: 'Successfully updated',
+              });
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
