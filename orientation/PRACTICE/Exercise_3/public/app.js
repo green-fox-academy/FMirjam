@@ -18,10 +18,10 @@ function getMentors() {
     for (let i = 0; i < data.length; i++) {
       const ul = document.createElement('a');
       ul.innerHTML = data[i].name;
-      ul.setAttribute('href', `http://localhost:3011/mentor/${data[i].id}`)
+      ul.setAttribute('href', `http://localhost:3011/mentor/${data[i].id}`);
       const br = document.createElement('br');
-      mentorClass.appendChild(br)
-      mentorClass.appendChild(ul)
+      mentorClass.appendChild(br);
+      mentorClass.appendChild(ul);
     }
   };
   http.send();
