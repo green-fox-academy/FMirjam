@@ -157,6 +157,41 @@ app.put('/api/mentors/:mentorId', (req, res) => {
   );
 });
 
+app.delete('/api/mentors/:mentorId', (req, res) => {
+  const mentorId = req.params.mentorId;
+  databaseConnection.query(
+    'SELECT * FROM mentors WHERE id = ?',
+    [mentorId],
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({
+          error: err.message,
+        });
+        return;
+      } else if (rows.length === 0) {
+        res.status(404).json({
+          message: 'No mentor exists for the given id',
+        });
+      } else {
+        databaseConnection.query(
+          'DELETE FROM mentors WHERE id = ?',
+          [mentorId],
+          (err, rows) => {
+            if (err) {
+              res.status(500).json({
+                error: err.message,
+              });
+            } else {
+              res.status(200).json({
+                message: 'Successfully deleted',
+              });
+            }
+          }
+        );
+      }
+    }
+  );
+});
 process.on('uncaughtException', (err) => {
   console.log('Fatal error occured', err.message);
   process.exit(1);
