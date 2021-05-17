@@ -15,6 +15,7 @@
   </div>
 
   <div class="courses">
+    <course-card></course-card>
 
     <course-card *ngFor="let course of  courses  "
                  (courseChanged)="save($event)"
