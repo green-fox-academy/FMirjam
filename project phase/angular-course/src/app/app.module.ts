@@ -6,11 +6,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {CoursesModule} from './courses/courses.module';
 import {CourseTitleComponent} from './course-title/course-title.component';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CourseTitleComponent
+        CourseTitleComponent,
+        CourseCardComponent
     ],
     imports: [
         BrowserModule,
