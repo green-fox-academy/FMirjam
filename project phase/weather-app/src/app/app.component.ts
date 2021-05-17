@@ -12,4 +12,6 @@ export class AppComponent {
   seattleTile = TILES[0];
   miamiTile = TILES[1];
   barcelonaTile = TILES[2];
+  londonTile = TILES[3];
+  budapestTile = TILES[4];
 }
