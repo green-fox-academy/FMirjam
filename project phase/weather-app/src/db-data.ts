@@ -18,4 +18,16 @@ export const TILES: any = [
     state: 'Spain',
     degree: 19,
   },
+  {
+    id: 4,
+    city: 'London',
+    state: 'United Kingdom',
+    degree: 4,
+  },
+  {
+    id: 5,
+    city: 'Budapest',
+    state: 'Hungary',
+    degree: 12,
+  },
 ];
