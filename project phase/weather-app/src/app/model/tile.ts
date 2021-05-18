@@ -3,4 +3,5 @@ export interface Tile {
   city: string;
   state: string;
   degree: number;
+  image: string;
 }
