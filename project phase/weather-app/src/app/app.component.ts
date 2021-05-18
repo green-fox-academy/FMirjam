@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'weather-app';
   tiles = TILES;
 
-  constructor(service: WeatherService) {
-    service.printToConsole('Got the service');
+  constructor(private service: WeatherService) {
+    this.service.printToConsole('Got the service');
   }
 }
