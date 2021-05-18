@@ -4,7 +4,7 @@ export const TILES: any = [
     city: 'Seattle',
     state: 'Washington',
     degree: 11,
-    image: 'assets/cloudy.png',
+    image: 'assets/rainy.png',
   },
   {
     id: 2,

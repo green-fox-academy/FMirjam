@@ -14,7 +14,7 @@ export class TileComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onTileChecked(){
-    console.log('Testing')
+  onTileChecked() {
+    console.log('Testing');
   }
 }
