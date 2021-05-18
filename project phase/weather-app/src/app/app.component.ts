@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WeatherService } from 'src/weather.service';
 import { TILES } from '../db-data';
 
 @Component({
@@ -9,4 +10,8 @@ import { TILES } from '../db-data';
 export class AppComponent {
   title = 'weather-app';
   tiles = TILES;
+
+  constructor(service: WeatherService) {
+    service.printToConsole('Got the service');
+  }
 }
