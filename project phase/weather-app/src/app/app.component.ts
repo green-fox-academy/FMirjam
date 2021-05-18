@@ -8,10 +8,5 @@ import { TILES } from '../db-data';
 })
 export class AppComponent {
   title = 'weather-app';
-
-  seattleTile = TILES[0];
-  miamiTile = TILES[1];
-  barcelonaTile = TILES[2];
-  londonTile = TILES[3];
-  budapestTile = TILES[4];
+  tiles = TILES;
 }
