@@ -1,9 +1,11 @@
 <div class="tile">
-    <div class="city-name">
-        {{tile.city}}
-    </div>
-    <div class="state-name">
-        {{tile.state}}
+    <div class="details">
+        <div class="city-name">
+            {{tile.city}}
+        </div>
+        <div class="state-name">
+            {{tile.state}}
+        </div>
     </div>
     <div class="temperature">
         {{tile.degree + '℃'}}
@@ -11,5 +13,7 @@
     <div class="image">
         <img [src]=tile.image />
     </div>
-    <button (click)="onTileChecked()">Check details</button>
+    <!-- <div class="button">
+        <button (click)="onTileChecked()">Check details</button>
+    </div> -->
 </div>
