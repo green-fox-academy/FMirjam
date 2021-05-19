@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ITile } from './app/model/Itile';
 import { IWeatherApiData } from './app/model/IWeatherApiData';
@@ -29,7 +29,7 @@ export class WeatherService {
             id: x.id,
             city: x.name,
             state: x.sys.country,
-            degree: x.main.temp,
+            degree: Math.round(x.main.temp -272.15),
             image: x.weather[0].icon,
           };
         })
