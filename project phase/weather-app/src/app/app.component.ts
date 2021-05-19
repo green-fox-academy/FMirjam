@@ -18,6 +18,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.service
       .getApiData()
-      .subscribe((response) => (this.tiles = [response]));
+      .subscribe((response) => (this.tiles = response));
   }
 }
