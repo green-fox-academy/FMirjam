@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/weather.service';
-import { TILES } from '../db-data';
+import { ITile } from './model/tile';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,15 @@ import { TILES } from '../db-data';
 })
 export class AppComponent implements OnInit {
   title = 'weather-app';
-  tiles = TILES;
-
+  tiles: ITile[]
+ 
   constructor(private service: WeatherService) {
     this.service.printToConsole('Got the service');
   }
 
   ngOnInit(): void {
-    this.service.getApiData().subscribe((response) =>console.log(response));
+    this.service
+      .getApiData()
+      .subscribe((response) => (this.tiles = [response]));
   }
 }

@@ -1,4 +1,6 @@
-export const TILES: any = [
+import { ITile } from './app/model/tile';
+
+export const TILES: ITile[] = [
   {
     id: 1,
     city: 'Seattle',

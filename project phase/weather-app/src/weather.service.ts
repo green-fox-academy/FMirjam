@@ -4,12 +4,24 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ITile } from './app/model/tile';
 
-export interface IWeather {
+export interface IWeatherApiData {
   id: number;
-  name:string;
-  sys: string;
-  main: number;
-  weather: object;
+  name: string;
+  sys: ISys;
+  main: IMain;
+  weather: IWeather[];
+}
+
+export interface IWeather {
+  icon: string;
+}
+
+export interface IMain {
+  temp: number;
+}
+
+export interface ISys {
+  country: string;
 }
 
 @Injectable({
@@ -25,7 +37,7 @@ export class WeatherService {
 
   getApiData(): Observable<ITile> {
     return this.http
-      .get<IWeather>(
+      .get<IWeatherApiData>(
         `https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=${this.apiKey}`
       )
       .pipe(
@@ -34,8 +46,8 @@ export class WeatherService {
           return {
             id: x.id,
             city: x.name,
-            state: x.sys,
-            degree: x.main,
+            state: x.sys.country,
+            degree: x.main.temp,
             image: x.weather[0].icon,
           };
         })
