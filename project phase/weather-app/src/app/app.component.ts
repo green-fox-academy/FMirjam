@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/weather.service';
 import { TILES } from '../db-data';
 
@@ -8,16 +7,15 @@ import { TILES } from '../db-data';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'weather-app';
   tiles = TILES;
 
-  constructor(private service: WeatherService, private http: HttpClient) {
+  constructor(private service: WeatherService) {
     this.service.printToConsole('Got the service');
   }
 
-  ngOnInit() {
-    let observable = this.http.get('URL');
-    observable.subscribe((response) => console.log(response));
+  ngOnInit(): void {
+    this.service.getApiData().subscribe((response) =>console.log(response));
   }
 }

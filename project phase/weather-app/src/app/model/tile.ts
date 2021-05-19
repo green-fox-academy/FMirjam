@@ -1,4 +1,4 @@
-export interface Tile {
+export interface ITile {
   id: number;
   city: string;
   state: string;
