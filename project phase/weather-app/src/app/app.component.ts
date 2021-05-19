@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/weather.service';
-import { ITile } from './model/tile';
+import { ITile } from './model/Itile';
 
 @Component({
   selector: 'app-root',

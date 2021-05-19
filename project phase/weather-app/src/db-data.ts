@@ -1,4 +1,4 @@
-import { ITile } from './app/model/tile';
+import { ITile } from './app/model/Itile';
 
 export const TILES: ITile[] = [
   {

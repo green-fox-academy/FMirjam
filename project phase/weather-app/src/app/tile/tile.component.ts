@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ITile } from '../model/tile';
+import { ITile } from '../model/Itile';
 
 @Component({
   selector: 'app-tile',

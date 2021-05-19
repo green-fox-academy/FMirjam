@@ -1,28 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { ITile } from './app/model/tile';
+import { ITile } from './app/model/Itile';
+import { IWeatherApiData } from './app/model/IWeatherApiData';
 
-export interface IWeatherApiData {
-  id: number;
-  name: string;
-  sys: ISys;
-  main: IMain;
-  weather: IWeather[];
-}
-
-export interface IWeather {
-  icon: string;
-}
-
-export interface IMain {
-  temp: number;
-}
-
-export interface ISys {
-  country: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +17,7 @@ export class WeatherService {
     console.log(arg);
   }
 
-  getApiData(): Observable<ITile> {
+  getApiData(): Observable<ITile>{
     return this.http
       .get<IWeatherApiData>(
         `https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=${this.apiKey}`
