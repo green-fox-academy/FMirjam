@@ -1,4 +1,4 @@
 export interface IWeather {
-    icon: string;
+    main: string;
   }
   
