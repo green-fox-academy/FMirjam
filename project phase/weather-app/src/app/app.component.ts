@@ -21,8 +21,10 @@ export class AppComponent implements OnInit {
   }
 
   show() {
-    //új api call kell?
-    //service-ben írt call ID-val kéri le, de nekünk a searchfield-be város név kell
+   
+    //a service-ben csinálom meg ezt a function-t és itt meghívom újra?
+    //de akkor a másik lekérést kell módosítani mert ott id-val kérjük le a bulk-ot, és itt meg az adott city-hez tartozó kell
     //this.cityName-mel kell lekérni
+
   }
 }

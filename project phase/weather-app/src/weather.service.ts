@@ -10,7 +10,7 @@ import { IWeatherGroupData } from './app/model/IWeatherGroupData';
 })
 export class WeatherService {
   apiKey: string = '100cb1887e2abc22cbc5d54fc670e448';
-  response: string[] = ['5809844', '4164138', '3128760', '2643743', '3054643'];
+  ids: string[] = ['5809844', '4164138', '3128760', '2643743', '3054643'];
   constructor(private http: HttpClient) {}
 
   printToConsole(arg) {
@@ -20,7 +20,7 @@ export class WeatherService {
   getApiData(): Observable<ITile[]> {
     return this.http
       .get<IWeatherGroupData>( //IWetaherGroupData típus
-        `https://api.openweathermap.org/data/2.5/group?id=${this.response.join(
+        `https://api.openweathermap.org/data/2.5/group?id=${this.ids.join(
           ','
         )}&appid=${this.apiKey}`
       )
