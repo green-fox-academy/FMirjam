@@ -20,4 +20,8 @@ export class AppComponent implements OnInit {
       .getApiData()
       .subscribe((response) => (this.tiles = response));
   }
+
+  getCityWeather() {
+    console.log('Testing');
+  }
 }
