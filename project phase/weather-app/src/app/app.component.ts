@@ -9,19 +9,20 @@ import { ITile } from './model/Itile';
 })
 export class AppComponent implements OnInit {
   title = 'weather-app';
-  tiles: ITile[]
- 
+  tiles: ITile[];
+  cityName: string;
+
   constructor(private service: WeatherService) {
     this.service.printToConsole('Got the service');
   }
 
   ngOnInit(): void {
-    this.service
-      .getApiData()
-      .subscribe((response) => (this.tiles = response));
+    this.service.getApiData().subscribe((response) => (this.tiles = response));
   }
 
-  getCityWeather() {
-    console.log('Testing');
+  show() {
+    //új api call kell?
+    //service-ben írt call ID-val kéri le, de nekünk a searchfield-be város név kell
+    //this.cityName-mel kell lekérni
   }
 }
