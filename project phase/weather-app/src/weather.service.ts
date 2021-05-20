@@ -35,7 +35,7 @@ export class WeatherService {
               city: y.name,
               state: y.sys.country,
               degree: Math.round(y.main.temp - 272.15),
-              image: y.weather[0].main,
+              image: y.weather[0].icon,
             };
           });
         })
