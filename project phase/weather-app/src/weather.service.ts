@@ -11,6 +11,7 @@ import { IWeatherGroupData } from './app/model/IWeatherGroupData';
 export class WeatherService {
   apiKey: string = '100cb1887e2abc22cbc5d54fc670e448';
   ids: string[] = ['5809844', '4164138', '3128760', '2643743', '3054643'];
+  cityName: string;
   constructor(private http: HttpClient) {}
 
   printToConsole(arg) {
@@ -41,4 +42,12 @@ export class WeatherService {
         })
       );
   }
+
+  // getApiDataByCityName(): Observable<ITile[]> {
+  //   return this.http
+  //     .get<IWeatherGroupData>(
+  //       `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&appid=${this.apiKey}`
+  //     )
+  //     .pipe(tap(x)=> console.log(x));
+  // }
 }

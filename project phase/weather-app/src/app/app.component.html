@@ -1,8 +1,8 @@
-<div class="searchField" ([ngModel])="cityName"> 
+<div class="searchField">
     <input type="text">
 </div>
 <div class="button">
-    <button (click)="show()">Show</button>
+    <button>Show</button>
 </div>
 <div class="tiles">
     <app-tile *ngFor="let tile of tiles" [tile]="tile"></app-tile>

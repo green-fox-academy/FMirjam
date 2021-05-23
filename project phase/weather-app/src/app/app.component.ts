@@ -10,7 +10,7 @@ import { ITile } from './model/Itile';
 export class AppComponent implements OnInit {
   title = 'weather-app';
   tiles: ITile[];
-  cityName: string;
+
 
   constructor(private service: WeatherService) {
     this.service.printToConsole('Got the service');
@@ -20,11 +20,11 @@ export class AppComponent implements OnInit {
     this.service.getApiData().subscribe((response) => (this.tiles = response));
   }
 
-  show() {
+
    
     //a service-ben csinálom meg ezt a function-t és itt meghívom újra?
     //de akkor a másik lekérést kell módosítani mert ott id-val kérjük le a bulk-ot, és itt meg az adott city-hez tartozó kell
     //this.cityName-mel kell lekérni
 
-  }
+  
 }
