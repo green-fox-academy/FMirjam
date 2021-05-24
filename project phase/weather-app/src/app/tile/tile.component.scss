@@ -12,12 +12,13 @@
 
     .city-name {
       font-size: 25px;
+      width: 150px;
+      max-width: 150px;
     }
   }
   .temperature {
     display: flex;
     margin-top: 20px;
-    margin-left: 40px;
     font-size: 30px;
   }
 
