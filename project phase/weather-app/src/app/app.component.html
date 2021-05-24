@@ -1,8 +1,8 @@
 <div class="searchField">
-    <input type="text">
+    <input type="text" [(ngModel)] ="cityName">
 </div>
 <div class="button">
-    <button>Show</button>
+    <button (click)= "show()">Show</button>
 </div>
 <div class="tiles">
     <app-tile *ngFor="let tile of tiles" [tile]="tile"></app-tile>
