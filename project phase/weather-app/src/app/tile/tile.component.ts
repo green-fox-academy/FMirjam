@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { WeatherService } from 'src/weather.service';
 import { ITile } from '../model/Itile';
 
 @Component({
@@ -10,8 +11,10 @@ export class TileComponent implements OnInit {
   @Input()
   tile: ITile;
 
-  constructor() {}
+  constructor(private service: WeatherService) {}
 
   ngOnInit(): void {}
+
+  showForecastData(){}
 
 }
