@@ -29,7 +29,7 @@ export class WeatherService {
         )}&appid=${this.apiKey}`
       )
       .pipe(
-        tap((x) => console.log(x)),
+        // tap((x) => console.log(x)),
         map((data) => {
           //rxjs map
           return data.list.map((y) => {
@@ -52,7 +52,7 @@ export class WeatherService {
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apiKey}`
       )
       .pipe(
-        tap((z) => console.log(z)),
+        // tap((z) => console.log(z)),
         map((data) => {
           return {
             id: data.id,
@@ -65,13 +65,18 @@ export class WeatherService {
       );
   }
 
-  getForecastDataById(): Observable<IForecastData[]> {
+  getForecastDataById()
+  
+  // :Observable<IForecastData[]> 
+  {
     return this.http
       .get<IForecastGroupData>(
         `https://api.openweathermap.org/data/2.5/forecast/daily?id=${this.ids.join(
           ','
         )}&cnt=${this.cnt}&appid=${this.apiKey}`
       )
-      .pipe(tap((v) => console.log(v)))
+      .pipe(
+        tap((v) => console.log(v)),
+      );
   }
 }
