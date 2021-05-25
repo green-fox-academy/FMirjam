@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TileComponent } from './tile/tile.component';
 import { FormsModule } from '@angular/forms';
+import { CityTyleComponent } from './city-tyle/city-tyle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TileComponent
+    TileComponent,
+    CityTyleComponent
   ],
   imports: [
     BrowserModule,
