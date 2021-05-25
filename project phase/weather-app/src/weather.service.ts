@@ -51,14 +51,22 @@ export class WeatherService {
       .pipe(
         tap((z) => console.log(z)),
         map((data) => {
-            return {
-              id: data.id,
-              city: data.name,
-              state: data.sys.country,
-              degree: Math.round(data.main.temp - 272.15),
-              image: data.weather[0].icon,
-            };
+          return {
+            id: data.id,
+            city: data.name,
+            state: data.sys.country,
+            degree: Math.round(data.main.temp - 272.15),
+            image: data.weather[0].icon,
+          };
         })
       );
+  }
+
+  getForecastDataById(): Observable <>{
+    return this.http
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast/daily?q=Barcelona&cnt=0&appid=${this.apiKey}`
+      )
+      .pipe(tap((v) => console.log(v)));
   }
 }
