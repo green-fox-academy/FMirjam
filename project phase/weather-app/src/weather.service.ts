@@ -71,9 +71,7 @@ export class WeatherService {
   {
     return this.http
       .get<IForecastGroupData>(
-        `https://api.openweathermap.org/data/2.5/forecast/daily?id=${this.ids.join(
-          ','
-        )}&cnt=${this.cnt}&appid=${this.apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast/daily?id=5809844&cnt=5&appid=${this.apiKey}`
       )
       .pipe(
         tap((v) => console.log(v)),

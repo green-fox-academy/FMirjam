@@ -11,7 +11,6 @@ export class AppComponent implements OnInit {
   title = 'weather-app';
   tiles: ITile[];
   cityName: string = '';
-  cityTile: ITile;
 
   constructor(private service: WeatherService) {
     this.service.printToConsole('Got the service');
@@ -23,8 +22,7 @@ export class AppComponent implements OnInit {
 
   show() {
     this.service.getApiDataByCityName(this.cityName).subscribe((response) => {
-      this.cityTile = response;
-      console.log(this.cityTile);
+      this.tiles.push(response);
     });
   }
 }
