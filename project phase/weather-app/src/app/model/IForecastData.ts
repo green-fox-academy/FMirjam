@@ -1,4 +1,3 @@
-import { IForecastWeatherIcon } from './IForecastWeatherIcon';
 import { IForecastTemp } from './IForecastTemp';
 import { IForecastWeatherDescription } from './IForecastWeatherDescr';
 
