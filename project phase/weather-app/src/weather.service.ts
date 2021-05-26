@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { IForecastData } from './app/model/IForecastData';
 import { IForecastGroupData } from './app/model/IForecastGroupData';
+import { IForecastTile } from './app/model/IForecastTile';
 import { ITile } from './app/model/Itile';
 import { IWeatherApiData } from './app/model/IWeatherApiData';
 import { IWeatherGroupData } from './app/model/IWeatherGroupData';
@@ -26,7 +27,7 @@ export class WeatherService {
       .get<IWeatherGroupData>( //IWetaherGroupData típus
         `https://api.openweathermap.org/data/2.5/group?id=${this.ids.join(
           ','
-        )}&appid=${this.apiKey}`
+        )}&appid=${this.apiKey}&units=metric`
       )
       .pipe(
         tap((x) => console.log(x)),
@@ -38,7 +39,7 @@ export class WeatherService {
               id: y.id,
               city: y.name,
               state: y.sys.country,
-              degree: Math.round(y.main.temp - 272.15),
+              degree: Math.round(y.main.temp),
               image: y.weather[0].icon,
             };
           });
@@ -49,7 +50,7 @@ export class WeatherService {
   getApiDataByCityName(cityName: string): Observable<ITile> {
     return this.http
       .get<IWeatherApiData>(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apiKey}&units=metric`
       )
       .pipe(
         // tap((z) => console.log(z)),
@@ -58,27 +59,26 @@ export class WeatherService {
             id: data.id,
             city: data.name,
             state: data.sys.country,
-            degree: Math.round(data.main.temp - 272.15),
+            degree: data.main.temp,
             image: data.weather[0].icon,
           };
         })
       );
   }
 
-  getForecastDataById(): Observable<IForecastData> {
+  getForecastDataById(id: number): Observable<IForecastTile[]> {
     return this.http
       .get<IForecastGroupData>(
-        `https://api.openweathermap.org/data/2.5/forecast/daily?id=5809844&cnt=5&appid=${this.apiKey}`
+        `https://api.openweathermap.org/data/2.5/forecast/daily?id=${id}&cnt=5&appid=${this.apiKey}&units=metric`
       )
       .pipe(
         tap((v) => console.log(v)),
         map((data) => {
           return data.list.map((x) => {
-            // console.log(x)
             return {
-              temp: x.temp.day,
-              description: x.description[0].main,
-              icon: x.icon[0].icon,
+              degree: x.temp.day,
+              text: x.weather[0].main,
+              image: x.weather[0].icon,
             };
           });
         })

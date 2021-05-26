@@ -16,6 +16,6 @@ export class TileComponent implements OnInit {
   ngOnInit(): void {}
 
   showForecastData() {
-    this.service.getForecastDataById().subscribe((response) => {});
+    this.service.getForecastDataById(this.tile.id).subscribe((response) => {console.log(response)});
   }
 }
