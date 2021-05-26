@@ -1,7 +1,10 @@
+import { IForecastWeatherIcon } from './IFirecastWeatherIcon';
 import { IForecastTemp } from './IForecastTemp';
-import { IForecastWeather } from './IForecastWeather';
+import { IForecastWeatherDescription } from './IForecastWeatheDescr';
+
 
 export interface IForecastData {
   temp: IForecastTemp;
-  weather: IForecastWeather[];
+  description: IForecastWeatherDescription[];
+  icon: IForecastWeatherIcon[];
 }

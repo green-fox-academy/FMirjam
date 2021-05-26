@@ -29,7 +29,7 @@ export class WeatherService {
         )}&appid=${this.apiKey}`
       )
       .pipe(
-        // tap((x) => console.log(x)),
+        tap((x) => console.log(x)),
         map((data) => {
           //rxjs map
           return data.list.map((y) => {
@@ -65,16 +65,23 @@ export class WeatherService {
       );
   }
 
-  getForecastDataById()
-  
-  // :Observable<IForecastData[]> 
-  {
+  getForecastDataById(): Observable<IForecastData> {
     return this.http
       .get<IForecastGroupData>(
         `https://api.openweathermap.org/data/2.5/forecast/daily?id=5809844&cnt=5&appid=${this.apiKey}`
       )
       .pipe(
         tap((v) => console.log(v)),
+        map((data) => {
+          return data.list.map((x) => {
+            // console.log(x)
+            return {
+              temp: x.temp.day,
+              description: x.description[0].main,
+              icon: x.icon[0].icon,
+            };
+          });
+        })
       );
   }
 }
