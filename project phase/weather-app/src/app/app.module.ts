@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { TileComponent } from './tile/tile.component';
 import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForecastComponent } from './forecast/forecast.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppComponent,
     TileComponent,
     PageNotFoundComponent,
+    ForecastComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
