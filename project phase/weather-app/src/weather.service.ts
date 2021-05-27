@@ -59,7 +59,7 @@ export class WeatherService {
             id: data.id,
             city: data.name,
             state: data.sys.country,
-            degree: data.main.temp,
+            degree: Math.round(data.main.temp),
             image: data.weather[0].icon,
           };
         })
