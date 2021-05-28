@@ -9,12 +9,12 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   // {
-  //   path: '',
-  //   component: TileComponent,
-  //   children: [{ path: '', component: ForecastComponent }],
-  // },
-  { path: '**', component: PageNotFoundComponent },
-];
+    //   path: '',
+    //   component: TileComponent,
+    //   children: [{ path: '', component: ForecastComponent }],
+    // },
+    { path: '**', component: PageNotFoundComponent },
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

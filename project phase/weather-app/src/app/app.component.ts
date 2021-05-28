@@ -8,21 +8,21 @@ import { ITile } from './model/Itile';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'weather-app';
-  tiles: ITile[];
-  cityName: string = '';
+  // title = 'weather-app';
+  // tiles: ITile[];
+  // cityName: string = '';
 
-  constructor(private service: WeatherService) {
-    this.service.printToConsole('Got the service');
-  }
+  // constructor(private service: WeatherService) {
+  //   this.service.printToConsole('Got the service');
+  // }
 
   ngOnInit(): void {
-    this.service.getApiData().subscribe((response) => (this.tiles = response));
+    // this.service.getApiData().subscribe((response) => (this.tiles = response));
   }
 
-  show() {
-    this.service.getApiDataByCityName(this.cityName).subscribe((response) => {
-      this.tiles.push(response);
-    });
-  }
+  // show() {
+  //   this.service.getApiDataByCityName(this.cityName).subscribe((response) => {
+  //     this.tiles.push(response);
+  //   });
+  // }
 }

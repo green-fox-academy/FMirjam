@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from 'src/weather.service';
+import { ITile } from '../model/Itile';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  title = 'weather-app';
+  tiles: ITile[];
+  cityName: string = '';
+
+  constructor(private service: WeatherService) {
+    this.service.printToConsole('Got the service');
   }
 
+  ngOnInit(): void {
+    this.service.getApiData().subscribe((response) => (this.tiles = response));
+  }
+
+  show() {
+    this.service.getApiDataByCityName(this.cityName).subscribe((response) => {
+      this.tiles.push(response);
+    });
+  }
 }
