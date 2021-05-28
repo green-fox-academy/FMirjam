@@ -9,7 +9,6 @@ import { ITile } from '../model/Itile';
 })
 export class DashboardComponent implements OnInit {
 
-
   title = 'weather-app';
   tiles: ITile[];
   cityName: string = '';

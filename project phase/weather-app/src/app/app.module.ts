@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForecastTileComponent } from './forecast-tile/forecast-tile.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PageNotFoundComponent,
     ForecastComponent,
     DashboardComponent,
+    ForecastTileComponent,
   ],
   imports: [
     BrowserModule,

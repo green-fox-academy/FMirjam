@@ -12,4 +12,5 @@ export class ForecastComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
 }
