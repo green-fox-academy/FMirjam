@@ -12,8 +12,8 @@ export class ForecastComponent implements OnInit {
   constructor(private service: WeatherService) {}
 
   ngOnInit(): void {
-    // this.service
-    //   .getForecastDataById()
-    //   .subscribe((response) => (this.forecastTiles = response));
+    this.service
+      .getForecastDataById()
+      .subscribe((response) => (this.forecastTiles = response));
   }
 }
