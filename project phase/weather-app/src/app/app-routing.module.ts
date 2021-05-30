@@ -9,9 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   {
-    path: 'forecast',
+    path: 'forecast/:id',
     component: ForecastComponent,
-    // children: [{ path: 'bla', component: ForecastTileComponent }],
   },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { WeatherService } from 'src/weather.service';
 import { IForecastTile } from '../model/IForecastTile';
 
@@ -9,11 +11,17 @@ import { IForecastTile } from '../model/IForecastTile';
 })
 export class ForecastComponent implements OnInit {
   forecastTiles: IForecastTile[];
-  constructor(private service: WeatherService) {}
+  subscription: Subscription;
+  constructor(
+    private service: WeatherService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.service
-      .getForecastDataById()
-      .subscribe((response) => (this.forecastTiles = response));
+    this.subscription = this.activatedRoute.params.subscribe((param) => {
+      this.service
+        .getForecastDataById(param.id)
+        .subscribe((response) => (this.forecastTiles = response));
+    });
   }
 }

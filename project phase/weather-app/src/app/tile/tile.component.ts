@@ -1,7 +1,5 @@
-import { Route } from '@angular/compiler/src/core';
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { WeatherService } from 'src/weather.service';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { ITile } from '../model/Itile';
 
 @Component({
@@ -13,12 +11,14 @@ export class TileComponent implements OnInit {
   @Input()
   tile: ITile;
 
-  constructor(private router: Router) {}
+  @Output()
+  getForecast: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  showForecastData(forecastPage: string) {
-    // this.service.getForecastDataById(this.tile.id).subscribe((response) => {console.log(response)});
-    this.router.navigate([`${forecastPage}`]);
+  showForecastData(): void {
+    this.getForecast.emit(this.tile.id);
   }
 }
