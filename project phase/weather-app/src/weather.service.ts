@@ -76,7 +76,7 @@ export class WeatherService {
         map((data) => {
           return data.list.map((x) => {
             return {
-              degree: x.temp.day,
+              degree: Math.round(x.temp.day),
               text: x.weather[0].main,
               image: x.weather[0].icon,
             };

@@ -1,0 +1,29 @@
+.forecastTile {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  .details {
+    display: flex;
+    justify-content: center;
+    .temperature {
+      margin-top: 20px;
+      margin-left: 20px;
+      font-size: 30px;
+    }
+    img {
+      height: 70px;
+      width: 70px;
+      margin-left: 50px;
+    }
+    .description {
+      margin-top: 30px;
+      margin-left: 40px;
+    }
+  }
+}
