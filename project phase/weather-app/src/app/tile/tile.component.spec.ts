@@ -32,14 +32,11 @@ describe('TileComponent', () => {
   });
 
   it('should emit id = 1 when call showForecastData()', () => {
-    // Arrange
     component.tile= testTileData;
     spyOn(component.getForecast, 'emit');
 
-    // Act
     component.showForecastData();
 
-    // Assert
     expect(component.getForecast.emit).toHaveBeenCalledOnceWith(1);
   });
 });
