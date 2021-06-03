@@ -49,4 +49,16 @@ describe('WeatherService', () => {
     );
     response.flush(httpResponseOneCity);
   });
+
+  it('should return null when api fails', (done) => {
+    service.getApiDataByCityName('Budapest').subscribe((x) => {
+      expect(x).toEqual(null);
+      done();
+    });
+
+    let response = httpMock.expectOne(
+      `https://api.openweathermap.org/data/2.5/weather?q=Budapest&appid=${apiKey}&units=metric`
+    );
+    response.flush(new ErrorEvent('not found'));
+  });
 });

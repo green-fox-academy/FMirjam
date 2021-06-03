@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { IForecastData } from './app/model/IForecastData';
 import { IForecastGroupData } from './app/model/IForecastGroupData';
 import { IForecastTile } from './app/model/IForecastTile';
@@ -62,7 +62,8 @@ export class WeatherService {
             degree: Math.round(data.main.temp),
             image: data.weather[0].icon,
           };
-        })
+        }),
+        catchError((err) => of(null))
       );
   }
 
@@ -81,8 +82,8 @@ export class WeatherService {
               image: x.weather[0].icon,
             };
           });
-        })
+        }),
+        catchError((err) => of([]))
       );
   }
-
 }
