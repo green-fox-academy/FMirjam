@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForecastTileComponent } from './forecast-tile.component';
@@ -8,6 +9,7 @@ describe('ForecastTileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ ForecastTileComponent ]
     })
     .compileComponents();
@@ -16,7 +18,6 @@ describe('ForecastTileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ForecastTileComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
