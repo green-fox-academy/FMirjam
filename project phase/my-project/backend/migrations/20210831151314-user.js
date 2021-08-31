@@ -28,21 +28,6 @@ exports.up = function (db) {
     password: { type: 'string', length: 60, notNull: true },
     verificationCode: { type: 'int', notNull: true },
     isVerified: { type: 'int', notNull: true, defaultValue: 1 },
-    roleId: {
-      type: 'int',
-      notNull: true,
-      foreignKey: {
-        name: 'roleId',
-        table: 'role',
-        rules: {
-          onDelete: 'CASCADE',
-          onUpdate: 'RESTRICT',
-        },
-        mapping: {
-          roleId: 'roleId',
-        },
-      },
-    },
   });
 };
 
