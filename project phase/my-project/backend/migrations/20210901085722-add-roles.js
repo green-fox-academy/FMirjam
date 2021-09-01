@@ -15,27 +15,18 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-  return db.addColumn('user', 'roleId', {
-    type: 'int',
-    notNull: true,
-    foreignKey: {
-      name: 'roleId',
-      table: 'role',
-      rules: {
-        onDelete: 'CASCADE',
-        onUpdate: 'RESTRICT',
-      },
-      mapping: {
-        roleId: 'roleId',
-      },
-    },
-  });
+  const promises = [];
+  promises.push(db.insert('role', { roleId: 1, name: 'Admin' }));
+  promises.push(db.insert('role', { roleId: 2, name: 'Consumer' }));
+
+  return Promise.all(promises);
 };
 
 exports.down = function (db) {
-  return db.removeColumn('user', 'roleId');
+  return db.truncateTable('user');
 };
 
 exports._meta = {
   version: 1,
 };
+

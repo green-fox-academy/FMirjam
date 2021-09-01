@@ -5,10 +5,10 @@ var type;
 var seed;
 
 /**
-  * We receive the dbmigrate dependency from dbmigrate initially.
-  * This enables us to not have to rely on NODE_PATH.
-  */
- exports.setup = function (options, seedLink) {
+ * We receive the dbmigrate dependency from dbmigrate initially.
+ * This enables us to not have to rely on NODE_PATH.
+ */
+exports.setup = function (options, seedLink) {
   dbm = options.dbmigrate;
   type = dbm.dataType;
   seed = seedLink;
@@ -28,6 +28,21 @@ exports.up = function (db) {
     password: { type: 'string', length: 60, notNull: true },
     verificationCode: { type: 'int', notNull: true },
     isVerified: { type: 'int', notNull: true, defaultValue: 1 },
+    roleId: {
+      type: 'int',
+      notNull: true,
+      foreignKey: {
+        name: 'roleId',
+        table: 'role',
+        rules: {
+          onDelete: 'CASCADE',
+          onUpdate: 'RESTRICT',
+        },
+        mapping: {
+          roleId: 'roleId',
+        },
+      },
+    },
   });
 };
 

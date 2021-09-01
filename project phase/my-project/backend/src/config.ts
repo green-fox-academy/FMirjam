@@ -12,4 +12,7 @@ export default {
   jwt: {
     secretKey: process.env.JWT_SERVICE,
   },
+  bcyrpt: {
+    numberOfSaltRounds: 8,
+  },
 };
