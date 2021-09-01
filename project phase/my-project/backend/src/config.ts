@@ -9,4 +9,7 @@ export default {
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
   },
+  jwt: {
+    secretKey: process.env.JWT_SERVICE,
+  },
 };
