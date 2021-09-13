@@ -10,5 +10,5 @@ function getMostProfitFromStockQuotes(quotes) {
   return profit;
 }
 
-const stockQuotes: number[] = [6, 5, 4, 3, 2, 1];
+const stockQuotes: number[] = [1, 6, 5, 10, 8, 7];
 console.log(getMostProfitFromStockQuotes(stockQuotes));
